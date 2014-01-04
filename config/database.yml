@@ -14,7 +14,7 @@ development:
   database: mavencc_development
   pool: 5
   username: root
-  password:
+  password: xerxes2002
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -26,7 +26,7 @@ test:
   database: mavencc_test
   pool: 5
   username: root
-  password:
+  password: xerxes2002
   socket: /var/run/mysqld/mysqld.sock
 
 production:
@@ -35,5 +35,5 @@ production:
   database: mavencc_production
   pool: 5
   username: root
-  password:
+  password: xerxes2002
   socket: /var/run/mysqld/mysqld.sock
