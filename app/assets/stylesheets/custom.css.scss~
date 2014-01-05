@@ -37,6 +37,17 @@ textarea {
 
 .navbar {
   background-color: #bbb;
+}
+
+.navbar-nav {
+  ul {
+    &:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #ffe;
+    }
+  }
+}
 
 /* typography */
 
@@ -87,7 +98,8 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
-  color: #999;
+  color: #fff;
+  background-color: #666;
   a {
     color: #555;
     &:hover {

@@ -4,4 +4,8 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+  
+  def site
+  	@site = Site.first
+  end
 end

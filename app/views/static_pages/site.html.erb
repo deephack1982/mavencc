@@ -1,0 +1,11 @@
+<% provide(:title, 'Site') %>
+<div class="jumbotron">
+	<h1>Site Information</h1>
+	<p><%= @site.company %><p>
+	<p><%= "#{@site.site} Dialler" %><p>
+	<p>Maven CC Version 0.1</p>
+	<p><%= "#{@site.license_type} Seat License" %></p>
+	<% @site.modules.each do |m| %>
+		<p><%= "#{m[0]} #{m[1]}" %></p>
+			<% end -%>
+</div>
