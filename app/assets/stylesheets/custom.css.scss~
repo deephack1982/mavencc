@@ -40,7 +40,7 @@ textarea {
 }
 
 .navbar-nav {
-  ul {
+  li {
     &:hover {
     color: #fff;
     text-decoration: none;
@@ -98,8 +98,8 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
   color: #fff;
-  background-color: #666;
   a {
     color: #555;
     &:hover {
