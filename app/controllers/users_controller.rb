@@ -2,14 +2,18 @@ class UsersController < ApplicationController
 	def error
 	end
 	def index
+		@user_tab = 'list'
 	end
 	def show
 		@user = User.find(params[:id])
+		@user_tab = 'list'
 	end
 	def list
+		@user_tab = 'list'
 	end
 	def new
 		@user = User.new
+		@user_tab = 'add'
 	end
 	def create
 		@user = User.create(user_params)
