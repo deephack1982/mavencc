@@ -2,8 +2,7 @@ Mavencc::Application.routes.draw do
   root 'static_pages#home'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/site', to: 'static_pages#site', via: 'get'
-  match '/users', to: 'user#list', via: 'get'
-  resources :user
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

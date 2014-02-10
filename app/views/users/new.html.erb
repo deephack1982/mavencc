@@ -1,0 +1,39 @@
+<% provide(:title, 'Users') %>
+	<h1>Users</h1>
+<div class="row">
+	<div class="col-md-2">	
+		<ul class="nav nav-pills nav-stacked">
+			<li class="active"><%= link_to "Add User", new_user_path %></li>
+			<li><%= link_to "List Users", users_path %></li>
+			<li><%= link_to "Search for User", '#' %></li>
+			<li><%= link_to "List Groups", '#' %></li>
+			<li><%= link_to "Add Group", '#' %></li>
+		</ul>
+	</div>
+	<div class="col-md-6">
+		<%= form_for(@user) do |f| %>
+			<%= f.label :user %>
+			<%= f.text_field :user, :placeholder => 'At least 2 characters and no more than 20 characters, numbers only'%>
+						
+			<%= f.label :pass, "Password" %>
+			<%= f.password_field :pass, :placeholder => 'At least 8 characters including both upper and lower case letters' %>
+			
+			<%= f.label :full_name %>
+			<%= f.text_field :full_name, :placeholder => 'Enter the users first and last names' %>
+			
+			<%= f.label :user_level %>
+			<%= f.select(:user_level, User::USER_LEVELS) %>
+			
+			<%= f.label :user_group %>
+			<%= f.text_field :user_group %>
+			
+			<%= f.label :phone_login %>
+			<%= f.text_field :phone_login, :placeholder => 'optional' %>
+			
+			<%= f.label :phone_pass %>
+			<%= f.text_field :phone_pass, :placeholder => 'optional' %>
+			
+			<%= f.submit "Create", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
