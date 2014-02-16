@@ -39,6 +39,8 @@ gem 'therubyracer'
 # Add bootstrap for nice CSS
 gem 'bootstrap-sass'
 
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 
 group :doc do

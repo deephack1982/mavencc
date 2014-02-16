@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 	end
 	def index
 		@user_tab = 'list'
+		@users = User.paginate(page: params[:page])
 	end
 	def show
 		@user = User.find(params[:id])
@@ -18,15 +19,24 @@ class UsersController < ApplicationController
 	def create
 		@user = User.create(user_params)
     	if @user.save
-      		redirect_to users_path
+    		flash[:success] = "User created"
+      		redirect_to user_path(@user)
     	else
-      		render 'error'
+    		@user.errors.full_message.each do |e|
+    			flash[:danger] = e
+    		end
+      		render 'new'
     	end
+	end
+	def destroy
+		User.find(params[:id]).destroy
+		flash[:success] = "User Deleted"
+		redirect_to users_path
 	end
 	
 	private
 	
 	def user_params
-		params.require(:user).permit(:phone_login, :phone_pass)
+		params.require(:user).permit(:user,:pass,:full_name,:user_level,:user_group,:phone_login,:phone_pass)
 	end
 end

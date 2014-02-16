@@ -1,7 +1,7 @@
 <% provide(:title, 'Users') %>
 	<h1>Users</h1>
 	<%= render 'usertab' %>
-	<div class="col-md-6">
+	<div class="col-md-8">
 		<%= form_for(@user) do |f| %>
 			<%= f.label :user %>
 			<%= f.text_field :user, :placeholder => 'At least 2 characters and no more than 20 characters, numbers only'%>
@@ -27,4 +27,5 @@
 			<%= f.submit "Create", class: "btn btn-large btn-primary" %>
 		<% end %>
 	</div>
+</div>
 </div>

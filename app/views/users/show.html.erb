@@ -1,5 +1,13 @@
 <% provide(:title, 'Users') %>
 	<h1>Users</h1>
 <%= render 'usertab' %>
-<%= @user.user %>
-<%= @user.full_name %>
+<div class="col-md-8">
+	<% form_for(@user) do |f| %>
+		<%= f.label :user %>
+		<p class="form-control-static">#{f.user}</p>
+	<% end %>
+<p><%= button_to "Back", users_path, :method => :get%></button><p>
+</div>
+</div>
+</div>
+</div>
