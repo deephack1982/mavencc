@@ -37,6 +37,7 @@ textarea {
 
 .navbar {
   background-color: #bbb;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bbb), to(#ddd));
 }
 
 .navbar-nav {
@@ -165,7 +166,7 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 2px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;

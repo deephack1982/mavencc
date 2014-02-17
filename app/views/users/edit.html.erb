@@ -3,7 +3,7 @@
 	<%= render 'usertab' %>
 	<div class="col-md-8">
 		<%= bootstrap_form_for(@user) do |f| %>
-			<%= f.text_field :user, :placeholder => 'At least 2 characters and no more than 20 characters, numbers only'%>
+			<%= f.static_control :user %>
 						
 			<%= f.password_field :pass, label: "Password", placeholder: 'At least 8 characters including both upper and lower case letters' %>
 			
