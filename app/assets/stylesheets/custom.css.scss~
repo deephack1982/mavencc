@@ -37,6 +37,7 @@ textarea {
 
 .navbar {
   background-color: #bbb;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bbb), to(#ddd));
 }
 
 .navbar-nav {
@@ -81,9 +82,13 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
+  background: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
   font-weight: bold;
   line-height: 1;
   &:hover {
@@ -98,7 +103,6 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
-  border-bottom: 1px solid #eaeaea;
   color: #fff;
   a {
     color: #555;
@@ -162,7 +166,7 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 2px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
