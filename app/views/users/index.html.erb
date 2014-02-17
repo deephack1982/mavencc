@@ -6,7 +6,7 @@
 	<table class="table table-striped">
 		<tr><th>User ID</th><th>Full Name</th><th>Level</th><th>Group</th><th>Actions</th></tr>
 		<% @users.each do |u| %>
-			<tr><td><%= link_to u.user, u %></td><td><%= u.full_name %></td><td><%= u.user_level %></td><td><%= u.user_group %></td><td><%= button_to "Delete", u, :method => :delete, :class => :destory, data: { confirm: "This will permanantly remove this user, are you sure?"}, class: 'btn-sm btn-danger' %></tr>
+			<tr><td><%= link_to u.user, u %></td><td><%= u.full_name %></td><td><%= u.user_level %></td><td><%= u.user_group %></td><td><%= button_to "Delete", u, :method => :delete, :class => :destory, data: { confirm: "This will permanantly remove this user, are you sure?"}, class: 'btn-sm btn-danger' %><%= button_to "Edit", edit_user_path(u), :method => :get, class: 'btn-sm btn-warning' %></tr>
 		<% end %>
 	</table>
 	<%= will_paginate %>

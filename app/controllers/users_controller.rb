@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     		flash[:success] = "User created"
       		redirect_to user_path(@user)
     	else
-    		flash[:danger] = "User could not created"
+    		flash[:danger] = "User could not be created"
       		render 'new'
     	end
 	end
@@ -27,6 +27,19 @@ class UsersController < ApplicationController
 		User.find(params[:id]).destroy
 		flash[:success] = "User Deleted"
 		redirect_to users_path
+	end
+	def edit
+		@user = User.find(params[:id])
+	end
+	def update
+		@user = User.find(params[:id])
+		if @user.update_attributes(user_params)
+      			flash[:success] = "User updated"
+			redirect_to user_path(@user)
+	    	else
+			flash[:danger] = "User could not be updated"
+	      		render 'edit'
+    		end
 	end
 	
 	private

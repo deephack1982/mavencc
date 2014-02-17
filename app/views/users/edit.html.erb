@@ -1,0 +1,24 @@
+<% provide(:title, 'Users') %>
+	<h1>Users</h1>
+	<%= render 'usertab' %>
+	<div class="col-md-8">
+		<%= bootstrap_form_for(@user) do |f| %>
+			<%= f.text_field :user, :placeholder => 'At least 2 characters and no more than 20 characters, numbers only'%>
+						
+			<%= f.password_field :pass, label: "Password", placeholder: 'At least 8 characters including both upper and lower case letters' %>
+			
+			<%= f.text_field :full_name, :placeholder => 'Enter the users first and last names' %>
+			
+			<%= f.select(:user_level, User::USER_LEVELS) %>
+			
+			<%= f.text_field :user_group %>
+			
+			<%= f.text_field :phone_login, :placeholder => 'optional' %>
+			
+			<%= f.text_field :phone_pass, :placeholder => 'optional' %>
+			
+			<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+</div>
