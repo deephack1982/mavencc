@@ -2,9 +2,11 @@
 	<h1>Users</h1>
 <%= render 'usertab' %>
 <div class="col-md-8">
-	<% form_for(@user) do |f| %>
-		<%= f.label :user %>
-		<p class="form-control-static">#{f.user}</p>
+	<%= bootstrap_form_for(@user) do |f| %>
+		<%= f.static_control :user %>
+		<%= f.static_control :full_name %>
+		<%= f.static_control :user_level %>
+		<%= f.static_control :user_group %>
 	<% end %>
 <p><%= button_to "Back", users_path, :method => :get%></button><p>
 </div>

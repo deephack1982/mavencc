@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/potenza/bootstrap_form.git
+  revision: 85ce2b52b13ae03c0099fd1df985a3b70bca55f4
+  branch: master
+  specs:
+    bootstrap_form (2.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -144,6 +151,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   bootstrap-will_paginate
+  bootstrap_form!
   capybara
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)

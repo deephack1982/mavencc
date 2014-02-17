@@ -39,8 +39,10 @@ gem 'therubyracer'
 # Add bootstrap for nice CSS
 gem 'bootstrap-sass'
 
+# Added by MarkD for prettyness
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'bootstrap_form', :git => 'git://github.com/potenza/bootstrap_form.git', :branch => 'master'
 
 
 group :doc do

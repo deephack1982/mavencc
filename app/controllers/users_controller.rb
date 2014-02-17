@@ -3,13 +3,10 @@ class UsersController < ApplicationController
 	end
 	def index
 		@user_tab = 'list'
-		@users = User.paginate(page: params[:page])
+		@users = User.paginate(page: params[:page], :per_page => 10)
 	end
 	def show
 		@user = User.find(params[:id])
-		@user_tab = 'list'
-	end
-	def list
 		@user_tab = 'list'
 	end
 	def new
@@ -22,9 +19,7 @@ class UsersController < ApplicationController
     		flash[:success] = "User created"
       		redirect_to user_path(@user)
     	else
-    		@user.errors.full_message.each do |e|
-    			flash[:danger] = e
-    		end
+    		flash[:danger] = "User could not created"
       		render 'new'
     	end
 	end
