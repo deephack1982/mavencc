@@ -5,7 +5,7 @@
 			<li <%= usertab_active('add',@user_tab) %>><%= link_to "Add User", new_user_path %></li>
 			<li <%= usertab_active('list',@user_tab) %>><%= link_to "List Users", users_path %></li>
 			<li><%= link_to "Search for User", '#' %></li>
-			<li><%= link_to "List Groups", '#' %></li>
-			<li><%= link_to "Add Group", '#' %></li>
+			<li <%= usertab_active('group-list',@user_tab)%>><%= link_to "List Groups", user_groups_path %></li>
+			<li <%= usertab_active('group-add',@user_tab) %>><%= link_to "Add Group", new_user_group_path %></li>
 		</ul>
 	</div>

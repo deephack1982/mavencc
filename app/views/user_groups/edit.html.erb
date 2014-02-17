@@ -1,0 +1,14 @@
+<% provide(:title, 'User Groups') %>
+	<h1>User Groups</h1>
+	<%= render 'users/usertab' %>
+	<div class="col-md-8">
+		<%= bootstrap_form_for(@user_group) do |f| %>
+			<%= f.static_control :user_group %>
+						
+			<%= f.text_field :group_name %>
+			
+			<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120170801) do
+ActiveRecord::Schema.define(version: 20140217183427) do
 
   create_table "sites", force: true do |t|
     t.string   "company"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20140120170801) do
     t.string   "license_type"
     t.string   "license_code"
     t.text     "modules"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_groups", force: true do |t|
+    t.string   "user_group"
+    t.string   "group_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
