@@ -2,13 +2,13 @@
 	<h1>Users</h1>
 <%= render 'usertab' %>
 <div class="col-md-8">
-	<%= bootstrap_form_for(@user) do |f| %>
+	<%= bootstrap_form_for(@user, style: :horizontal) do |f| %>
 		<%= f.static_control :user %>
 		<%= f.static_control :full_name %>
 		<%= f.static_control :user_level %>
 		<%= f.static_control :user_group %>
 	<% end %>
-<p><%= button_to "Back", users_path, :method => :get%></button><p>
+<div class="row"><%= link_to "Back", users_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", edit_user_path, class: "btn btn-info" %></div></div><p>
 </div>
 </div>
 </div>

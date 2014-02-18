@@ -2,11 +2,11 @@
 	<h1>User Groups</h1>
 <%= render 'users/usertab' %>
 <div class="col-md-8">
-	<%= bootstrap_form_for(@user_group) do |f| %>
+	<%= bootstrap_form_for(@user_group, style: :horizontal) do |f| %>
 		<%= f.static_control :user_group %>
 		<%= f.static_control :group_name %>
 	<% end %>
-<p><%= button_to "Back", user_groups_path, :method => :get%></button><p>
+<div class="row"><%= link_to "Back", user_groups_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", edit_user_group_path, class: "btn btn-info" %></div></div>
 </div>
 </div>
 </div>
