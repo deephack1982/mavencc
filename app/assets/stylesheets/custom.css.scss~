@@ -13,7 +13,7 @@ $grayMediumLight: #eaeaea;
 /* universal */
 
 html {
-  overflow-y: scroll;
+/*  overflow-y: scroll; */
 }
 
 body {
@@ -37,6 +37,7 @@ textarea {
 
 .navbar {
   background-color: #bbb;
+  background-image: -moz-linear-gradient(top, #bbb, #ddd);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bbb), to(#ddd));
 }
 
