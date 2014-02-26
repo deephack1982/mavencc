@@ -13,7 +13,7 @@ $grayMediumLight: #eaeaea;
 /* universal */
 
 html {
-/*  overflow-y: scroll; */
+  overflow-y: scroll; 
 }
 
 body {
@@ -49,6 +49,11 @@ textarea {
     background-color: #ffe;
     }
   }
+}
+
+.pagination {
+	margin-bottom: 5px;
+	margin-top: 5px;
 }
 
 /* typography */
@@ -101,9 +106,8 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
+  margin-top: 45px; 
+  padding-top: 5px; 
   color: #fff;
   a {
     color: #555;
@@ -165,7 +169,7 @@ aside {
 }
 
 /* forms */
-
+/*
 input, textarea, select, .uneditable-input {
   border: 2px solid #bbb;
   width: 100%;
@@ -176,7 +180,7 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
-
+*/
 #error_explanation {
   color: #f00;
   ul {
