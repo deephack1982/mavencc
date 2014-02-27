@@ -1,12 +1,11 @@
 <footer class="footer">
-	<div class="navbar navbar-fixed-bottom">
-	<small>
-		<a href="http://www.mavennetwork.co.uk/">Maven Network Limited 2014</a>
-	</small>
+	<div class="row">
+		<small>
+			<a href="http://www.mavennetwork.co.uk/">Maven Network Limited 2014</a>
+		</small>
 			<ul>
 				<li><%= link_to "Site Information", site_path %></li>
 				<li><%= link_to "About", about_path %></li>
-      				<li><a href="mailto:support@mavennetwork.co.uk">Support</a></li>
 			</ul>
 	</div>
 </footer>

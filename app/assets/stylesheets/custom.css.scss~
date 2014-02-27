@@ -13,7 +13,7 @@ $grayMediumLight: #eaeaea;
 /* universal */
 
 html {
-  overflow-y: scroll; 
+ /* overflow-y: scroll; */
 }
 
 body {
@@ -21,7 +21,7 @@ body {
 }
 
 section {
-  overflow: auto;
+/*  overflow: auto; */
 }
 
 textarea {
@@ -53,7 +53,7 @@ textarea {
 
 .pagination {
 	margin-bottom: 5px;
-	margin-top: 5px;
+	margin-top: 3px;
 }
 
 /* typography */
