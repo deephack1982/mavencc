@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
+	helper_method :sort_column, :sort_direction
 	def error
 	end
 	def index
 		@user_tab = 'list'
-		@users = User.paginate(page: params[:page], :per_page => 20)
+		@users = User.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 	end
 	def show
 		@user = User.find(params[:id])
@@ -46,5 +47,13 @@ class UsersController < ApplicationController
 	
 	def user_params
 		params.require(:user).permit(:user,:pass,:full_name,:user_level,:user_group,:phone_login,:phone_pass)
+	end
+	
+	def sort_column
+		params[:sort] || "user"
+	end
+	
+	def sort_direction
+		params[:direction] || "asc"
 	end
 end
