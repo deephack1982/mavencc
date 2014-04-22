@@ -50,10 +50,10 @@ class UsersController < ApplicationController
 	end
 	
 	def sort_column
-		params[:sort] || "user"
+		User.column_names.include?(params[:sort]) ? params[:sort] : "user"
 	end
 	
 	def sort_direction
-		params[:direction] || "asc"
+		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 	end
 end
