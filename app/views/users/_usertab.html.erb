@@ -1,6 +1,5 @@
 <div class="row">
 	<div class="col-md-2">	
-		<div data-spy="affix" data-offset-top="20" data-offset-bottom="200">
 		<ul class="nav nav-pills nav-stacked">
 			<li <%= usertab_active('add',@user_tab) %>><%= link_to "Add User", new_user_path %></li>
 			<li <%= usertab_active('list',@user_tab) %>><%= link_to "List Users", users_path %></li>
@@ -8,5 +7,4 @@
 			<li <%= usertab_active('group-list',@user_tab)%>><%= link_to "List Groups", user_groups_path %></li>
 			<li <%= usertab_active('group-add',@user_tab) %>><%= link_to "Add Group", new_user_group_path %></li>
 		</ul>
-	</div>
 	</div>
