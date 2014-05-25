@@ -4,6 +4,7 @@ Mavencc::Application.routes.draw do
   match '/site', to: 'static_pages#site', via: 'get'
   resources :users
   resources :user_groups
+  resources :campaigns
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

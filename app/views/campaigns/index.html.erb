@@ -1,0 +1,17 @@
+<% provide(:title, 'Campaigns') %>
+	<h1>Campaigns</h1>
+	<%= render 'campaign_tab' %>
+<div class="col-md-8">
+	<%= will_paginate %>
+	<div class="table-responsive">
+		<small><%= page_entries_info @campaigns %></small>
+	<table class="table table-striped">
+		<tr><th><%= sortable "campaign_id" %></th><th><%= sortable "campaign_name" %></th></tr>
+		<% @campaigns.each do |c| %>
+		<tr><td><span class="label label-info"><%= link_to c.campaign_id, c %></span></td><td><%= c.campaign_name %></td></tr>
+		<% end %>
+		</table>
+		</div>
+		<%= will_paginate %>
+	</div>
+	</div>
