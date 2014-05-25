@@ -8,7 +8,7 @@
 	<table class="table table-striped">
 		<tr><th><%= sortable "user","User ID" %></th><th><%= sortable "full_name" %></th><th><%= sortable "user_level","Level" %></th><th><%= sortable "user_group","Group" %></th><th>Actions</th></tr>
 		<% @users.each do |u| %>
-			<tr><td><span class="label label-info"><%= link_to u.user, u %></span></td><td><%= u.full_name %></td><td><%= u.user_level %></td><td><%= u.user_group %></td><td><div class="btn-group"><%= link_to "Delete", {:action => "destroy", :id => u }, data: { confirm: "This will permanantly remove this user, are you sure?"}, class: "btn-sm btn-danger", role: "button" %><%= link_to "Edit", {:action => "edit", :id => u }, class: "btn-sm btn-warning" %><%= link_to "Show", {:action => "show", :id => u }, class: "btn-sm btn-info" %></div></tr>
+			<tr><td><span class="label label-info"><%= link_to u.user, u %></span></td><td><%= u.full_name %></td><td><%= u.user_level %></td><td><%= u.user_group %></td><td><div class="btn-group"><%= link_to 'Delete', user_path(u), method: :delete, data: { confirm: "This will permanantly remove this user, are you sure?"}, class: "btn-sm btn-danger", role: "button" %><%= link_to "Edit", edit_user_path(u), class: "btn-sm btn-warning" %><%= link_to "Show", user_path(u), class: "btn-sm btn-info" %></div></tr>
 		<% end %>
 	</table>
 	</div>
