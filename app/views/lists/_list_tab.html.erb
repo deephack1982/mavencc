@@ -1,0 +1,7 @@
+<div class="row">
+	<div class="col-md-2">	
+		<ul class="nav nav-pills nav-stacked">
+			<li <%= listtab_active('add',@list_tab) %>><%= link_to "Add List", new_list_path %></li>
+			<li <%= listtab_active('list',@list_tab) %>><%= link_to "Show Lists", lists_path %></li>
+		</ul>
+	</div>

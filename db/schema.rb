@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140525203120) do
+ActiveRecord::Schema.define(version: 20140526142940) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 20140525203120) do
     t.datetime "campaign_changedate"
     t.datetime "campaign_logindate"
     t.string   "user_group"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lists", force: true do |t|
+    t.string   "list_id"
+    t.string   "list_name"
+    t.string   "list_description"
+    t.string   "campaign_id"
+    t.string   "active"
+    t.datetime "list_changedate"
+    t.datetime "list_lastcalldate"
+    t.string   "reset_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
