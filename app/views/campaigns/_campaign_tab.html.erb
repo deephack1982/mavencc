@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="col-md-2">	
 		<ul class="nav nav-pills nav-stacked">
+			<li <%= campaigntab_active('add',@campaign_tab) %>><%= link_to "Add Campaign", new_campaign_path %></li>
 			<li <%= campaigntab_active('list',@campaign_tab) %>><%= link_to "Show Campaigns", campaigns_path %></li>
 		</ul>
 	</div>

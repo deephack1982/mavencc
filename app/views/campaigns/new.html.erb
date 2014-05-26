@@ -1,0 +1,19 @@
+<% provide(:title, 'Campaigns') %>
+	<h1>Campaigns</h1>
+	<%= render 'campaign_tab' %>
+	<div class="col-md-8">
+		<%= bootstrap_form_for(@campaign) do |f| %>
+			<%= f.text_field :campaign_id, :placeholder => 'Between 2 and 8 characters without punctuation'%>
+						
+			<%= f.text_field :campaign_name, :placeholder => 'Between 2 and 8 characters' %>
+
+			<%= f.text_field :campaign_description, :placeholder => 'optional' %>
+			
+			<%= f.select(:active, Campaign::ACTIVE) %>
+						
+			<%= f.collection_select :user_group, UserGroup.all, :id, :user_group %>		
+				
+			<div class="row"><%= link_to "Back", campaigns_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Create", class: "btn btn-large btn-primary" %></div></div>
+		<% end %>
+	</div>
+</div>

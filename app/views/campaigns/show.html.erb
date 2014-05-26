@@ -1,0 +1,15 @@
+<% provide(:title, 'Campaigns') %>
+<h1>Campaigns</h1>
+<%= render 'campaign_tab' %>
+<div class="col-md-8">
+	<%= bootstrap_form_for(@campaign, style: :horizontal) do |f| %>
+		<%= f.static_control :campaign_id %>
+		<%= f.static_control :campaign_name %>
+		<%= f.static_control :campaign_description %>
+		<%= f.static_control :active %>
+		<%= f.static_control :user_group %>
+	<% end %>
+	<div class="row"><%= link_to "Back", campaigns_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", edit_campaign_path, class: "btn btn-info" %></div></div><p>
+</div>
+</div>
+</div>
