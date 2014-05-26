@@ -1,0 +1,21 @@
+<% provide(:title, 'Lists') %>
+	<h1>Lists</h1>
+	<%= render 'list_tab' %>
+	<div class="col-md-8">
+		<%= bootstrap_form_for(@list) do |f| %>
+			<%= f.static_control :list_id %>
+						
+			<%= f.text_field :list_name, :placeholder => 'Between 2 and 20 characters' %>
+
+			<%= f.text_field :list_description, :placeholder => 'optional' %>
+			
+			<%= f.select(:active, List::ACTIVE) %>
+						
+			<%= f.collection_select :campaign_id, Campaign.all, :id, :campaign_name %>
+			
+			<%= f.text_field :reset_time, :placeholder => 'optional' %>
+			
+			<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Submit", class: "btn btn-large btn-primary" %></div></div>
+		<% end %>
+	</div>
+</div>

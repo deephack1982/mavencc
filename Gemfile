@@ -43,7 +43,7 @@ gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap_form', :git => 'git://github.com/potenza/bootstrap_form.git', :branch => 'master'
-
+gem 'nested_form'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -4,7 +4,7 @@ class CreateLists < ActiveRecord::Migration
       t.string :list_id
       t.string :list_name
       t.string :list_description
-      t.string :campaign_id
+      t.references :campaign, index: true
       t.string :active
       t.datetime :list_changedate
       t.datetime :list_lastcalldate

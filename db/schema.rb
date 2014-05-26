@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526142940) do
+ActiveRecord::Schema.define(version: 20140526215905) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140526142940) do
     t.string   "list_id"
     t.string   "list_name"
     t.string   "list_description"
-    t.string   "campaign_id"
+    t.integer  "campaign_id"
     t.string   "active"
     t.datetime "list_changedate"
     t.datetime "list_lastcalldate"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20140526142940) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "lists", ["campaign_id"], name: "index_lists_on_campaign_id", using: :btree
 
   create_table "sites", force: true do |t|
     t.string   "company"

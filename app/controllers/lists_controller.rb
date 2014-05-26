@@ -51,7 +51,7 @@ class ListsController < ApplicationController
 private
 	
 	def list_params
-		params.require(:list).permit(:list_id,:list_name,:active,:list_description)
+		params.require(:list).permit(:list_id,:list_name,:active,:list_description,:campaign_id,:reset_time)
 	end
 	
 	def sort_column
