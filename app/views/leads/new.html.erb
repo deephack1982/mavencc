@@ -1,0 +1,36 @@
+<% provide(:title, 'Leads') %>
+	<h1>Leads</h1>
+	<%= render 'lists/list_tab' %>
+	<div class="col-md-8">
+		<%= bootstrap_form_for(@lead) do |f| %>
+			
+			<%= f.collection_select :list_id, List.all, :id, :list_name %>
+			
+			<%= f.text_field :phone_code %>
+			
+			<%= f.phone_field :phone_number %>
+			
+			<%= f.text_field :title %>
+			
+			<%= f.text_field :first_name %>
+			
+			<%= f.text_field :last_name %>
+			
+			<%= f.text_field :address1 %>
+			
+			<%= f.text_field :address2 %>
+			
+			<%= f.text_field :address3 %>
+			
+			<%= f.text_field :city %>
+			
+			<%= f.text_field :province %>
+			
+			<%= f.text_field :postal_code %>
+			
+			<%= f.text_area :comments %>
+				
+			<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Create", class: "btn btn-large btn-primary" %></div></div>
+		<% end %>
+	</div>
+</div>

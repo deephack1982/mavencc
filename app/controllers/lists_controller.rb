@@ -17,6 +17,7 @@ class ListsController < ApplicationController
 	
 	def create
 		@list = List.create(list_params)
+		@list.id = @list.list_id
     	if @list.save
     		flash[:success] = "List created"
       		redirect_to list_path(@list)

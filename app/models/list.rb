@@ -5,6 +5,7 @@ class List < ActiveRecord::Base
   validates :active, presence: true
   validates :campaign_id, presence: true
   belongs_to :campaign
+  has_many :leads
   
   def campaign_name
   	self.campaign.campaign_name if self.campaign

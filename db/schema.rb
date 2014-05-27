@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526215905) do
+ActiveRecord::Schema.define(version: 20140527111722) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id"
@@ -24,6 +24,44 @@ ActiveRecord::Schema.define(version: 20140526215905) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "list", force: true do |t|
+    t.integer  "lead_id"
+    t.string   "status"
+    t.string   "user"
+    t.string   "vendor_lead_code"
+    t.string   "source_id"
+    t.integer  "lists_id"
+    t.string   "called_since_last_reset"
+    t.string   "phone_code"
+    t.string   "phone_number"
+    t.string   "title"
+    t.string   "first_name"
+    t.string   "middle_initial"
+    t.string   "last_name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
+    t.string   "city"
+    t.string   "state"
+    t.string   "province"
+    t.string   "postal_code"
+    t.string   "country_code"
+    t.string   "gender"
+    t.date     "date_of_birth"
+    t.string   "alt_phone"
+    t.string   "email"
+    t.string   "security_phrase"
+    t.text     "comments"
+    t.integer  "called_count"
+    t.datetime "last_local_call_time"
+    t.integer  "rank"
+    t.string   "owner"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "list", ["lists_id"], name: "index_list_on_lists_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "list_id"
