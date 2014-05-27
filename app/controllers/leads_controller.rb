@@ -24,6 +24,7 @@ class LeadsController < ApplicationController
 	def search
 		@leads = Lead.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		@leads = @leads.search(params[:search])
+		@list_tab = 'searchlead'
 	end
 	
 	private
