@@ -15,7 +15,7 @@
 			<table class="table table-striped">
 				<tr><th><%= sortable "lead_id" %></th><th><%= sortable "first_name" %></th><th><%= sortable "last_name" %></th><th><%= sortable "phone_number" %></th><th><%= sortable "list_id" %></tr>
 				<% @leads.each do |l| %>
-				<tr><td><span class="label label-info"><%= link_to l.lead_id, l %></span></td><td><%= l.first_name %></td><td><%= l.last_name %></td><td><%= l.phone_number %></td><td><%= l.list_id %></td></tr>
+				<tr><td><span class="label label-info"><%= link_to l.lead_id, l %></span></td><td><%= l.first_name %></td><td><%= l.last_name %></td><td><%= l.phone_number %></td><td><%= link_to l.list_id, list_path(l.list_id), class: "label label-info" %></td></tr>
 				<% end %>
 			</table>
 		</div>

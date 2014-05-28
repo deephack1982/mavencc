@@ -1,7 +1,9 @@
 <%= render 'leads_header' %>
 		<%= bootstrap_form_for(@lead) do |f| %>
 			
-			<p><%= f.static_control :list_id %><%= link_to "List", list_path(@lead.list_id), class: "btn btn-default" %></p>
+			<%= f.static_control :list_id do %>
+				<%= link_to @lead.list_id, list_path(@lead.list_id), class: "label label-default" %>
+			<% end %>
 			
 			<%= f.static_control :phone_code %>
 			

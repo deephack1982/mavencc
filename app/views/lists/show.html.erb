@@ -4,10 +4,12 @@
 		<%= f.static_control :list_name %>
 		<%= f.static_control :list_description %>
 		<%= f.static_control :active %>
-		<%= f.static_control :campaign_name %>
+		<%= f.static_control :campaign_name do %>
+			<%= link_to @list.campaign_name, campaign_path(@list.campaign_id), class: "label label-default" %>
+		<% end %>
 		<%= f.static_control :reset_time %>
 	<% end %>
-	<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", edit_list_path, class: "btn btn-info" %></div></div><p>
+	<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", edit_list_path, class: "btn btn-primary" %></div></div><p>
 </div>
 </div>
 </div>
