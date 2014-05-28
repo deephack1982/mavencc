@@ -1,12 +1,14 @@
-<% provide(:title, 'Leads') %>
-	<h1>Leads</h1>
-	<%= render 'lists/list_tab' %>
-	<div class="col-md-8">
-		<div class="pull-right"><%= bootstrap_form_tag(url: search_leads_path, :method => 'get', layout: :inline) do |f| %>
-			<%= f.search_field :search %>
+	<%= render 'leads_header' %>
+		<span class="input-group-addon">
+		<%= bootstrap_form_tag(url: search_leads_path, :method => 'get', layout: :inline) do |f| %>
+			<%= f.search_field :search_by_postcode %>
 			<%= f.submit "Search", :name => nil %>
 		<% end %>
-		</div>
+		<%= bootstrap_form_tag(url: search_leads_path, :method => 'get', layout: :inline) do |f| %>
+			<%= f.search_field :search_by_phone %>
+			<%= f.submit "Search", :name => nil %>
+		<% end %>
+		</span>
 		<%= will_paginate %>
 		<div class="table-responsive">
 			<small><%= page_entries_info @leads %></small>

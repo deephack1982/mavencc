@@ -1,7 +1,4 @@
-<% provide(:title, 'Users') %>
-	<h1>Users</h1>
-	<%= render 'usertab' %>
-	<div class="col-md-8">
+<%= render 'users_header' %>
 		<%= bootstrap_form_for(@user) do |f| %>
 			<%= f.static_control :user %>
 						

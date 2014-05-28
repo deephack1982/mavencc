@@ -2,12 +2,12 @@ class Lead < ActiveRecord::Base
   self.table_name = "list"
   belongs_to :list
   
-  def self.search(search)
-  	if search
-  		find(:all, :conditions => ['phone_number LIKE ?', "%#{search}%"])
-  	else
-  		find(:all)
-  	end
+  def self.search_by_phone(search)
+  	find(:all, :conditions => ['phone_number LIKE ?', "#{search}%"])
+  end
+  
+  def self.search_by_postcode(search)
+  	find(:all, :conditions => ['postal_code LIKE ?', "#{search}%"])
   end
   
   def list_id

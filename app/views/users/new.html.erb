@@ -1,7 +1,4 @@
-<% provide(:title, 'Users') %>
-	<h1>Users</h1>
-	<%= render 'usertab' %>
-	<div class="col-md-8">
+<%= render 'users_header' %>
 		<%= bootstrap_form_for(@user) do |f| %>
 			<%= f.text_field :user, :placeholder => 'At least 2 characters and no more than 20 characters, numbers only'%>
 						

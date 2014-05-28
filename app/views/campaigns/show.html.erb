@@ -1,7 +1,4 @@
-<% provide(:title, 'Campaigns') %>
-<h1>Campaigns</h1>
-<%= render 'campaign_tab' %>
-<div class="col-md-8">
+<%= render 'campaigns_header' %>
 	<%= bootstrap_form_for(@campaign, style: :horizontal) do |f| %>
 		<%= f.static_control :campaign_id %>
 		<%= f.static_control :campaign_name %>

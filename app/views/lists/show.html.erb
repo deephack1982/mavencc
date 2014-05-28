@@ -1,7 +1,4 @@
-<% provide(:title, 'Lists') %>
-<h1>Lists</h1>
-<%= render 'list_tab' %>
-<div class="col-md-8">
+<%= render 'lists_header' %>
 	<%= bootstrap_form_for(@list, style: :horizontal) do |f| %>
 		<%= f.static_control :list_id %>
 		<%= f.static_control :list_name %>

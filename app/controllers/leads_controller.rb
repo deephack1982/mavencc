@@ -2,6 +2,7 @@ class LeadsController < ApplicationController
 	helper_method :sort_column, :sort_direction
 	def show
 		@lead = Lead.find(params[:id])
+		@list_tab = 'searchlead'
 	end
 	
 	def new
@@ -23,8 +24,29 @@ class LeadsController < ApplicationController
 	
 	def search
 		@leads = Lead.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
-		@leads = @leads.search(params[:search])
+		if params.has_key?(:search_by_phone)
+			@leads = @leads.search_by_phone(params[:search_by_phone])
+		elsif
+			@leads = @leads.search_by_postcode(params[:search_by_postcode])
+		end
+		
 		@list_tab = 'searchlead'
+	end
+	
+	def edit
+		@lead = Lead.find(params[:id])
+		@list_tab = 'searchlead'
+	end
+	
+	def update
+		@lead = Lead.find(params[:id])
+		if @lead.update_attributes(lead_params)
+			flash[:success] = "Lead updated"
+			redirect_to lead_path(@lead)
+		else
+			flash[:danger] = "Lead could not be updated"
+			render 'edit'
+		end
 	end
 	
 	private

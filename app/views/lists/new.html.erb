@@ -1,7 +1,4 @@
-<% provide(:title, 'Lists') %>
-	<h1>Lists</h1>
-	<%= render 'list_tab' %>
-	<div class="col-md-8">
+<%= render 'lists_header' %>
 		<%= bootstrap_form_for(@list) do |f| %>
 			<%= f.text_field :list_id, :placeholder => 'At least 3 characters and no more than 8 characters, numbers only'%>
 						

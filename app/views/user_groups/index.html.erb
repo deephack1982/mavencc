@@ -1,7 +1,4 @@
-<% provide(:title, 'User Groups') %>
-	<h1>User Groups</h1>
-<%= render 'users/usertab' %>
-<div class="col-md-8">
+<%= render 'user_groups_header' %>
 	<%= will_paginate %>
 	<div class="table-responsive">
 	<small><%= page_entries_info @user_groups %></small>

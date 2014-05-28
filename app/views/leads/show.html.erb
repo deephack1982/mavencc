@@ -1,10 +1,7 @@
-<% provide(:title, 'Leads') %>
-	<h1>Leads</h1>
-	<%= render 'lists/list_tab' %>
-	<div class="col-md-8">
+<%= render 'leads_header' %>
 		<%= bootstrap_form_for(@lead) do |f| %>
 			
-			<%= f.static_control :list_id %>
+			<p><%= f.static_control :list_id %><%= link_to "List", list_path(@lead.list_id), class: "btn btn-default" %></p>
 			
 			<%= f.static_control :phone_code %>
 			
@@ -30,7 +27,7 @@
 			
 			<%= f.static_control :comments %>
 				
-			<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %></div>
+			<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", edit_lead_path, class: "btn btn-info" %></div></div>
 		<% end %>
 	</div>
 </div>
