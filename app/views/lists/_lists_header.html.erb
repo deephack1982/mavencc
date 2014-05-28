@@ -3,5 +3,5 @@
 <% provide(:title, 'Lists') %>
 <h1>Lists</h1>
 <% if controller.action_name == 'index' %>
-<h2><%= Lead.count %> total leads in dialler</h2>
+<h2><%= number_with_delimiter(Lead.count, :delimiter => ',') %> total leads in dialler</h2>
 <% end %>
