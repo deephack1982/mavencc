@@ -14,4 +14,13 @@ module ApplicationHelper
 		direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
 		link_to title, :sort => column, :direction => direction
 	end
+	
+	def current_nav(current_nav)
+		nav_snippet = 'class="active"'
+		if current_nav == controller.controller_name
+			nav_snippet.to_s.html_safe
+		end
+	end
+		
+			
 end
