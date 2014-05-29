@@ -23,13 +23,14 @@ class LeadsController < ApplicationController
 	end
 	
 	def search
-		@leads = Lead.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		if params.has_key?(:search_by_phone)
-			@leads = @leads.search_by_phone(params[:search_by_phone])
+			@leads = Lead.search_by_phone(params[:search_by_phone]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		elsif params.has_key?(:search_by_postcode)
-			@leads = @leads.search_by_postcode(params[:search_by_postcode])
+			@leads = Lead.search_by_postcode(params[:search_by_postcode])
+			@leads = @leads.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
+		else
+			@leads = Lead.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		end
-		
 		@list_tab = 'searchlead'
 	end
 	

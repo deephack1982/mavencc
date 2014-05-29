@@ -3,11 +3,11 @@ class Lead < ActiveRecord::Base
   belongs_to :list
   
   def self.search_by_phone(search)
-  	find(:all, :conditions => ['phone_number LIKE ?', "#{search}%"])
+  	where("phone_number LIKE ?", "#{search}%")
   end
   
   def self.search_by_postcode(search)
-  	find(:all, :conditions => ['postal_code LIKE ?', "#{search}%"])
+  	where("postal_code LIKE ?", "#{search}%")
   end
   
   def list_id

@@ -1,11 +1,11 @@
 	<%= render 'leads_header' %>
 		<span class="input-group-addon">
 		<%= bootstrap_form_tag(url: search_leads_path, :method => 'get', layout: :inline) do |f| %>
-			<%= f.search_field :search_by_postcode %>
+			<%= f.search_field :search_by_postcode, value: params[:search_by_postcode] %>
 			<%= f.submit "Search", :name => nil %>
 		<% end %>
 		<%= bootstrap_form_tag(url: search_leads_path, :method => 'get', layout: :inline) do |f| %>
-			<%= f.search_field :search_by_phone %>
+			<%= f.search_field :search_by_phone, value: params[:search_by_phone] %>
 			<%= f.submit "Search", :name => nil %>
 		<% end %>
 		</span>
@@ -20,6 +20,6 @@
 			</table>
 		</div>
 		<%= will_paginate %>
-		<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %></div>
+		<div class="row"><%= link_to "Back", search_leads_path, class: "btn btn-default" %></div>
 	</div>
 </div>
