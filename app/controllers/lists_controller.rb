@@ -8,6 +8,10 @@ class ListsController < ApplicationController
 	def show
 		@list = List.find(params[:id])
 		@list_tab = 'list'
+		respond_to do |format|
+			format.html
+			format.csv { send_data text: List.to_csv }
+		end
 	end
 	
 	def new
