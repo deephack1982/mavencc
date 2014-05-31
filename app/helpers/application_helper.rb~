@@ -27,7 +27,7 @@ module ApplicationHelper
 				output << direction_down_snippet.to_s.html_safe
 			end
 		end
-		output
+		output.to_s.html_safe
 	end
 	
 	def current_nav(current_nav)
@@ -35,5 +35,11 @@ module ApplicationHelper
 		if current_nav == controller.controller_name
 			nav_snippet.to_s.html_safe
 		end
-	end			
+	end
+	
+	def mavencc_version
+		data = File.read(File.join(Rails.root,"VERSION"))
+		version = data.strip
+		version
+	end		
 end

@@ -117,6 +117,7 @@ footer {
   }
   small {
     float: left;
+    color: #555;
   }
   ul {
     float: right;
@@ -192,4 +193,10 @@ input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+/* tables */
+
+.table tbody tr:hover td, .table tbody tr:hover th {
+    background-color: #eeeeea;
 }

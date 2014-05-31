@@ -35,5 +35,11 @@ module ApplicationHelper
 		if current_nav == controller.controller_name
 			nav_snippet.to_s.html_safe
 		end
-	end			
+	end
+	
+	def mavencc_version
+		data = File.read(File.join(Rails.root,"VERSION"))
+		version = data.strip
+		"Version " << version
+	end		
 end
