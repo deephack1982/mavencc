@@ -1,5 +1,5 @@
 <%= render 'leads_header' %>
-		<%= bootstrap_form_for(@lead) do |f| %>
+		<%= bootstrap_form_for(@lead, layout: :horizontal) do |f| %>
 			
 			<%= f.collection_select :list_id, List.all, :id, :list_name %>
 			
@@ -27,7 +27,7 @@
 			
 			<%= f.text_area :comments %>
 				
-			<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Submit", class: "btn btn-large btn-primary" %></div></div>
+			<div class="row"><%= link_to "Back", search_leads_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Submit", class: "btn btn-large btn-primary" %></div></div>
 		<% end %>
 	</div>
 </div>

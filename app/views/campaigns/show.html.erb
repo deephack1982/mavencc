@@ -1,5 +1,5 @@
 <%= render 'campaigns_header' %>
-	<%= bootstrap_form_for(@campaign, style: :horizontal) do |f| %>
+	<%= bootstrap_form_for(@campaign, layout: :horizontal) do |f| %>
 		<%= f.static_control :campaign_id %>
 		<%= f.static_control :campaign_name %>
 		<%= f.static_control :campaign_description %>

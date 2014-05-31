@@ -1,5 +1,5 @@
 <%= render 'users_header' %>
-		<%= bootstrap_form_for(@user, style: :horizontal) do |f| %>
+		<%= bootstrap_form_for(@user, layout: :horizontal) do |f| %>
 			<%= f.static_control :user %>
 			<%= f.static_control :full_name %>
 			<%= f.static_control :user_level %>

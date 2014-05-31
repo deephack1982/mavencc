@@ -1,5 +1,5 @@
 <%= render 'users_header' %>
-		<%= bootstrap_form_for(@user) do |f| %>
+		<%= bootstrap_form_for(@user, layout: :horizontal) do |f| %>
 			<%= f.static_control :user %>
 						
 			<%= f.password_field :pass, label: "Password", placeholder: 'At least 8 characters including both upper and lower case letters' %>

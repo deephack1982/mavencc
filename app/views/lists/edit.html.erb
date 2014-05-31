@@ -1,5 +1,5 @@
 <%= render 'lists_header' %>
-		<%= bootstrap_form_for(@list) do |f| %>
+		<%= bootstrap_form_for(@list, layout: :horizontal) do |f| %>
 			<%= f.static_control :list_id %>
 						
 			<%= f.text_field :list_name, :placeholder => 'Between 2 and 20 characters' %>

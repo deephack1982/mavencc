@@ -5,4 +5,16 @@ class User < ActiveRecord::Base
 	validates :full_name, presence: true
 	validates :user_level, presence: true
 	validates :user_group, presence: true
+	
+	def self.search_by_fullname(search)
+		where("full_name LIKE ?", "%#{search}%")
+	end
+	
+	def self.search_by_userid(search)
+		where("user = ?", "#{search}")
+	end
+	
+	def self.search_by_group(search)
+		where("user_group = ?", "#{search}")
+	end
 end

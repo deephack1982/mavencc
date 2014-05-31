@@ -1,5 +1,5 @@
 <%= render 'campaigns_header' %>
-		<%= bootstrap_form_for(@campaign) do |f| %>
+		<%= bootstrap_form_for(@campaign, layout: :horizontal) do |f| %>
 			<%= f.static_control :campaign_id %>
 						
 			<%= f.text_field :campaign_name, :placeholder => 'Between 2 and 8 characters' %>

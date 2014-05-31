@@ -1,5 +1,5 @@
 <%= render 'user_groups_header' %>
-	<%= bootstrap_form_for(@user_group, style: :horizontal) do |f| %>
+	<%= bootstrap_form_for(@user_group, layout: :horizontal) do |f| %>
 		<%= f.static_control :user_group %>
 		<%= f.static_control :group_name %>
 	<% end %>

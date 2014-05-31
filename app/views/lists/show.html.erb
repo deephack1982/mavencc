@@ -1,5 +1,5 @@
 <%= render 'lists_header' %>
-	<%= bootstrap_form_for(@list, style: :horizontal) do |f| %>
+	<%= bootstrap_form_for(@list, layout: :horizontal) do |f| %>
 		<%= f.static_control :list_id %>
 		<%= f.static_control :list_name %>
 		<%= f.static_control :list_description %>

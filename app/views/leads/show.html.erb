@@ -1,5 +1,5 @@
 <%= render 'leads_header' %>
-		<%= bootstrap_form_for(@lead) do |f| %>
+		<%= bootstrap_form_for(@lead, layout: :horizontal) do |f| %>
 			
 			<%= f.static_control :list_id do %>
 				<%= link_to @lead.list_id, list_path(@lead.list_id), class: "label label-default" %>
@@ -10,7 +10,7 @@
 			<%= f.static_control :phone_number %>
 			
 			<%= f.static_control :title %>
-			
+
 			<%= f.static_control :first_name %>
 			
 			<%= f.static_control :last_name %>
