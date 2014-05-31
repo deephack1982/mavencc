@@ -1,4 +1,8 @@
 <%= render 'lists_header' %>
+	<div class="panel panel-default">
+	<div class="panel-heading"><h3>Lists</h3></div>
+	<div class="panel-body">
+	<h2><%= number_with_delimiter(Lead.count, :delimiter => ',') %> total leads in dialler</h2>
 	<%= will_paginate %>
 	<div class="table-responsive">
 		<small><%= page_entries_info @lists %></small>
@@ -10,5 +14,6 @@
 		</table>
 		</div>
 		<%= will_paginate %>
+	</div>
 	</div>
 	</div>

@@ -1,14 +1,30 @@
 	<%= render 'leads_header' %>
-		<span class="input-group-addon">
-		<%= bootstrap_form_tag(url: search_leads_path, :method => 'get', layout: :inline) do |f| %>
-			<%= f.search_field :search_by_postcode, value: params[:search_by_postcode] %>
-			<%= f.submit "Search", :name => nil %>
-		<% end %>
-		<%= bootstrap_form_tag(url: search_leads_path, :method => 'get', layout: :inline) do |f| %>
-			<%= f.search_field :search_by_phone, value: params[:search_by_phone] %>
-			<%= f.submit "Search", :name => nil %>
-		<% end %>
-		</span>
+		<div class="panel panel-default">
+		<div class="panel-heading"><h3>Leads</h3></div>
+		<div class="panel-body">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#postcode" data-toggle="tab">Postcode</a></li>
+			<li><a href="#phone" data-toggle="tab">Phone</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="postcode">
+				<p>
+					<%= bootstrap_form_tag(url: search_leads_path, :method => 'get', layout: :inline) do |f| %>
+						<%= f.search_field :search_by_postcode, value: params[:search_by_postcode] %>
+						<%= f.submit "Search", :name => nil, class: "btn btn-info" %>
+					<% end %>
+				</p>
+			</div>
+			<div class="tab-pane" id="phone">
+				<p>
+					<%= bootstrap_form_tag(url: search_leads_path, :method => 'get', layout: :inline) do |f| %>
+						<%= f.search_field :search_by_phone, value: params[:search_by_phone] %>
+						<%= f.submit "Search", :name => nil, class: "btn btn-info" %>
+					<% end %>
+				</p>
+			</div>
+		</div>
+		</div>
 		<%= will_paginate %>
 		<div class="table-responsive">
 			<small><%= page_entries_info @leads %></small>
@@ -18,8 +34,10 @@
 				<tr><td><span class="label label-info"><%= link_to l.lead_id, l %></span></td><td><%= l.first_name %></td><td><%= l.last_name %></td><td><%= l.phone_number %></td><td><%= link_to l.list_id, list_path(l.list_id), class: "label label-info" %></td></tr>
 				<% end %>
 			</table>
+			</div>
+		<small><%= page_entries_info @leads %></small>
+		<p><%= will_paginate %></p>
 		</div>
-		<%= will_paginate %>
 		<div class="row"><%= link_to "Back", search_leads_path, class: "btn btn-default" %></div>
 	</div>
 </div>

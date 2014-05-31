@@ -1,4 +1,7 @@
 <%= render 'user_groups_header' %>
+	<div class="panel panel-default">
+	<div class="panel-heading"><h3>User Groups</h3></div>
+	<div class="panel-body">
 	<%= will_paginate %>
 	<div class="table-responsive">
 	<small><%= page_entries_info @user_groups %></small>
@@ -10,5 +13,6 @@
 	</table>
 	</div>
 	<%= will_paginate %>
+	</div>
 </div>		
 </div>

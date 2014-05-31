@@ -78,6 +78,12 @@ h2 {
   color: #999;
 }
 
+h3 {
+  font-size: 2em;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -117,7 +123,6 @@ footer {
   }
   small {
     float: left;
-    color: #555;
   }
   ul {
     float: right;
