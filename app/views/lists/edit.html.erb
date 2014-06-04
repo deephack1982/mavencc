@@ -1,4 +1,7 @@
 <%= render 'lists_header' %>
+	<div class="panel panel-default">
+	<div class="panel-heading"><h3>Lists</h3></div>
+	<div class="panel-body">
 		<%= bootstrap_form_for(@list, layout: :horizontal) do |f| %>
 			<%= f.static_control :list_id %>
 						
@@ -11,7 +14,8 @@
 			<%= f.collection_select :campaign_id, Campaign.all, :id, :campaign_name %>
 			
 			<%= f.text_field :reset_time, :placeholder => 'optional' %>
-			
+			</div>
+			</div>
 			<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Submit", class: "btn btn-large btn-primary" %></div></div>
 		<% end %>
 	</div>

@@ -1,4 +1,7 @@
 <%= render 'users_header' %>
+	<div class="panel panel-default">
+	<div class="panel-heading"><h3>Users</h3></div>
+	<div class="panel-body">
 		<%= bootstrap_form_for(@user, layout: :horizontal) do |f| %>
 			<%= f.static_control :user %>
 			<%= f.static_control :full_name %>
@@ -6,7 +9,9 @@
 			<%= f.static_control :user_group do %>
 				<%= link_to @user.user_group, user_group_path(UserGroup.find_by(user_group: @user.user_group)), class: "label label-default" %>
 			<% end %>
-		<% end %>	
+		<% end %>
+	</div>
+	</div>	
 	<div class="row"><%= link_to "Back", users_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", edit_user_path, class: "btn btn-info" %></div></div><p>
 </div>
 </div>

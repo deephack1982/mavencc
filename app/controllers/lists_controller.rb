@@ -10,7 +10,9 @@ class ListsController < ApplicationController
 		@list_tab = 'list'
 		respond_to do |format|
 			format.html
-			format.csv { send_data text: List.to_csv }
+			format.csv do
+				@list.to_csv 
+			end
 		end
 	end
 	

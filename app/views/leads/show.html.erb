@@ -1,4 +1,7 @@
 <%= render 'leads_header' %>
+	<div class="panel panel-default">
+	<div class="panel-heading"><h3>Leads</h3></div>
+	<div class="panel-body">
 		<%= bootstrap_form_for(@lead, layout: :horizontal) do |f| %>
 			
 			<%= f.static_control :list_id do %>
@@ -28,6 +31,8 @@
 			<%= f.static_control :postal_code %>
 			
 			<%= f.static_control :comments %>
+			</div>
+			</div>
 				
 			<div class="row"><%= link_to "Back", search_leads_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", edit_lead_path, class: "btn btn-info" %></div></div>
 		<% end %>

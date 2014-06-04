@@ -82,6 +82,8 @@ h3 {
   font-size: 2em;
   letter-spacing: -1px;
   text-align: center;
+  margin-top: 0px;
+  margin-bottom: -px;
 }
 
 p {
@@ -113,7 +115,9 @@ p {
 
 footer {
   margin-top: 45px; 
-  padding-top: 5px; 
+  padding-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
   color: #fff;
   a {
     color: #555;
@@ -131,6 +135,10 @@ footer {
       float: left;
       margin-left: 10px;
     }
+  }
+  .panel {
+  	margin: 0px;
+  	padding: 0px;
   }
 }
 
@@ -193,6 +201,11 @@ input {
     list-style: none;
     margin: 0 0 18px 0;
   }
+}
+
+#centered {
+	width: 50%;
+	margin: 0 auto;
 }
 
 .field_with_errors {
