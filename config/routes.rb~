@@ -7,7 +7,12 @@ Mavencc::Application.routes.draw do
   resources :user_groups
   resources :campaigns
   resources :lists
-  resources :leads
+  resources :leads do
+  	collection do
+  		get 'search'
+  	end
+  end
+  match '/admin/index', to: 'admin#index', via 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
