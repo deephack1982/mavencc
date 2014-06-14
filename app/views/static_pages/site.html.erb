@@ -1,7 +1,7 @@
 <% provide(:title, 'Site') %>
-<div class="container">
-	<div class="jumbotron">
-		<h1>Site Information</h1>
+	<div class="panel panel-default">
+	<div class="panel-heading"><h3>Site Information</h3></div>
+	<div class="panel-body">
 		<p><%= "#{@site.company}" %></p>
 		<p><%= "#{@site.site} Dialler" %></p>
 		<p>Maven CC <%= mavencc_version %></p>
@@ -10,4 +10,5 @@
 			<p><%= "#{m[0]} #{m[1]}" %></p>
 				<% end -%>
 	</div>
-</div>
+	</div>
+	</div>

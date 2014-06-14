@@ -13,15 +13,18 @@ $grayMediumLight: #eaeaea;
 /* universal */
 
 html {
+  position: relative;
+  min-height: 100%;
  /* overflow-y: scroll; */
 }
 
 body {
-  padding-top: 50px;
+  padding-top: 55px;
+  margin-bottom: 40px;
 }
 
 section {
-/*  overflow: auto; */
+  overflow: auto;
 }
 
 textarea {
@@ -114,11 +117,15 @@ p {
 /* footer */
 
 footer {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
   margin-top: 45px; 
   padding-top: 5px;
-  margin-left: 10px;
+/*  margin-left: 10px;
   margin-right: 10px;
-  color: #fff;
+  color: #fff; */
   a {
     color: #555;
     &:hover {

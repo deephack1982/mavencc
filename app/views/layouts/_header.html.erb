@@ -18,6 +18,7 @@
     <li><%= link_to "Filters", '#' %></li>
     <li><%= link_to "Inbound", '#' %></li>
     <li><%= link_to "Remote Workers", '#' %></li>
-    <li><%= link_to "Admin", admin_index_path %></li>
+    <li <%= current_nav("admin") %>><%= link_to "Admin", admin_index_path %></li>
     </ul>
+    <p class="navbar-text navbar-right"><%= Time.now.strftime("%A %B %-d, %Y %r") %></p>
     </header>
