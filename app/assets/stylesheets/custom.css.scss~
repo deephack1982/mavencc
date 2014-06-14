@@ -19,8 +19,9 @@ html {
 }
 
 body {
-  padding-top: 55px;
+  padding-top: 60px;
   margin-bottom: 40px;
+  
 }
 
 section {
@@ -40,8 +41,8 @@ textarea {
 
 .navbar {
   background-color: #bbb;
-  background-image: -moz-linear-gradient(top, #bbb, #ddd);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bbb), to(#ddd));
+  background-image: -moz-linear-gradient(top, #aaa, #eee);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#aaa), to(#eee));
 }
 
 .navbar-nav {
@@ -187,6 +188,11 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
+}
+
+#support-menu {
+	position: fixed;
+	bottom: 0;
 }
 
 /* forms */
