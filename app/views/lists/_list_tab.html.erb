@@ -1,9 +1,10 @@
 <div class="row">
 	<div class="col-lg-2">	
-		<ul class="nav nav-pills nav-stacked">
+		<ul class="nav nav-pills nav-stacked" id="tab-menu">
 			<li <%= listtab_active('add',@list_tab) %>><%= link_to "Add List", new_list_path %></li>
 			<li <%= listtab_active('list',@list_tab) %>><%= link_to "Show Lists", lists_path %></li>
 			<li <%= listtab_active('newlead',@list_tab) %>><%= link_to "Add Lead", new_lead_path %></li>
 			<li <%= listtab_active('searchlead',@list_tab) %>><%= link_to "Search for Lead", search_leads_path %></li>
 		</ul>
+		<%= render 'layouts/support' %>
 	</div>

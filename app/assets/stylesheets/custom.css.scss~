@@ -193,6 +193,14 @@ aside {
 #support-menu {
 	position: fixed;
 	bottom: 0;
+	margin-bottom: 40px;
+}
+
+#tab-menu {
+	position: fixed;
+	top: 0;
+	margin-top: 60px;
+	width: inherit;
 }
 
 /* forms */

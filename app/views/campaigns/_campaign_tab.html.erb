@@ -1,7 +1,8 @@
 <div class="row">
 	<div class="col-lg-2">	
-		<ul class="nav nav-pills nav-stacked">
+		<ul class="nav nav-pills nav-stacked" id="tab-menu">
 			<li <%= campaigntab_active('add',@campaign_tab) %>><%= link_to "Add Campaign", new_campaign_path %></li>
 			<li <%= campaigntab_active('list',@campaign_tab) %>><%= link_to "Show Campaigns", campaigns_path %></li>
 		</ul>
+		<%= render 'layouts/support' %>
 	</div>
