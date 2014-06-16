@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527111722) do
+ActiveRecord::Schema.define(version: 20140616231639) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140527111722) do
     t.datetime "updated_at"
   end
 
-  add_index "list", ["list_id"], name: "index_list_on_lists_id", using: :btree
+  add_index "list", ["list_id"], name: "index_list_on_list_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "list_id"
@@ -87,6 +87,37 @@ ActiveRecord::Schema.define(version: 20140527111722) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "status_categories", force: true do |t|
+    t.string   "vsc_id"
+    t.string   "vsc_name"
+    t.string   "vsc_description"
+    t.string   "tovdad_display",     limit: 1
+    t.string   "sale_category",      limit: 1
+    t.string   "dead_lead_category", limit: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", force: true do |t|
+    t.string   "status"
+    t.string   "status_name"
+    t.string   "selectable",         limit: 1
+    t.string   "human_answered",     limit: 1
+    t.string   "category"
+    t.string   "sale",               limit: 1
+    t.string   "dnc",                limit: 1
+    t.string   "customer_contact",   limit: 1
+    t.string   "not_interested",     limit: 1
+    t.string   "unworkable",         limit: 1
+    t.string   "scheduled_callback", limit: 1
+    t.string   "completed",          limit: 1
+    t.integer  "status_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "statuses", ["status_category_id"], name: "index_statuses_on_status_category_id", using: :btree
 
   create_table "user_groups", force: true do |t|
     t.string   "user_group"
