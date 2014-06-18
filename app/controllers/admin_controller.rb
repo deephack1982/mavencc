@@ -6,5 +6,6 @@ class AdminController < ApplicationController
 	
 	def status
 		@admin_tab = 'status'
+		@statuses = Status.All
 	end
 end
