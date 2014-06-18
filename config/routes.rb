@@ -13,6 +13,8 @@ Mavencc::Application.routes.draw do
   	end
   end
   match '/admin/index', to: 'admin#index', via: 'get'
+  match '/admin/statuses_index', to: 'admin#statuses_index', via: 'get'
+  match '/admin/status/:id', to: 'admin#status', via: 'get', as: :status
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
