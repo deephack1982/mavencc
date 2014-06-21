@@ -1,0 +1,49 @@
+A,Answering Machine,Y,N,UNDEFINED,N,N,N,N,N,N,N
+AA,Answering Machine Auto,N,N,UNDEFINED,N,N,N,N,N,N,N
+AB,Busy Auto,N,N,UNDEFINED,N,N,N,N,N,N,N
+ADC,Disconnected Number Auto,N,N,UNDEFINED,N,N,N,N,Y,N,N
+ADCT,Disconnected Number Temporary,N,N,UNDEFINED,N,N,N,N,N,N,N
+AFAX,Fax Machine Auto,N,N,UNDEFINED,N,N,N,N,Y,N,N
+AFTHRS,Inbound After Hours Drop,N,Y,UNDEFINED,N,N,N,N,N,N,N
+AL,Answering Machine Msg Played,N,N,UNDEFINED,N,N,N,N,N,N,N
+AM,Answering Machine Sent to Mesg,N,N,UNDEFINED,N,N,N,N,N,N,N
+B,Busy,Y,N,UNDEFINED,N,N,N,N,N,N,N
+CALLBK,Call Back,Y,Y,UNDEFINED,N,N,Y,N,N,Y,N
+CBHOLD,Call Back Hold,N,Y,UNDEFINED,N,N,Y,N,N,Y,N
+DC,Disconnected Number,Y,N,UNDEFINED,N,N,N,N,Y,N,N
+DEC,Declined Sale,N,Y,UNDEFINED,N,N,Y,N,N,N,N
+DNC,DO NOT CALL,Y,Y,UNDEFINED,N,Y,N,N,N,N,Y
+DNCC,DO NOT CALL Camp Match,N,N,UNDEFINED,N,Y,N,N,N,N,Y
+DNCL,DO NOT CALL Hopper Match,N,N,UNDEFINED,N,Y,N,N,N,N,Y
+DNQ,Does Not Qualify,Y,Y,UNDEFINED,N,N,Y,N,Y,N,N
+DOH,DOES NOT OWN HOME,Y,Y,UNDEFINED,N,N,Y,N,Y,N,N
+DROP,Agent Not Available,N,Y,UNDEFINED,N,N,N,N,N,N,N
+ERI,Agent Error,N,N,UNDEFINED,N,N,N,N,N,N,N
+INCALL,Lead Being Called,N,N,UNDEFINED,N,N,N,N,N,N,N
+IVRXFR,Outbound drop to Call Menu,N,Y,UNDEFINED,N,N,N,N,N,N,N
+LRERR,Outbound Local Channel Res Err,N,Y,UNDEFINED,N,N,N,N,N,N,N
+LSMERG,Agent lead search old lead mer,N,N,UNDEFINED,N,N,N,N,N,N,N
+MAXCAL,Inbound Max Calls Drop,N,Y,UNDEFINED,N,N,N,N,N,N,N
+MLINAT,Multi-Lead auto-alt-dial lead ,N,Y,UNDEFINED,N,N,N,N,N,N,Y
+N,No Answer,Y,N,UNDEFINED,N,N,N,N,N,N,N
+NA,No Answer AutoDial,N,N,UNDEFINED,N,N,N,N,N,N,N
+NANQUE,Inbound No Agent No Queue Drop,N,Y,UNDEFINED,N,N,N,N,N,N,N
+NEW,New Lead,N,N,UNDEFINED,N,N,N,N,N,N,N
+NI,Not Interested,Y,Y,UNDEFINED,N,N,Y,Y,N,N,N
+NP,No Pitch No Price,N,Y,UNDEFINED,N,N,N,N,N,N,N
+PDROP,Outbound Pre-Routing Drop,N,Y,UNDEFINED,N,N,N,N,N,N,N
+PM,Played Message,N,N,UNDEFINED,N,N,N,N,N,N,N
+PU,Call Picked Up,N,N,UNDEFINED,N,N,N,N,N,N,N
+QCFAIL,QC_FAIL_CALLBK,N,Y,QC,N,N,Y,N,N,Y,N
+QUEUE,Lead To Be Called,N,N,UNDEFINED,N,N,N,N,N,N,N
+QVMAIL,Queue Abandon Voicemail Left,N,N,UNDEFINED,N,N,N,N,N,N,N
+RQXFER,Re-Queue,N,Y,UNDEFINED,N,N,N,N,N,N,N
+SALE,Sale Made,N,Y,UNDEFINED,Y,N,N,N,N,N,Y
+SVYCLM,Survey sent to Call Menu,N,Y,UNDEFINED,N,N,N,N,N,N,N
+SVYEXT,Survey sent to Extension,N,N,UNDEFINED,N,N,N,N,N,N,N
+SVYHU,Survey Hungup,N,N,UNDEFINED,N,N,N,N,N,N,N
+SVYREC,Survey sent to Record,N,N,UNDEFINED,N,N,N,N,N,N,N
+SVYVM,Survey sent to Voicemail,N,N,UNDEFINED,N,N,N,N,N,N,N
+TIMEOT,Inbound Queue Timeout Drop,N,Y,UNDEFINED,N,N,N,N,N,N,N
+XDROP,Agent Not Available IN,N,Y,UNDEFINED,N,N,N,N,N,N,N
+XFER,Call Transferred,Y,Y,UNDEFINED,N,N,Y,N,N,N,N
