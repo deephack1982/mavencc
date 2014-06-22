@@ -8,6 +8,7 @@ class ListsController < ApplicationController
 	def show
 		@list = List.find(params[:id])
 		@list_tab = 'list'
+		@statuses_in_list = Lead.where("list_id = ?","#{@list.id}").group(:status).count
 		respond_to do |format|
 			format.html
 			format.csv do
