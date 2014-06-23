@@ -8,9 +8,22 @@
 		<%= f.static_control :campaign_description %>
 		<%= f.static_control :active %>
 		<%= f.static_control :user_group %>
+		</div>
+		</div>
+		<div class="panel panel-info">
+		<div class="panel-heading"><h3>Lists within this campaign</h3></div>
+		<div class="panel-body">
+		<%= fields_for :lists do |sub| %>
+			<%= sub.static_control :list_id %>
+			<%= sub.static_control :list_name %>
+			<%= sub.static_control sub.leads.count %>
+			<%= sub.select(:active, List::ACTIVE) %>
+			<%= sub.static_control :last_call_date.to_date %>
+		<% end %>
+		</div>
+		</div>
 	<% end %>
-	</div>
-	</div>
+	
 	<div class="row"><%= link_to "Back", campaigns_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", edit_campaign_path, class: "btn btn-info" %></div></div><p>
 </div>
 </div>
