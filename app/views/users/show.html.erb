@@ -6,8 +6,8 @@
 			<%= f.static_control :user %>
 			<%= f.static_control :full_name %>
 			<%= f.static_control :user_level %>
-			<%= f.static_control :user_group do %>
-				<%= link_to @user.user_group, user_group_path(UserGroup.find_by(user_group: @user.user_group)), class: "label label-default" %>
+			<%= f.static_control :user_group.group_name do %>
+				<%= link_to @user.user_group, user_group_path(@user.user_group), class: "label label-default" %>
 			<% end %>
 		<% end %>
 	</div>

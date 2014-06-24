@@ -14,9 +14,10 @@
 			<%= f.collection_select :campaign_id, Campaign.all, :id, :campaign_name %>
 			
 			<%= f.text_field :reset_time, :placeholder => 'optional' %>
-			</div>
-			</div>
+		
 			<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Submit", class: "btn btn-large btn-primary" %></div></div>
 		<% end %>
+	</div>
+	</div>
 	</div>
 </div>
