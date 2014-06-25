@@ -8,6 +8,7 @@ class CampaignsController < ApplicationController
 	def show
 		@campaign = Campaign.find(params[:id])
 		@leads_in_campaign = Lead.where(list_id: @campaign.lists.pluck(:list_id)).count
+		@statuses_in_campaign = Lead.where(list_id: @campaign.lists.pluck(:list_id)).group(:status).count
 		@campaign_tab = 'list'
 	end
 	
