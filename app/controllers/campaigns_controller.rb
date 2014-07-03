@@ -54,7 +54,7 @@ class CampaignsController < ApplicationController
 	private
 	
 	def campaign_params
-		params.require(:campaign).permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description, :lists_attributes)
+		params.require(:campaign).permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description,:lead_order,:hopper_level,:dial_method,:auto_dial_level,:adaptive_intensity, :lists_attributes)
 	end
 	
 	def sort_column
