@@ -46,6 +46,7 @@ gem 'bootstrap_form', :git => 'git://github.com/potenza/bootstrap_form.git', :br
 gem 'nested_form'
 gem 'chartkick'
 gem 'jquery-turbolinks'
+gem 'groupdate'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
