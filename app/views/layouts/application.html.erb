@@ -16,7 +16,7 @@
   <body>
     <%= render 'layouts/header' %>
       <% flash.each do |key, value| %>
-      	<div class="alert alert-<%= key %>"><%= value %></div>
+      	<div class="text-center alert alert-<%= key %>"><%= value %></div>
       <% end %>
       <div class="container-fluid">
       <%= yield %>
