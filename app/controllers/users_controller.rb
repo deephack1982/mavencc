@@ -3,12 +3,12 @@ class UsersController < ApplicationController
 	def error
 	end
 	def index
-		if params.has_key?(:search_by_fullname)
-			@users = User.search_by_fullname(params[:search_by_fullname]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
-		elsif params.has_key?(:search_by_userid)
-			@users = User.search_by_userid(params[:search_by_userid]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
-		elsif params.has_key?(:search_by_group)
-			@users = User.search_by_group(params[:search_by_group]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
+		if params[:search_type] == "Name"
+			@users = User.search_by_fullname(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
+		elsif params[:search_type] == "UserID"
+			@users = User.search_by_userid(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
+		elsif params[:search]
+			@users = User.search_by_group(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		else
 			@users = User.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		end

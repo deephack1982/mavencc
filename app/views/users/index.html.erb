@@ -2,38 +2,11 @@
 	<div class="panel panel-default">
 	<div class="panel-heading"><h3>Users</h3></div>
 	<div class="panel-body">
-	<ul class="nav nav-tabs">
-			<li class="active"><a href="#username" data-toggle="tab">Name</a></li>
-			<li><a href="#userid" data-toggle="tab">UserID</a></li>
-			<li><a href="#group" data-toggle="tab">Group</a></li>
-		</ul>
-	<div class="tab-content">
-			<div class="tab-pane active" id="username">
-				<p>
-				<%= bootstrap_form_tag(url: users_path, :method => 'get', layout: :inline) do |f| %>
-						<%= f.search_field :search_by_fullname, value: params[:search_by_username] %>
-						<%= f.submit "Search", :name => nil, class: "btn btn-info" %>
-					<% end %>
-				</p>
-				</div>
-			<div class="tab-pane" id="userid">
-				<p>
-					<%= bootstrap_form_tag(url: users_path, :method => 'get', layout: :inline) do |f| %>
-						<%= f.search_field :search_by_userid, value: params[:search_by_userid] %>
-						<%= f.submit "Search", :name => nil, class: "btn btn-info" %>
-					<% end %>
-				</p>
-			</div>
-			<div class="tab-pane" id="group">
-				<p>
-					<%= bootstrap_form_tag(url: users_path, :method => 'get', layout: :inline) do |f| %>
-						<%= f.collection_select :search_by_group, UserGroup.all, :user_group, :user_group %>
-						<%= f.submit "Search", :name => nil, class: "btn btn-info" %>
-					<% end %>
-				</p>
-			</div>
-		</div>
-		</div>
+		<%= bootstrap_form_tag(url: users_path, :method => 'get', layout: :inline) do |f| %>
+			<%= f.select :search_type, options_for_select(["Name","UserID","Group"]) %>
+			<%= f.search_field :search, value: params[:search] %>
+			<%= f.submit "Search", :name => nil, class: "btn btn-info" %>
+		<% end %>
 	<%= will_paginate %>
 	<div class="table-responsive">
 		<small><%= page_entries_info @users %></small>
