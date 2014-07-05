@@ -9,6 +9,7 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.find(params[:id])
 		@leads_in_campaign = Lead.where(list_id: @campaign.lists.pluck(:list_id)).count
 		@statuses_in_campaign = Lead.where(list_id: @campaign.lists.pluck(:list_id)).group(:status).count
+		@statuses = @campaign.dial_statuses.split(" ")
 		@campaign_tab = 'list'
 		if params[:active] == 'N'
 			@list = List.find(params[:list])
@@ -19,6 +20,12 @@ class CampaignsController < ApplicationController
 			@list.update_attribute(:active, "N")
 			redirect_to campaign_path(@campaign)
 		end
+		if params.has_key?(:dial_status)
+			@statuses.delete(params[:dial_status])
+			@status_to_remove = " " + @statuses.join(" ") + " "
+			@campaign.update_attribute(:dial_statuses, @status_to_remove)
+		end
+			
 	end
 	
 	def new
