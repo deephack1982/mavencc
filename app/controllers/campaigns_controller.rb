@@ -10,6 +10,15 @@ class CampaignsController < ApplicationController
 		@leads_in_campaign = Lead.where(list_id: @campaign.lists.pluck(:list_id)).count
 		@statuses_in_campaign = Lead.where(list_id: @campaign.lists.pluck(:list_id)).group(:status).count
 		@campaign_tab = 'list'
+		if params[:active] == 'N'
+			@list = List.find(params[:list])
+			@list.update_attribute(:active, "Y")
+			redirect_to campaign_path(@campaign)
+		elsif params[:active] == 'Y'
+			@list = List.find(params[:list])
+			@list.update_attribute(:active, "N")
+			redirect_to campaign_path(@campaign)
+		end
 	end
 	
 	def new

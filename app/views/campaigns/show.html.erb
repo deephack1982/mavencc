@@ -23,7 +23,7 @@
 		<table class="table table-striped table-hover">
 		<tr><th <%= sortable "list_id" %></th><th <%= sortable "list_name" %></th><th <%= sortable "active" %></th><th <%= sortable "Leads" %></th><th <%= sortable "Last called" %></th></tr>
 		<% @campaign.lists.each do |l| %>
-		<tr><td><span class="label label-info"><%= link_to l.list_id, l %></span></td><td><%= l.list_name %></td><td><%= l.active %></td><td><%= l.leads.count %></td><td><%= l.list_lastcalldate.to_date %></td></tr>
+		<tr><td><span class="label label-info"><%= link_to l.list_id, l %></span></td><td><%= l.list_name %></td><td><%= link_to l.active, campaign_path(@campaign, :list => l.list_id, :active => l.active), class: "label label-default" %></td><td><%= l.leads.count %></td><td><%= l.list_lastcalldate.to_date %></td></tr>
 		<% end %>
 		</table>
 	</div>
