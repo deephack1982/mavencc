@@ -6,6 +6,8 @@
 			
 			<%= f.text_field :full_name, :placeholder => 'Enter the users first and last names' %>
 			
+			<%= f.select :active, User::ACTIVE %>
+			
 			<%= f.select(:user_level, User::USER_LEVELS) %>
 			
 			<%= f.collection_select :user_group, UserGroup.all, :id, :user_group %>

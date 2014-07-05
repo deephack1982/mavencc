@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626125959) do
+ActiveRecord::Schema.define(version: 20140705182728) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id"
@@ -355,6 +355,7 @@ ActiveRecord::Schema.define(version: 20140626125959) do
     t.string   "phone_pass"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "active",      limit: 1
   end
 
 end

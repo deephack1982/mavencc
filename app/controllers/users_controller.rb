@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 	private
 	
 	def user_params
-		params.require(:user).permit(:user,:pass,:full_name,:user_level,:user_group,:phone_login,:phone_pass)
+		params.require(:user).permit(:user,:pass,:full_name,:user_level,:user_group,:phone_login,:phone_pass,:active)
 	end
 	
 	def sort_column
