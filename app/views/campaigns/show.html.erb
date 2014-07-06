@@ -1,12 +1,14 @@
 <%= render 'campaigns_header' %>
 	<div class="panel panel-default">
-	<div class="panel-heading"><h3>Campaigns</h3></div>
+	<div class="panel-heading"><h3><%= "#{@campaign.campaign_id}  -  #{@campaign.campaign_name}" %></h3></div>
 	<div class="panel-body">
 	<%= bootstrap_nested_form_for(@campaign, layout: :horizontal) do |f| %>
 		<%= f.static_control :campaign_id %>
 		<%= f.static_control :campaign_name %>
 		<%= f.static_control :campaign_description %>
-		<%= f.static_control :active %>
+		<%= f.static_control :active do %>
+			<%= link_to @campaign.active, campaign_path(@campaign, :active => @campaign.active), class: "label label-success" %>
+		<% end %>
 		<% @statuses.each.with_index do |s,index| %>
 			<%= f.static_control nil, label: "Dial Status #{index + 1}" do %>
 			<%= s %>
@@ -26,10 +28,10 @@
 	<div class="panel-heading"><h3 class="panel-title">Lists within this campaign</h3></div>
 	<div class="panel-body">
 	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover" id="lists-in-campaign">
 		<tr><th <%= sortable "list_id" %></th><th <%= sortable "list_name" %></th><th <%= sortable "active" %></th><th <%= sortable "Leads" %></th><th <%= sortable "Last called" %></th></tr>
 		<% @campaign.lists.each do |l| %>
-		<tr><td><span class="label label-info"><%= link_to l.list_id, l %></span></td><td><%= l.list_name %></td><td><%= link_to l.active, campaign_path(@campaign, :list => l.list_id, :active => l.active), class: "label label-success" %></td><td><%= l.leads.count %></td><td><%= l.list_lastcalldate.to_date %></td></tr>
+		<tr><td><span class="label label-info"><%= link_to l.list_id, l %></span></td><td><%= l.list_name %></td><td><%= link_to l.active, campaign_path(@campaign, :list => l.list_id, :activate_list => l.active, :anchor => "lists-in-campaign"), class: "label label-success" %></td><td><%= l.leads.count %></td><td><%= l.list_lastcalldate.to_date %></td></tr>
 		<% end %>
 		</table>
 	</div>

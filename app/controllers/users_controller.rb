@@ -17,6 +17,13 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@user_tab = 'list'
+		if params[:active] == 'Y'
+			@user.update_attribute(:active, "N")
+			redirect_to user_path(@user)
+		elsif params[:active] == 'N'
+			@user.update_attribute(:active, "Y")
+			redirect_to user_path(@user)
+		end
 	end
 	def new
 		@user = User.new

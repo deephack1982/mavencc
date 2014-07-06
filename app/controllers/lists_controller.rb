@@ -10,7 +10,15 @@ class ListsController < ApplicationController
 		@list_tab = 'list'
 		@statuses_in_list = Lead.where("list_id = ?","#{@list.id}").group(:status).count
 		respond_to do |format|
-			format.html
+			format.html do
+				if params[:active] == 'Y'
+					@list.update_attribute(:active, "N")
+					redirect_to list_path(@list)
+				elsif params[:active] == 'N'
+					@list.update_attribute(:active, "Y")
+					redirect_to list_path(@list)
+				end
+			end
 			format.csv do
 				csv_file = ''
   				@leads = Lead.where("list_id = ?", "#{@list.id}")
