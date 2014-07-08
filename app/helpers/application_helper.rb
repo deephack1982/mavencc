@@ -42,4 +42,14 @@ module ApplicationHelper
 		version = data.strip
 		"Version " << version
 	end		
+	
+	def item_active(active_item)
+		if active_item == 'Y'
+			snippet = "label-success"
+			snippet.to_s.html_safe
+		elsif active_item == 'N'
+			snippet = "label-danger"
+			snippet.to_s.html_safe
+		end
+	end
 end

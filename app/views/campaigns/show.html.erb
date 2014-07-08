@@ -7,7 +7,7 @@
 		<%= f.static_control :campaign_name %>
 		<%= f.static_control :campaign_description %>
 		<%= f.static_control :active do %>
-			<%= link_to @campaign.active, campaign_path(@campaign, :active => @campaign.active), class: "label label-success" %>
+			<%= link_to @campaign.active, campaign_path(@campaign, :active => @campaign.active), class: "label #{item_active(@campaign.active)}" %>
 		<% end %>
 		<% @statuses.each.with_index do |s,index| %>
 			<%= f.static_control nil, label: "Dial Status #{index + 1}" do %>
@@ -31,7 +31,7 @@
 		<table class="table table-striped table-hover" id="lists-in-campaign">
 		<tr><th <%= sortable "list_id" %></th><th <%= sortable "list_name" %></th><th <%= sortable "active" %></th><th <%= sortable "Leads" %></th><th <%= sortable "Last called" %></th></tr>
 		<% @campaign.lists.each do |l| %>
-		<tr><td><span class="label label-info"><%= link_to l.list_id, l %></span></td><td><%= l.list_name %></td><td><%= link_to l.active, campaign_path(@campaign, :list => l.list_id, :activate_list => l.active, :anchor => "lists-in-campaign"), class: "label label-success" %></td><td><%= l.leads.count %></td><td><%= l.list_lastcalldate.to_date %></td></tr>
+		<tr><td><span class="label label-info"><%= link_to l.list_id, l %></span></td><td><%= l.list_name %></td><td><%= link_to l.active, campaign_path(@campaign, :list => l.list_id, :activate_list => l.active, :anchor => "lists-in-campaign"), class: "label #{item_active(l.active)}" %></td><td><%= l.leads.count %></td><td><%= l.list_lastcalldate.to_date %></td></tr>
 		<% end %>
 		</table>
 	</div>

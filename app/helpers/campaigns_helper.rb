@@ -7,4 +7,5 @@ module CampaignsHelper
 			""
 		end	
 	end
+	
 end

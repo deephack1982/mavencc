@@ -40,6 +40,6 @@ module ApplicationHelper
 	def mavencc_version
 		data = File.read(File.join(Rails.root,"VERSION"))
 		version = data.strip
-		version
+		"Version " << version
 	end		
 end

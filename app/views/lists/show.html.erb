@@ -7,7 +7,7 @@
 		<%= f.static_control :list_name %>
 		<%= f.static_control :list_description %>
 		<%= f.static_control :active do %>
-			<%= link_to @list.active, list_path(@list, :active => @list.active), class: "label label-success" %>
+			<%= link_to @list.active, list_path(@list, :active => @list.active), class: "label #{item_active(@list.active)}" %>
 		<% end %>
 		<%= f.static_control :campaign_name do %>
 			<%= link_to @list.campaign_name, campaign_path(@list.campaign_id), class: "label label-default" %>
