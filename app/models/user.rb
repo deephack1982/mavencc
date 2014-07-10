@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 	validates :full_name, presence: true
 	validates :user_level, presence: true
 	validates :user_group, presence: true
+	validates :active, presence: true
 	
 	def group_name
 		self.user_group.group_name if self.user_group
