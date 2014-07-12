@@ -18,6 +18,11 @@ class ListsController < ApplicationController
 					@list.update_attribute(:active, "Y")
 					redirect_to list_path(@list)
 				end
+				
+				if params[:reset] == 'Y'
+					Lead.where(:list_id => @list.list_id).update_all(:called_since_last_reset => 'N')
+					redirect_to list_path(@list)
+				end 
 			end
 			format.csv do
 				csv_file = ''

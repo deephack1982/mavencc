@@ -14,6 +14,7 @@
 		<% end %>
 		<%= f.static_control :reset_time %>
 	<% end %>
+	<%= link_to "Manual List Reset", "#resetModal", class: "btn btn-danger btn-block", :data => {:toggle => "modal"} %>
 	</div>
 	</div>
 	<div class="panel panel-info">
@@ -39,6 +40,26 @@
 </div>
 </div>
 </div>
+
+<!-- Reset Modal -->
+<div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="ResetList" aria-hidden="true">
+	<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="ResetList">Are you sure?</h4>
+      </div>
+      <div class="modal-body">
+      	All leads in this list will have their called status reset
+      </div>
+      <div class="modal-footer">
+      	<%= link_to "Proceed", list_path(@list, :reset => 'Y'), class: "btn btn-danger btn-block" %>
+      	<%= link_to "Cancel", "#", class: "btn btn-default btn-block", :data => {:dismiss => "modal"} %>
+      </div>
+      </div>
+     </div>
+    </div>
+   </div>
 
 <!-- Modal -->
 <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
