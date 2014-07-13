@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	validates :user_group, presence: true
 	validates :active, presence: true
 	
+	belongs_to :user_user_group, :class_name => "UserGroup", :foreign_key => "user_group_id"
+	
 	def group_name
 		self.user_group.group_name if self.user_group
 	end

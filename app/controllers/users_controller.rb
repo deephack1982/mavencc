@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 		@user_tab = 'add'
 	end
 	def create
-		@user = User.create(user_params)
+		@user = User.create(user_params.merge(:user_group => UserGroup.find(user_params[:user_group_id]).user_group))
     	if @user.save
     		flash[:success] = "User created"
       		redirect_to user_path(@user)
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 	end
 	def update
 		@user = User.find(params[:id])
-		if @user.update_attributes(user_params)
+		if @user.update_attributes(user_params.merge(:user_group => UserGroup.find(user_params[:user_group_id]).user_group))
       			flash[:success] = "User updated"
 			redirect_to user_path(@user)
 	    	else
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 	private
 	
 	def user_params
-		params.require(:user).permit(:user,:pass,:full_name,:user_level,:user_group,:phone_login,:phone_pass,:active)
+		params.require(:user).permit(:user,:pass,:full_name,:user_level,:user_group,:phone_login,:phone_pass,:active,:user_group_id)
 	end
 	
 	def sort_column

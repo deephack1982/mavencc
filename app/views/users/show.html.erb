@@ -10,7 +10,7 @@
 			<% end %>
 			<%= f.static_control :user_level %>
 			<%= f.static_control :group_name do %>
-				<%= link_to @user.user_group, user_group_path(@user.user_group), class: "label label-default" %>
+				<%= link_to @user.user_group, user_group_path(@user.user_group_id), class: "label label-default" %>
 			<% end %>
 		<% end %>
 	</div>
