@@ -36,9 +36,17 @@ class UserGroupsController < ApplicationController
     	end
 	end
 	def destroy
-		UserGroup.find(params[:id]).destroy
-		flash[:success] = "User Group Deleted"
-		redirect_to user_groups_path
+		@user_group = UserGroup.find(params[:id])
+		@user_group.destroy
+		
+		respond_to do |format|
+			format.js
+			format.html do
+				flash[:success] = "User Group Deleted"
+				redirect_to user_groups_path
+			end
+			format.json { head :no_content }
+		end
 	end
 	
 	private

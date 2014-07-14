@@ -89,9 +89,17 @@ class ListsController < ApplicationController
 	end
 	
 	def destroy
-		List.find(params[:id]).destroy
-		flash[:success] = "List Deleted"
-		redirect_to lists_path
+		@list = List.find(params[:id])
+		@list.destroy
+		
+		respond_to do |format|
+			format.js
+			format.html do
+				flash[:success] = "List Deleted"
+				redirect_to lists_path
+			end
+			format.json
+		end
 	end
 private
 	

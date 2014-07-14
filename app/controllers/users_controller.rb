@@ -40,9 +40,17 @@ class UsersController < ApplicationController
     	end
 	end
 	def destroy
-		User.find(params[:id]).destroy
-		flash[:success] = "User Deleted"
-		redirect_to users_path
+		@user = User.find(params[:id])
+		@user.destroy
+		
+		respond_to do |format|
+			format.js
+			format.html do
+				flash[:success] = "User Deleted"
+				redirect_to users_path
+			end
+			format.json { head :no_content }
+		end
 	end
 	def edit
 		@user = User.find(params[:id])

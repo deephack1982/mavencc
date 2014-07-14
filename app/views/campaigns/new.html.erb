@@ -8,7 +8,11 @@
 			
 			<%= f.select(:active, Campaign::ACTIVE) %>
 						
-			<%= f.collection_select :user_group, UserGroup.all, :id, :user_group %>		
+			<%= f.collection_select :user_group, UserGroup.all, :id, :user_group %>
+			
+			<%= f.select(:lead_order, Campaign::LEAD_ORDER) %>
+			
+			<%= f.select(:hopper_level, Campaign::HOPPER_LEVEL) %>
 				
 			<div class="row"><%= link_to "Back", campaigns_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Create", class: "btn btn-large btn-primary" %></div></div>
 		<% end %>

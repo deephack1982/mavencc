@@ -69,9 +69,17 @@ class CampaignsController < ApplicationController
 	end
 	
 	def destroy
-		Campaign.find(params[:id]).destroy
-		flash[:success] = "Campaign Deleted"
-		redirect_to campaigns_path
+		@campaign = Campaign.find(params[:id])
+		@campaign.destroy
+		
+		respond_to do |format|
+			format.js
+			format.html do
+				flash[:success] = "Campaign Deleted"
+				redirect_to campaigns_path
+			end
+			format.json { head :no_content }
+		end
 	end
 	
 	private
