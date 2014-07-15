@@ -11,7 +11,7 @@
   	</div>	 
   	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav navbar-left">
     <li <%= current_nav("users") %>><%= link_to "Users", users_path %></li>
     <li <%= current_nav("campaigns") %>><%= link_to "Campaigns", campaigns_path %></li>
     <li <%= current_nav("lists") %><%= current_nav("leads") %>><%= link_to "Lists", lists_path %></li>
@@ -21,5 +21,17 @@
     <li <%= current_nav("admin") %>><%= link_to "Admin", admin_index_path %></li>
     <li> </li>
     </ul>
-    <p class="navbar-text navbar-right"><% if current_user %><%= link_to current_user.full_name, session_path("current"), method: "delete", class: "btn-sm btn-info", role: "button" %><% else %><%= link_to "Log In", new_session_path, class: "btn-sm btn-info", role: "button" %><% end %>  <%= Time.now.strftime("%A %B %-d, %Y %r") %></p>
+	<div class="nav navbar-nav navbar-right">
+    	<% if current_user %>
+    		<div class="btn-group">
+    		<button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><%= current_user.full_name %> <span class="caret"></span></button>
+    		<ul class="dropdown-menu" role="menu" id="user-menu">
+    		<li><%= link_to "Details", user_path(current_user.id) %></li>
+				<li><%= link_to "Log Out", logout_path %></li>
+		</ul>
+		</div>
+		<% else %>
+		<%= link_to "Log In", login_path, class: "btn btn-info" %><% end %>
+		</div>
+		</div>
     </header>
