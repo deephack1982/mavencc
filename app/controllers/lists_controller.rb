@@ -1,5 +1,8 @@
 class ListsController < ApplicationController
 	helper_method :sort_column, :sort_direction
+	
+	before_filter :authorise
+	
 	def index
 		@lists = List.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		@list_tab = 'list'

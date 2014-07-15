@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<header class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -19,6 +19,7 @@
     <li><%= link_to "Inbound", '#' %></li>
     <li><%= link_to "Remote Workers", '#' %></li>
     <li <%= current_nav("admin") %>><%= link_to "Admin", admin_index_path %></li>
+    <li> </li>
     </ul>
-    <p class="navbar-text navbar-right"><%= Time.now.strftime("%A %B %-d, %Y %r") %></p>
+    <p class="navbar-text navbar-right"><% if current_user %><%= link_to current_user.full_name, session_path("current"), method: "delete", class: "btn-sm btn-info", role: "button" %><% else %><%= link_to "Log In", new_session_path, class: "btn-sm btn-info", role: "button" %><% end %>  <%= Time.now.strftime("%A %B %-d, %Y %r") %></p>
     </header>

@@ -1,5 +1,8 @@
 class UserGroupsController < ApplicationController
 	helper_method :sort_column, :sort_direction
+	
+	before_filter :authorise
+	
 	def index
 		@user_tab = 'group-list'
 		@user_groups = UserGroup.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)

@@ -1,4 +1,7 @@
 class StaticPagesController < ApplicationController
+
+	before_filter :authorise
+
   def home
   end
 

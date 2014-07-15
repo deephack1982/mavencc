@@ -1,5 +1,8 @@
 class CampaignsController < ApplicationController
 	helper_method :sort_column, :sort_direction
+	
+	before_filter :authorise
+	
 	def index
 		@campaigns = Campaign.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		@campaign_tab = 'list'

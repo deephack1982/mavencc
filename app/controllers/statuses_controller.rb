@@ -1,5 +1,7 @@
 class StatusesController < ApplicationController
 
+	before_filter :authorise
+
 	def index
 		@admin_tab = 'status'
 		@statuses = Status.all

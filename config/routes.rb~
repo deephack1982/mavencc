@@ -1,5 +1,9 @@
 Mavencc::Application.routes.draw do
+  resources :sessions
+
   root 'static_pages#home'
+  match '/login', to: 'sessions#new', via: 'get', as: 'login'
+  match '/logout', to: 'sessions#destory', via: 'get', as: 'logout'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/site', to: 'static_pages#site', via: 'get'
 #  match '/leads/new', to: 'leads#new', via: 'get'
@@ -12,9 +16,10 @@ Mavencc::Application.routes.draw do
   		get 'search'
   	end
   end
+  resources :statuses
   match '/admin/index', to: 'admin#index', via: 'get'
-  match '/admin/statuses_index', to: 'admin#statuses_index', via: 'get'
-  match '/admin/status/:id', to: 'admin#status', via: 'get', as: :status
+#  match '/admin/statuses_index', to: 'admin#statuses_index', via: 'get'
+#  match '/admin/status/:id', to: 'admin#status', via: 'get', as: :status
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

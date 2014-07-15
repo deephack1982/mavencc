@@ -5,7 +5,9 @@
 		<%= bootstrap_form_for(@user, layout: :horizontal) do |f| %>
 			<%= f.static_control :user %>
 						
-			<%= f.password_field :pass, label: "Password", placeholder: 'At least 8 characters including both upper and lower case letters' %>
+			<%= f.password_field :password, placeholder: 'At least 8 characters including both upper and lower case letters' %>
+			
+			<%= f.password_field :password_confirmation, placeholder: 'Repeat the password here' %>
 			
 			<%= f.text_field :full_name, :placeholder => 'Enter the users first and last names' %>
 			

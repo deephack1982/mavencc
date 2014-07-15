@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713160826) do
+ActiveRecord::Schema.define(version: 20140714232521) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id"
@@ -355,8 +355,9 @@ ActiveRecord::Schema.define(version: 20140713160826) do
     t.string   "phone_pass"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "active",        limit: 1
+    t.string   "active",          limit: 1
     t.integer  "user_group_id"
+    t.string   "password_digest"
   end
 
   add_index "users", ["user_group_id"], name: "index_users_on_user_group_id", using: :btree

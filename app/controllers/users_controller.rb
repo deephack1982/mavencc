@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 	helper_method :sort_column, :sort_direction
+	
+	before_filter :authorise
+	
 	def error
 	end
 	def index
@@ -69,7 +72,7 @@ class UsersController < ApplicationController
 	private
 	
 	def user_params
-		params.require(:user).permit(:user,:pass,:full_name,:user_level,:user_group,:phone_login,:phone_pass,:active,:user_group_id)
+		params.require(:user).permit(:user,:password,:password_confirmation,:full_name,:user_level,:user_group,:phone_login,:phone_pass,:active,:user_group_id)
 	end
 	
 	def sort_column

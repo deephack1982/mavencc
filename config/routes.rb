@@ -1,5 +1,9 @@
 Mavencc::Application.routes.draw do
+  resources :sessions
+
   root 'static_pages#home'
+  match '/login', to: 'sessions#new', via: 'get', as: 'login'
+  match '/logout', to: 'sessions#destroy', via: 'get', as: 'logout'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/site', to: 'static_pages#site', via: 'get'
 #  match '/leads/new', to: 'leads#new', via: 'get'
