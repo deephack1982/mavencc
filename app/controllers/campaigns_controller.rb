@@ -12,7 +12,7 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.find(params[:id])
 		@statuses_in_campaign = Lead.where(list_id: @campaign.lists.pluck(:list_id)).group(:status).count
 		@statuses = @campaign.dial_statuses.split(" ")
-		@leads_in_campaign = Lead.where(list_id: @campaign.lists.pluck(:list_id)).where(status: @statuses).where("called_since_last_reset = 'N'").count
+		@leads_in_campaign = Lead.where(list_id: @campaign.lists.where(active: "Y").pluck(:list_id)).where(status: @statuses).where("called_since_last_reset = 'N'").count
 		@campaign_tab = 'list'
 		if params[:activate_list] == 'N'
 			@list = List.find(params[:list])
