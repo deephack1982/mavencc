@@ -30,12 +30,18 @@ class CampaignsController < ApplicationController
 			@campaign.update_attribute(:active, "Y")
 			redirect_to campaign_path(@campaign)
 		end
-		if params.has_key?(:dial_status)
-			@statuses.delete(params[:dial_status])
+		if params.has_key?(:remove_dial_status)
+			@statuses.delete(params[:remove_dial_status])
 			@status_to_remove = " " + @statuses.join(" ") + " "
 			@campaign.update_attribute(:dial_statuses, @status_to_remove)
 		end
-			
+		
+		if params.has_key?(:add_dial_status)
+			@statuses.add(params[:add_dial_status])
+			@status_to_add = " " + @statuses.join(" ") + " "
+			@campaign.update_attribute(:dial_statuses, @status_to_add)
+		end
+		
 	end
 	
 	def new
@@ -88,7 +94,7 @@ class CampaignsController < ApplicationController
 	private
 	
 	def campaign_params
-		params.require(:campaign).permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description,:lead_order,:hopper_level,:dial_method,:auto_dial_level,:adaptive_intensity, :lists_attributes)
+		params.permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description,:lead_order,:hopper_level,:dial_method,:auto_dial_level,:adaptive_intensity, :lists_attributes, :dial_status)
 	end
 	
 	def sort_column

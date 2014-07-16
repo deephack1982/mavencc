@@ -12,8 +12,12 @@
 		<% @statuses.each.with_index do |s,index| %>
 			<%= f.static_control nil, label: "Dial Status #{index + 1}" do %>
 			<%= s %>
-			<%= link_to "Remove", campaign_path(@campaign, :dial_status => s ), class: "label label-warning" %>
+			<%= link_to "Remove", campaign_path(@campaign, :remove_dial_status => s ), class: "label label-warning" %>
 		<% end %>
+		<% end %>
+		<%= bootstrap_form_tag(url: campaign_path(@campaign, :add_dial_status => @s )) do |ds| %>
+			<%= ds.collection_select @s, Status.all, :status, :status_name  %>
+			<%= ds.submit "Add", class: "btn btn-success" %>		
 		<% end %>
 		<%= f.static_control :user_group %>
 		<%= f.static_control :lead_order %>
