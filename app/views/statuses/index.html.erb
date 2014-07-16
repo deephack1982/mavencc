@@ -4,7 +4,7 @@
 <div class="panel-body">
 	<div class="table-responsive">
 	<table class="table table-striped table-hover">
-	<tr><th>Id</th><th>Status</th><th>Status Name</th><th>category</th></tr>
+	<tr><th <%= sortable "id","Id" %></th><th <%= sortable "status","Status" %></th><th <%= sortable "status_name","Status Name" %></th><th <%= sortable "category","Category" %></th></tr>
 	<% @statuses.each do |s| %>
 	<tr><td><span class="label label-info"><%= link_to s.id, status_path(s) %></span></td><td><%= s.status %></td><td><%= s.status_name %></td><td><%= s.category %></td></tr>
 	<% end %>
