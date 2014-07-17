@@ -2,7 +2,7 @@
 	<div class="panel panel-default">
 	<div class="panel-heading"><h3><%= "#{@campaign.campaign_id}  -  #{@campaign.campaign_name}" %></h3></div>
 	<div class="panel-body">
-	<%= bootstrap_nested_form_for(@campaign, layout: :horizontal) do |f| %>
+	<%= bootstrap_form_for(@campaign, layout: :horizontal) do |f| %>
 		<%= f.static_control :campaign_id %>
 		<%= f.static_control :campaign_name %>
 		<%= f.static_control :campaign_description %>
@@ -15,10 +15,7 @@
 			<%= link_to "Remove", campaign_path(@campaign, :remove_dial_status => s ), class: "label label-warning" %>
 		<% end %>
 		<% end %>
-		<%= bootstrap_form_tag(url: campaign_path(@campaign, :add_dial_status => @s )) do |ds| %>
-			<%= ds.collection_select @s, Status.all, :status, :status_name  %>
-			<%= ds.submit "Add", class: "btn btn-success" %>		
-		<% end %>
+		<%= link_to "Add Dial Status", "#addStatusModal", class: "btn btn-success", :data => {:toggle => "modal" } %>
 		<%= f.static_control :user_group %>
 		<%= f.static_control :lead_order %>
 		<%= f.static_control :hopper_level %>
@@ -60,3 +57,23 @@
 </div>
 </div>
 </div>
+
+<!-- Add Status Modal -->
+<div class="modal fade" id="addStatusModal" tabindex="-1" role="dialog" aria-labelledby="AddStatus" aria-hidden="true">
+	<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="AddStatus">Add Dial Status</h4>
+      </div>
+      <div class="modal-body">
+			<%= select_tag @addStatus, options_from_collection_for_select(Status.all, 'status', 'status_name') %>
+			<%= link_to "Add", campaign_path(@campaign, :add_dial_status => @addStatus), class: "btn btn-success" %>
+      </div>
+      <div class="modal-footer">
+      	<%= link_to "Cancel", "#", class: "btn btn-default btn-block", :data => {:dismiss => "modal"} %>
+      </div>
+      </div>
+     </div>
+    </div>
+   </div>
