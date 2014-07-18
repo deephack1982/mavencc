@@ -9,14 +9,22 @@
 		<%= f.static_control :active do %>
 			<%= link_to @campaign.active, campaign_path(@campaign, :active => @campaign.active), class: "label #{item_active(@campaign.active)}" %>
 		<% end %>
-		<% @statuses.each.with_index do |s,index| %>
-			<%= f.static_control nil, label: "Dial Status #{index + 1}" do %>
-			<%= s %>
-			<%= link_to "Remove", campaign_path(@campaign, :remove_dial_status => s ), class: "label label-warning" %>
-		<% end %>
-		<% end %>
-		<%= link_to "Add Dial Status", "#addStatusModal", class: "btn btn-success", :data => {:toggle => "modal" } %>
-		<%= f.static_control :user_group %>
+		<div class="panel panel-info">
+			<div class="panel-body">
+				<% @statuses.each.with_index do |s,index| %>
+					<%= f.static_control nil, label: "Dial Status #{index + 1}" do %>
+					<%= s %>
+					<%= link_to "Remove", campaign_path(@campaign, :remove_dial_status => s ), class: "label label-warning" %>
+					<% end %>
+				<% end %>
+				<div class="center">
+					<%= link_to "Add Dial Status", "#addStatusModal", class: "btn btn-success", :data => {:toggle => "modal" } %>
+				</div>
+			</div>
+		</div>
+			<%= f.static_control :user_group do %>
+				<%= link_to @campaign_user_group, user_group_path(@campaign.user_group), class: "label label-default" %>
+			<% end %>
 		<%= f.static_control :lead_order %>
 		<%= f.static_control :hopper_level %>
 		<%= f.static_control :dial_method %>
@@ -67,8 +75,10 @@
         <h4 class="modal-title" id="AddStatus">Add Dial Status</h4>
       </div>
       <div class="modal-body">
-			<%= select_tag @addStatus, options_from_collection_for_select(Status.all, 'status', 'status_name') %>
-			<%= link_to "Add", campaign_path(@campaign, :add_dial_status => @addStatus), class: "btn btn-success" %>
+      <%= bootstrap_form_tag(url: campaign_path(@campaign), :method => 'get') do |f| %>
+				<%= f.select :add_dial_status, options_from_collection_for_select(Status.all, 'status', 'status_name') %>
+				<%= f.submit "Add", class: "btn btn-success" %>
+			<% end %>
       </div>
       <div class="modal-footer">
       	<%= link_to "Cancel", "#", class: "btn btn-default btn-block", :data => {:dismiss => "modal"} %>

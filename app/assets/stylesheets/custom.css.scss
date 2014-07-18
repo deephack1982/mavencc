@@ -39,6 +39,12 @@ textarea {
   }
 }
 
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .navbar {
   background-color: #bbb;
   background-image: -moz-linear-gradient(top, #aaa, #eee);
