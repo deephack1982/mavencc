@@ -13,3 +13,4 @@ Campaign.create!(campaign_id: 'Test', campaign_name: 'Test Campaign', campaign_d
 CSV.foreach("#{::Rails.root}/lib/data/statuses.csv") do |row|
 	Status.create!(status: row[0], status_name: row[1], selectable: row[2], human_answered: row[3], category: row[4], sale: row[5], dnc: row[6], customer_contact: row[7], not_interested: row[8], unworkable: row[9], scheduled_callback: row[10], completed: row[11])
 end
+StatusCategory.create!(vsc_id: 'UNDEFINED', vsc_name: 'Default Category', tovdad_display: 'N', sale_category: 'N', dead_lead_category: 'N')

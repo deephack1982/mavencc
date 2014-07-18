@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714232521) do
+ActiveRecord::Schema.define(version: 20140718162019) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id",                           limit: 8
@@ -308,8 +308,8 @@ ActiveRecord::Schema.define(version: 20140714232521) do
   end
 
   create_table "status_categories", force: true do |t|
-    t.string   "vsc_id"
-    t.string   "vsc_name"
+    t.string   "vsc_id",             limit: 20
+    t.string   "vsc_name",           limit: 50
     t.string   "vsc_description"
     t.string   "tovdad_display",     limit: 1
     t.string   "sale_category",      limit: 1
