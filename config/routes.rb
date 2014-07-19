@@ -17,6 +17,7 @@ Mavencc::Application.routes.draw do
   	end
   end
   resources :statuses
+  resources :status_categories
   match '/admin/index', to: 'admin#index', via: 'get'
 #  match '/admin/statuses_index', to: 'admin#statuses_index', via: 'get'
 #  match '/admin/status/:id', to: 'admin#status', via: 'get', as: :status

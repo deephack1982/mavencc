@@ -2,6 +2,7 @@
 	<div class="col-lg-2">	
 		<ul class="nav nav-pills nav-stacked" id="tab-menu">
 			<li <%= admintab_active('status',@admin_tab) %>><%= link_to "System Statuses", statuses_path %></li>
+			<li <%= admintab_active('status_category',@admin_tab) %>><%= link_to "Status Categories", status_categories_path %></li>
 		</ul>
 		<%= render 'layouts/support' %>
 	</div>

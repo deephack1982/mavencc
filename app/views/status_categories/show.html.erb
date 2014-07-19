@@ -1,0 +1,15 @@
+<%= render 'admin/admin_header' %>
+	<div class="panel panel-default">
+	<div class="panel-heading"><h3>Status Category</h3></div>
+	<div class="panel-body">
+	<%= bootstrap_form_for(@status_category, layout: :horizontal) do |f| %>
+		<%= f.static_control :vsc_id %>
+		<%= f.static_control :vsc_name %>
+		<%= f.static_control :vsc_description %>
+	<% end %>
+	</div>
+	</div>
+	<div class="row"><%= link_to "Back", status_categories_path, class: "btn btn-default" %><div class="pull-right"><%= link_to "Edit", '#', class: "btn btn-info" %></div></div><p>
+</div>
+</div>
+</div>
