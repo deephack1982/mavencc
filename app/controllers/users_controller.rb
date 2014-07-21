@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	helper_method :sort_column, :sort_direction
+	helper_method :sort_column, :sort_direction, :inactive_users
 	
 	before_filter :authorise
 	
@@ -15,6 +15,14 @@ class UsersController < ApplicationController
 		else
 			@users = User.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		end
+		
+		if params[:inactive] == 'Y'
+			@inactive = "glyphicon-ok"
+			@users = @users.inactive
+		elsif params[:inactive] == 'N'
+			@inactive = ""
+		end
+		
 		@user_tab = 'list'
 	end
 	def show
@@ -81,5 +89,18 @@ class UsersController < ApplicationController
 	
 	def sort_direction
 		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+	end
+	
+	def inactive_users
+		if params[:inactive] == 'Y'
+			snippet = "N"
+			snippet.to_s
+		elsif params[:inactive] == 'N'
+			snippet = "Y"
+			snippet.to_s
+		else
+			snippet = "Y"
+			snippet.to_s
+		end
 	end
 end

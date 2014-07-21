@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 	validates :user_group, presence: true
 	validates :active, presence: true
 	
+	default_scope { where(active: 'Y') }
+	scope :inactive, -> { where(active: 'N') }
+	
 	has_secure_password
 	
 	belongs_to :user_user_group, :class_name => "UserGroup", :foreign_key => "user_group_id"

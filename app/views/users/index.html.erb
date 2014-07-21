@@ -7,6 +7,17 @@
 			<%= f.search_field :search, value: params[:search] %>
 			<%= f.submit "Search", :name => nil, class: "btn btn-info" %>
 		<% end %>
+		<div class="btn-group">
+    	<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">View <span class="caret"></span></button>  
+    		<ul class="dropdown-menu" role="menu">
+    			<li>
+    				<%= link_to(users_path(:inactive => inactive_users)) do %>
+    					Show inactive
+    					<span class="glyphicon <%= @inactive %>"></span>
+    				<% end %>
+    			</li>
+				</ul>
+		</div>
 	<%= will_paginate %>
 	<div class="table-responsive">
 		<small><%= page_entries_info @users %></small>
