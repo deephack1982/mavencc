@@ -1,0 +1,9 @@
+<%= render 'admin/admin_header' %>
+	<%= bootstrap_form_for(@status_category, layout: :horizontal) do |f| %>
+		<%= f.text_field :vsc_id, :placeholder => 'At least 2 characters and no more than 20' %>
+		<%= f.text_field :vsc_name, :placeholder => 'At least 2 characters and no more than 50' %>
+		<%= f.text_field :vsc_description %>
+		<div class="row"><%= link_to "Back", admin_index_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Create", class: "btn btn-large btn-primary" %></div></div>
+	<% end %>
+</div>
+</div>
