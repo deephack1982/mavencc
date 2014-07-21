@@ -7,18 +7,18 @@ class UsersController < ApplicationController
 	end
 	def index
 		if params[:search_type] == "Name"
-			@users = User.search_by_fullname(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
+			@users = User.active_users.search_by_fullname(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		elsif params[:search_type] == "UserID"
-			@users = User.search_by_userid(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
+			@users = User.active_users.search_by_userid(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		elsif params[:search]
-			@users = User.search_by_group(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
+			@users = User.active_users.search_by_group(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		else
-			@users = User.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
+			@users = User.active_users.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		end
 		
 		if params[:inactive] == 'Y'
 			@inactive = "glyphicon-ok"
-			@users = @users.inactive
+			@users = User.inactive.order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 		elsif params[:inactive] == 'N'
 			@inactive = ""
 		end

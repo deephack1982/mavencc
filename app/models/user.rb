@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	validates :user_group, presence: true
 	validates :active, presence: true
 	
-	default_scope { where(active: 'Y') }
+	scope :active_users, -> { where(active: 'Y') }
 	scope :inactive, -> { where(active: 'N') }
 	
 	has_secure_password
