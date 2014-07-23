@@ -63,7 +63,7 @@ class ListsController < ApplicationController
 	end
 	
 	def create
-		@list = List.create(list_params)
+		@list = List.create(list_params.merge(:list_lastcalldate => '2000-01-01'))
 		@list.id = @list.list_id
     	if @list.save
     		flash[:success] = "List created"
