@@ -39,7 +39,7 @@ class CampaignsController < ApplicationController
 		end
 		
 		if params.has_key?(:add_dial_status)
-			@statuses << params[:add_dial_status]
+			@statuses << params[:add_dial_status] unless @statuses.include?(params[:add_dial_status])
 			@status_to_add = " " + @statuses.join(" ") + " "
 			@campaign.update_attribute(:dial_statuses, @status_to_add)
 			redirect_to campaign_path(@campaign)
