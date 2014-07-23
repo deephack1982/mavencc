@@ -53,7 +53,7 @@ class CampaignsController < ApplicationController
 	end
 	
 	def create
-		@campaign = Campaign.create(campaign_params)
+		@campaign = Campaign.create(campaign_params.merge(:dial_statuses => ' NEW '))
     	if @campaign.save
     		flash[:success] = "Campaign created"
       		redirect_to campaign_path(@campaign)
@@ -97,7 +97,7 @@ class CampaignsController < ApplicationController
 	private
 	
 	def campaign_params
-		params.permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description,:lead_order,:hopper_level,:dial_method,:auto_dial_level,:adaptive_intensity, :lists_attributes, :dial_status)
+		params.require(:campaign).permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description,:lead_order,:hopper_level,:dial_method,:auto_dial_level,:adaptive_intensity, :lists_attributes, :dial_status)
 	end
 	
 	def sort_column
