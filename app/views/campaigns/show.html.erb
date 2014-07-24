@@ -2,35 +2,69 @@
 	<div class="panel panel-default">
 	<div class="panel-heading"><h3><%= "#{@campaign.campaign_id}  -  #{@campaign.campaign_name}" %></h3></div>
 	<div class="panel-body">
-	<%= bootstrap_form_for(@campaign, layout: :horizontal) do |f| %>
-		<%= f.static_control :campaign_id %>
-		<%= f.static_control :campaign_name %>
-		<%= f.static_control :campaign_description %>
-		<%= f.static_control :active do %>
-			<%= link_to @campaign.active, campaign_path(@campaign, :active => @campaign.active), class: "label #{item_active(@campaign.active)}" %>
-		<% end %>
-		<div class="panel panel-info">
-			<div class="panel-body">
-				<% @statuses.each.with_index do |s,index| %>
-					<%= f.static_control nil, label: "Dial Status #{index + 1}" do %>
-					<%= s %>
-					<%= link_to "Remove", campaign_path(@campaign, :remove_dial_status => s ), class: "label label-warning" %>
+	<div class="panel-group" id="accordion">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#basic">
+          <div class="text-center">Basic Settings</div>
+        </a>
+      </h4>
+    </div>
+    <div id="basic" class="panel-collapse collapse in">
+      <div class="panel-body bg-info">
+				<%= bootstrap_form_for(@campaign, layout: :horizontal) do |f| %>
+					<%= f.static_control :campaign_id %>
+					<%= f.static_control :campaign_name %>
+					<%= f.static_control :campaign_description %>
+					<%= f.static_control :active do %>
+						<%= link_to @campaign.active, campaign_path(@campaign, :active => @campaign.active), class: "label #{item_active(@campaign.active)}" %>
 					<% end %>
-				<% end %>
-				<div class="center">
-					<%= link_to "Add Dial Status", "#addStatusModal", class: "btn btn-success", :data => {:toggle => "modal" } %>
+					<div class="panel panel-info">
+					<div class="panel-body bg-default">
+						<% @statuses.each.with_index do |s,index| %>
+						<%= f.static_control nil, label: "Dial Status #{index + 1}" do %>
+						<%= s %>
+						<%= link_to "Remove", campaign_path(@campaign, :remove_dial_status => s ), class: "label label-warning" %>
+						<% end %>
+						<% end %>
+						<div class="center">
+						<%= link_to "Add Dial Status", "#addStatusModal", class: "btn btn-success", :data => {:toggle => "modal" } %>
+						</div>
 				</div>
 			</div>
+				<%= f.static_control :user_group do %>
+					<%= link_to @campaign_user_group, user_group_path(@campaign.user_group), class: "label label-default" %>
+				<% end %>
+				<% end %>
+			</div>
 		</div>
-			<%= f.static_control :user_group do %>
-				<%= link_to @campaign_user_group, user_group_path(@campaign.user_group), class: "label label-default" %>
+		</div>
+		<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#dialler">
+          <div class="text-center">Dialler Settings</div>
+        </a>
+      </h4>
+    </div>
+    <div id="dialler" class="panel-collapse collapse">
+      <div class="panel-body bg-success">
+      <%= bootstrap_form_for(@campaign, layout: :horizontal) do |f| %>
+      <%= f.static_control :dial_method %>
+			<%= f.static_control :auto_dial_level %>
+			<%= f.static_control :adaptive_intensity %>
+      <%= f.static_control :adaptive_dropped_percentage do %>
+      	<%= number_to_percentage(@campaign.adaptive_dropped_percentage, precision: 2) %>
+      <% end %>
+      <%= f.static_control :lead_order %>
+			<%= f.static_control :hopper_level %>
 			<% end %>
-		<%= f.static_control :lead_order %>
-		<%= f.static_control :hopper_level %>
-		<%= f.static_control :dial_method %>
-		<%= f.static_control :auto_dial_level %>
-		<%= f.static_control :adaptive_intensity %>
-		<% end %>
+			<div class="center">
+			<%= link_to "Advanced Settings", "#AdvDiallerSettings", class: "btn btn-success", :data => { :toggle => "modal" } %>
+			</div>
+		</div>
+		</div>
 		</div>
 		</div>
 	<div class="panel panel-info">
@@ -87,3 +121,22 @@
      </div>
     </div>
    </div>
+   
+<!-- Advanced Dialler Settings Modal -->
+<div class="modal fade" id="addStatusModal" tabindex="-1" role="dialog" aria-labelledby="AdvDiallerSettings" aria-hidden="true">
+	<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="AdvDiallerSettings">Advanced Dialler Settings</h4>
+      </div>
+      <div class="modal-body">
+      Test
+      </div>
+      <div class="modal-footer">
+      	<%= link_to "Cancel", "#", class: "btn btn-default btn-block", :data => {:dismiss => "modal"} %>
+      </div>
+      </div>
+     </div>
+    </div>
+   </div> 
