@@ -35,6 +35,7 @@ class CampaignsController < ApplicationController
 			@statuses.delete(params[:remove_dial_status])
 			@status_to_remove = " " + @statuses.join(" ") + " "
 			@campaign.update_attribute(:dial_statuses, @status_to_remove)
+			flash[:success] = "Dial status #{params[:remove_dial_status]} removed"
 			redirect_to campaign_path(@campaign)
 		end
 		
@@ -42,6 +43,7 @@ class CampaignsController < ApplicationController
 			@statuses << params[:add_dial_status] unless @statuses.include?(params[:add_dial_status])
 			@status_to_add = " " + @statuses.join(" ") + " "
 			@campaign.update_attribute(:dial_statuses, @status_to_add)
+			flash[:success] = "Dial status #{params[:add_dial_status]} added"
 			redirect_to campaign_path(@campaign)
 		end
 		
