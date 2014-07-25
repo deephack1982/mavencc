@@ -280,7 +280,7 @@ ActiveRecord::Schema.define(version: 20140718162019) do
     t.datetime "updated_at"
   end
 
-  add_index "list", ["list_id"], name: "index_list_on_lists_id", using: :btree
+  add_index "list", ["list_id"], name: "index_list_on_list_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "list_id"
