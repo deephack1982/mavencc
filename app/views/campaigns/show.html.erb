@@ -110,7 +110,7 @@
       </div>
       <div class="modal-body">
       <%= bootstrap_form_tag(url: campaign_path(@campaign), :method => 'get') do |f| %>
-				<%= f.select :add_dial_status, options_from_collection_for_select(Status.all, 'status', 'status_name') %>
+				<%= f.select :add_dial_status, options_from_collection_for_select(Status.all, 'status', 'full_status_name') %>
 				<%= f.submit "Add", class: "btn btn-success" %>
 			<% end %>
       </div>
