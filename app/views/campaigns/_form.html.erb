@@ -10,7 +10,11 @@
     </div>
     <div id="basic" class="panel-collapse collapse in">
       <div class="panel-body bg-info">
-					<%= f.static_control :campaign_id %>
+					<% if self.action_name == 'edit' %>
+						<%= f.static_control :campaign_id %>
+					<% elsif self.action_name == 'new' %>
+						<%= f.text_field :campaign_id, :placeholder => 'Between 2 and 8 characters' %>
+					<% end %>
 					<%= f.text_field :campaign_name, :placeholder => 'Between 2 and 8 characters' %>
 					<%= f.text_field :campaign_description, :placeholder => 'Optional' %>
 					<%= f.select :active, Campaign::ACTIVE %>

@@ -1,4 +1,7 @@
 <%= render 'user_groups_header' %>
+	<div class="panel panel-default">
+        <div class="panel-heading"><h3>New User Group</h3></div>
+        <div class="panel-body">
 		<%= bootstrap_form_for(@user_group) do |f| %>
 			<%= f.text_field :user_group, :placeholder => 'At least 2 characters and no more than 20 characters'%>
 						
@@ -6,5 +9,8 @@
 			
 			<div class="row"><%= link_to "Back", user_groups_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Create", class: "btn btn-large btn-primary" %></div></div>
 		<% end %>
+	</div>
+	</div>
+	</div>
 	</div>
 </div>
