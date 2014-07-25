@@ -99,7 +99,7 @@ class CampaignsController < ApplicationController
 	private
 	
 	def campaign_params
-		params.require(:campaign).permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description,:lead_order,:hopper_level,:dial_method,:auto_dial_level,:adaptive_intensity, :lists_attributes, :dial_status, :adaptive_dropped_percentage)
+		params.require(:campaign).permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description,:lead_order,:hopper_level,:dial_method,:auto_dial_level,:adaptive_intensity,:lists_attributes,:dial_status,:adaptive_dropped_percentage,:available_only_tally_threshold,:available_only_tally_threshold_agents)
 	end
 	
 	def sort_column

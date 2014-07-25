@@ -60,9 +60,6 @@
       <%= f.static_control :lead_order %>
 			<%= f.static_control :hopper_level %>
 			<% end %>
-			<div class="center">
-			<%= link_to "Advanced Settings", "#AdvDiallerSettings", class: "btn btn-success", :data => { :toggle => "modal" } %>
-			</div>
 		</div>
 		</div>
 		</div>
@@ -121,22 +118,3 @@
      </div>
     </div>
    </div>
-   
-<!-- Advanced Dialler Settings Modal -->
-<div class="modal fade" id="advDiallerSettings" tabindex="-1" role="dialog" aria-labelledby="advDiallerSettings" aria-hidden="true">
-	<div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="advDiallerSettings">Advanced Dialler Settings</h4>
-      </div>
-      <div class="modal-body">
-      Test
-      </div>
-      <div class="modal-footer">
-      	<%= link_to "Cancel", "#", class: "btn btn-default btn-block", :data => {:dismiss => "modal"} %>
-      </div>
-      </div>
-     </div>
-    </div>
-   </div> 

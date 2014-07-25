@@ -1,9 +1,11 @@
 <%= render 'campaigns_header' %>
 	<div class="panel panel-default">
-	<div class="panel-heading"><h3>Campaigns</h3></div>
+	<div class="panel-heading"><h3><%= "#{@campaign.campaign_id}  -  #{@campaign.campaign_name}" %></h3></div>
 	<div class="panel-body">
 	<%= render 'form' %>
 	</div>
 	</div>
 	</div>
 </div>
+
+<%= render 'adv_dialler' %>
