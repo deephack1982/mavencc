@@ -1,0 +1,47 @@
+<%= bootstrap_form_for(@campaign, layout: :horizontal) do |f| %>
+	<div class="panel-group" id="accordion">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#basic">
+          <div class="text-center">Basic Settings</div>
+        </a>
+      </h4>
+    </div>
+    <div id="basic" class="panel-collapse collapse in">
+      <div class="panel-body bg-info">
+					<%= f.static_control :campaign_id %>
+					<%= f.text_field :campaign_name, :placeholder => 'Between 2 and 8 characters' %>
+					<%= f.text_field :campaign_description, :placeholder => 'Optional' %>
+					<%= f.select :active, Campaign::ACTIVE %>
+					<%= f.collection_select :user_group, UserGroup.all, :id, :user_group %>
+				
+			</div>
+		</div>
+		</div>
+		<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#dialler">
+          <div class="text-center">Dialler Settings</div>
+        </a>
+      </h4>
+    </div>
+    <div id="dialler" class="panel-collapse collapse">
+      <div class="panel-body bg-success">
+      
+      <%= f.select :dial_method, Campaign::DIAL_METHOD %>
+			<%= f.select :auto_dial_level, Campaign::AUTO_DIAL_LEVEL %>
+			<%= f.select :adaptive_intensity, Campaign::ADAPTIVE_INTENSITY %>
+      <%= f.select :adaptive_dropped_percentage, Campaign::ADAPTIVE_DROP_LIMIT %>
+      <%= f.select :lead_order, Campaign::LEAD_ORDER %>
+			<%= f.select :hopper_level, Campaign::HOPPER_LEVEL %>
+			<div class="center">
+			<%= link_to "Advanced Settings", "#AdvDiallerSettings", class: "btn btn-success", :data => { :toggle => "modal" } %>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+					<div class="row"><%= link_to "Back", back_action, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Submit", class: "btn btn-large btn-primary" %></div></div>
+		<% end %>

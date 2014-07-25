@@ -1,28 +1,4 @@
 <%= render 'campaigns_header' %>
-		<%= bootstrap_form_for(@campaign) do |f| %>
-			<%= f.text_field :campaign_id, :placeholder => 'Between 2 and 8 characters without punctuation'%>
-						
-			<%= f.text_field :campaign_name, :placeholder => 'Between 2 and 8 characters' %>
-
-			<%= f.text_field :campaign_description, :placeholder => 'optional' %>
-			
-			<%= f.select(:active, Campaign::ACTIVE) %>
-						
-			<%= f.collection_select :user_group, UserGroup.all, :id, :user_group %>
-			
-			<%= f.select(:dial_method, Campaign::DIAL_METHOD) %>
-			
-			<%= f.select(:auto_dial_level, Campaign::AUTO_DIAL_LEVEL) %>
-			
-			<%= f.select(:adaptive_intensity, Campaign::ADAPTIVE_INTENSITY) %>
-			
-			<%= f.select(:adaptive_dropped_percentage, Campaign::ADAPTIVE_DROP_LIMIT) %>
-			
-			<%= f.select(:lead_order, Campaign::LEAD_ORDER) %>
-						
-			<%= f.select(:hopper_level, Campaign::HOPPER_LEVEL) %>
-			
-			<div class="row"><%= link_to "Back", campaigns_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Create", class: "btn btn-large btn-primary" %></div></div>
-		<% end %>
+		<%= render 'form' %>
 	</div>
 </div>

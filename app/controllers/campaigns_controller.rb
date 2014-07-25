@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-	helper_method :sort_column, :sort_direction
+	helper_method :sort_column, :sort_direction, :back_action
 	
 	before_filter :authorise
 	
@@ -109,4 +109,15 @@ class CampaignsController < ApplicationController
 	def sort_direction
 		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 	end
+	
+	def back_action
+		if self.action_name == 'new'
+			snippet = campaigns_path
+			snippet
+		elsif self.action_name == 'edit'
+			snippet = campaign_path(@campaign)
+			snippet
+		end
+	end
+		
 end
