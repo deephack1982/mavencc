@@ -24,7 +24,7 @@
 					<div class="panel-body bg-default">
 						<% @statuses.each.with_index do |s,index| %>
 						<%= f.static_control nil, label: "Dial Status #{index + 1}" do %>
-						<%= s %>
+						<%= "#{s} - #{Status.find_by_status(s).status_name}" %>
 						<%= link_to "Remove", campaign_path(@campaign, :remove_dial_status => s ), class: "label label-warning" %>
 						<% end %>
 						<% end %>
