@@ -1,4 +1,7 @@
 <%= render 'lists_header' %>
+	<div class="panel panel-default">
+        <div class="panel-heading"><h3>New List</h3></div>
+        <div class="panel-body">
 		<%= bootstrap_form_for(@list) do |f| %>
 			<%= f.text_field :list_id, :placeholder => 'At least 3 characters and no more than 8 characters, numbers only'%>
 						
@@ -14,5 +17,8 @@
 				
 			<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Create", class: "btn btn-large btn-primary" %></div></div>
 		<% end %>
+	</div>
+	</div>
+	</div>
 	</div>
 </div>
