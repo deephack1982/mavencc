@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140728153801) do
-=======
-ActiveRecord::Schema.define(version: 20140728153505) do
->>>>>>> 26569f600fa1cb5476a214bcfe52b793d8ffa377
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id",                           limit: 8
