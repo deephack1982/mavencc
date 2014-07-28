@@ -1,0 +1,29 @@
+<%= render 'admin/admin_header' %>
+<div class="panel panel-default">
+<div class="panel-heading" id="dial_statuses"><h3>Editing : System Statuses</h3></div>
+<div class="panel-body">
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+		<tr><th <%= sortable "id" %></th><th <%= sortable "status" %></th><th <%= sortable "status_name" %></th><th <%= sortable "selectable" %></th><th <%= sortable "human_answered" %></th><th><%= sortable "sale" %></th><th><%= sortable "dnc" %></th><th><%= sortable "customer_contact" %></th><th><%= sortable "not_interested" %></th><th><%= sortable "unworkable" %></th><th><%= sortable "scheduled_callback" %></th><th><%= sortable "completed" %></th></tr>
+		<% @statuses.each do |s| %>
+		<tr>
+			<td><span class="label label-info"><%= s.id %></span></td>
+			<td><%= s.status %></td>
+			<td><%= s.status_name %></td>
+			<td><%= link_to s.selectable, edit_status_path(s.id, :status => s.id, :status_selectable => s.selectable, :anchor => "dial_statuses"), class: "label #{item_active(s.selectable)}" %></td>
+			<td><%= link_to s.human_answered, edit_status_path(s.id, :status => s.id, :status_human_answered => s.human_answered, :anchor => "dial_statuses"), class: "label #{item_active(s.human_answered)}" %></td>
+			<td><%= link_to s.sale, edit_status_path(s.id, :status => s.id, :status_sale => s.sale, :anchor => "dial_statuses"), class: "label #{item_active(s.sale)}" %></td>
+			<td><%= link_to s.dnc, edit_status_path(s.id, :status => s.id, :status_dnc => s.dnc, :anchor => "dial_statuses"), class: "label #{item_active(s.dnc)}" %></td>
+			<td><%= link_to s.customer_contact, edit_status_path(s.id, :status => s.id, :status_customer_contact => s.customer_contact, :anchor => "dial_statuses"), class: "label #{item_active(s.customer_contact)}" %></td>
+			<td><%= link_to s.not_interested, edit_status_path(s.id, :status => s.id, :status_not_interested => s.not_interested, :anchor => "dial_statuses"), class: "label #{item_active(s.not_interested)}" %></td>
+			<td><%= link_to s.unworkable, edit_status_path(s.id, :status => s.id, :status_unworkable => s.unworkable, :anchor => "dial_statuses"), class: "label #{item_active(s.unworkable)}" %></td>
+			<td><%= link_to s.scheduled_callback, edit_status_path(s.id, :status => s.id, :status_scheduled_callback => s.scheduled_callback, :anchor => "dial_statuses"), class: "label #{item_active(s.scheduled_callback)}" %></td>
+			<td><%= link_to s.completed, edit_status_path(s.id, :status => s.id, :status_completed => s.completed, :anchor => "dial_statuses"), class: "label #{item_active(s.completed)}" %></td>
+		</tr>
+		<% end %>
+		</table>
+	</div>
+	<%= link_to "Finish", statuses_path, class: "btn btn-info btn-block" %>
+</div>
+</div>
+</div>
