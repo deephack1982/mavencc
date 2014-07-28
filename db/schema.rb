@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718162019) do
+ActiveRecord::Schema.define(version: 20140728153505) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id",                           limit: 8
@@ -355,9 +355,61 @@ ActiveRecord::Schema.define(version: 20140718162019) do
     t.string   "phone_pass"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "active",          limit: 1
+    t.string   "active",                             limit: 1
     t.integer  "user_group_id"
     t.string   "password_digest"
+    t.string   "delete_users",                       limit: 1
+    t.string   "delete_user_groups",                 limit: 1
+    t.string   "alert_enabled",                      limit: 1
+    t.string   "download_lists",                     limit: 1
+    t.string   "agent_shift_enforcement_override",   limit: 8
+    t.string   "manager_shift_enforcement_override", limit: 1
+    t.string   "shift_override_flag",                limit: 1
+    t.string   "export_reports",                     limit: 1
+    t.string   "delete_from_dnc",                    limit: 1
+    t.string   "email",                              limit: 100
+    t.string   "ENUM('0','1')",                      limit: 100
+    t.string   "user_code",                          limit: 100
+    t.string   "territory",                          limit: 100
+    t.string   "allow_alerts",                       limit: 1
+    t.string   "agent_choose_territories",           limit: 1
+    t.string   "custom_one",                         limit: 100
+    t.string   "custom_two",                         limit: 100
+    t.string   "custom_three",                       limit: 100
+    t.string   "custom_four",                        limit: 100
+    t.string   "custom_five",                        limit: 100
+    t.string   "voicemail_id",                       limit: 10
+    t.string   "agent_call_log_view_override",       limit: 8
+    t.string   "callcard_admin",                     limit: 1
+    t.string   "agent_choose_blended",               limit: 1
+    t.string   "realtime_block_user_info",           limit: 1
+    t.string   "custom_fields_modify",               limit: 1
+    t.string   "force_change_password",              limit: 1
+    t.string   "agent_lead_search_override",         limit: 28
+    t.string   "modify_shifts",                      limit: 1
+    t.string   "modify_phones",                      limit: 1
+    t.string   "modify_carriers",                    limit: 1
+    t.string   "modify_labels",                      limit: 1
+    t.string   "modify_statuses",                    limit: 1
+    t.string   "modify_voicemail",                   limit: 1
+    t.string   "modify_audiostore",                  limit: 1
+    t.string   "modify_moh",                         limit: 1
+    t.string   "modify_tts",                         limit: 1
+    t.string   "preset_contact_search",              limit: 10
+    t.string   "modify_contacts",                    limit: 1
+    t.string   "modify_same_user_level",             limit: 1
+    t.string   "admin_hide_lead_data",               limit: 1
+    t.string   "admin_hide_phone_data",              limit: 8
+    t.string   "agentcall_email",                    limit: 1
+    t.string   "modify_email_accounts",              limit: 1
+    t.integer  "failed_login_count",                 limit: 1
+    t.datetime "last_login_date"
+    t.string   "last_ip",                            limit: 15
+    t.string   "pass_hash",                          limit: 100
+    t.string   "alter_admin_interface_options",      limit: 1
+    t.integer  "max_inbound_calls",                  limit: 2
+    t.string   "modify_custom_dialplans",            limit: 1
+    t.integer  "wrapup_seconds_override",            limit: 2
   end
 
   add_index "users", ["user_group_id"], name: "index_users_on_user_group_id", using: :btree
