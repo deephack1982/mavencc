@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718162019) do
+ActiveRecord::Schema.define(version: 20140728153801) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id",                           limit: 8
@@ -280,7 +280,7 @@ ActiveRecord::Schema.define(version: 20140718162019) do
     t.datetime "updated_at"
   end
 
-  add_index "list", ["list_id"], name: "index_list_on_list_id", using: :btree
+  add_index "list", ["list_id"], name: "index_list_on_lists_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "list_id"
@@ -296,6 +296,20 @@ ActiveRecord::Schema.define(version: 20140718162019) do
   end
 
   add_index "lists", ["campaign_id"], name: "index_lists_on_campaign_id", using: :btree
+
+  create_table "scripts", force: true do |t|
+    t.string   "script_id",       limit: 10
+    t.string   "script_name",     limit: 50
+    t.string   "script_comments"
+    t.text     "script_text"
+    t.string   "active",          limit: 1
+    t.string   "user_group",      limit: 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_group_id"
+  end
+
+  add_index "scripts", ["user_group_id"], name: "index_scripts_on_user_group_id", using: :btree
 
   create_table "sites", force: true do |t|
     t.string   "company"
