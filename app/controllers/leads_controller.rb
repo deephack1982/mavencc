@@ -53,6 +53,17 @@ class LeadsController < ApplicationController
 		end
 	end
 	
+	def loader
+		@list_tab = 'loader'
+	end
+	
+	def import
+		@list_tab = 'loader'
+		Lead.import(params[:file],params[:list])
+		flash[:success] = "Leads loaded"
+		redirect_to lists_path
+	end
+	
 	private
 	
 	def lead_params

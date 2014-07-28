@@ -104,6 +104,7 @@ class ListsController < ApplicationController
 			format.json
 		end
 	end
+	
 private
 	
 	def list_params

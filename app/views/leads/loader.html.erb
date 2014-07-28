@@ -1,0 +1,13 @@
+<%= render 'leads_header' %>
+	<div class="panel panel-default">
+	<div class="panel-heading"><h3>Load New Leads</h3></div>
+	<div class="panel-body">
+	Choose a CSV file to import
+		<%= bootstrap_form_tag url: import_leads_path, multipart: true do |f| %>
+			<%= f.collection_select :list, List.all, :id, :list_name %>
+			<%= f.file_field :file %>
+			<%= f.submit "Submit" %>
+		<% end %>
+	</div>
+	</div>
+	</div>

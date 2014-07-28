@@ -3,7 +3,7 @@ Mavencc::Application.routes.draw do
 
   root 'static_pages#home'
   match '/login', to: 'sessions#new', via: 'get', as: 'login'
-  match '/logout', to: 'sessions#destory', via: 'get', as: 'logout'
+  match '/logout', to: 'sessions#destroy', via: 'get', as: 'logout'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/site', to: 'static_pages#site', via: 'get'
 #  match '/leads/new', to: 'leads#new', via: 'get'
@@ -14,9 +14,12 @@ Mavencc::Application.routes.draw do
   resources :leads do
   	collection do
   		get 'search'
+  		get 'loader'
+  		put 'import'
   	end
   end
   resources :statuses
+  resources :status_categories
   match '/admin/index', to: 'admin#index', via: 'get'
 #  match '/admin/statuses_index', to: 'admin#statuses_index', via: 'get'
 #  match '/admin/status/:id', to: 'admin#status', via: 'get', as: :status

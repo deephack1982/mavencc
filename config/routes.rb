@@ -14,6 +14,8 @@ Mavencc::Application.routes.draw do
   resources :leads do
   	collection do
   		get 'search'
+  		get 'loader'
+  		post 'import'
   	end
   end
   resources :statuses

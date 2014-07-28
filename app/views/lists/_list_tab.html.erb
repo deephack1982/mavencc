@@ -5,6 +5,7 @@
 			<li <%= listtab_active('list',@list_tab) %>><%= link_to "Show Lists", lists_path %></li>
 			<li <%= listtab_active('newlead',@list_tab) %>><%= link_to "Add Lead", new_lead_path %></li>
 			<li <%= listtab_active('searchlead',@list_tab) %>><%= link_to "Search for Lead", search_leads_path %></li>
+			<li <%= listtab_active('loader',@list_tab) %>><%= link_to "Load New Leads", loader_leads_path %></li>
 		</ul>
 		<%= render 'layouts/support' %>
 	</div>
