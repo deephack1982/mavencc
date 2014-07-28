@@ -14,7 +14,7 @@ class StatusesController < ApplicationController
 	end
 
 	def edit
-		@statuses = Status.all
+		@statuses = Status.order(sort_column + " " + sort_direction)
 		if params[:status_selectable] == 'N'
 			@status = Status.find(params[:status])
 			@status.update_attribute(:selectable, "Y")
