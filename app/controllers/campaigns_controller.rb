@@ -96,6 +96,22 @@ class CampaignsController < ApplicationController
 		end
 	end
 	
+	def copy
+		@campaign_tab = 'copy'
+		
+		if params.has_key?(:original_campaign)
+			@original_campaign = Campaign.find(params[:original_campaign])
+			@new_campaign = Campaign.new(@original_campaign.attributes.merge(:campaign_id => params[:new_campaign_id], :campaign_name => params[:new_campaign_name], :campaign_description => params[:new_campaign_description], :id => nil))
+			if @new_campaign.save
+				flash[:success] = "Campaign Copied Sucsessfully"
+				redirect_to campaign_path(@new_campaign)
+			else
+				flash[:danger] = "Campaign could not copy"
+				redirect_to campaigns_path
+			end
+		end
+	end
+	
 	private
 	
 	def campaign_params
