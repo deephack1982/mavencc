@@ -1,7 +1,8 @@
 <div class="row">
 	<div class="col-lg-2">	
 		<ul class="nav nav-pills nav-stacked" id="tab-menu">
-			<li <%= scripttab_active('list',@script_tab) %>><%= link_to "Show Scripts", scripts_path %></li>
+			<li <%= scripttab_active('add_script',@script_tab) %>><%= link_to "Add Script", new_script_path %></li>
+			<li <%= scripttab_active('script',@script_tab) %>><%= link_to "Show Scripts", scripts_path %></li>
 		</ul>
 		<%= render 'layouts/support' %>
 	</div>
