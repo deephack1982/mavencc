@@ -4,8 +4,29 @@ class ScriptsController < ApplicationController
 	before_filter :authorise
 		
 	def index
-		@scripts = Script.order(sort_column + " " + sort_direction)
 		@script_tab = 'list'
+		@scripts = Script.order(sort_column + " " + sort_direction)
+	end
+	
+	def new
+		@script_tab = 'add_script'
+		@script = Script.new
+	end
+	
+	def create
+		@script = Script.create(script_params)
+			if @script.save
+				flash[:success] = "Script created"
+				redirect_to script_path(@script)
+			else
+				flash[:danger] = "Script could not be created"
+				render 'new'
+			end
+	end
+		
+	def show
+		@script_tab = 'show_script'
+		@script	= Script.find(params[:id])
 	end
 	
 	private

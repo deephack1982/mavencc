@@ -10,7 +10,7 @@ class AddColumnsToUsers < ActiveRecord::Migration
                 t.column :shift_override_flag, "ENUM('0','1')"
                 t.column :export_reports, "ENUM('0','1')"
                 t.column :delete_from_dnc, "ENUM('0','1')"
-                t.string :email, "ENUM('0','1')", :limit => 100
+                t.string :email, :limit => 100
                 t.string :user_code, :limit => 100
                 t.string :territory, :limit => 100
                 t.column :allow_alerts, "ENUM('0','1')"

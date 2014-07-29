@@ -382,7 +382,6 @@ ActiveRecord::Schema.define(version: 20140728153801) do
     t.string   "export_reports",                     limit: 1
     t.string   "delete_from_dnc",                    limit: 1
     t.string   "email",                              limit: 100
-    t.string   "ENUM('0','1')",                      limit: 100
     t.string   "user_code",                          limit: 100
     t.string   "territory",                          limit: 100
     t.string   "allow_alerts",                       limit: 1
