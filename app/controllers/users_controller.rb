@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	helper_method :sort_column, :sort_direction, :inactive_users
+	helper_method :sort_column, :sort_direction, :inactive_users, :convert_permission
 	
 	before_filter :authorise
 	
@@ -35,6 +35,90 @@ class UsersController < ApplicationController
 			@user.update_attribute(:active, "Y")
 			redirect_to user_path(@user)
 		end
+                if params[:delete_users] == '1'
+                        @user.update_attribute(:delete_users, "0")
+                        redirect_to user_path(@user)
+                elsif params[:delete_users] == '0'
+                        @user.update_attribute(:delete_users, "1")
+                        redirect_to user_path(@user)
+                end
+                if params[:delete_user_groups] == '1'
+                        @user.update_attribute(:delete_user_groups, "0")
+                        redirect_to user_path(@user)
+                elsif params[:delete_user_groups] == '0'
+                        @user.update_attribute(:delete_user_groups, "1")
+                        redirect_to user_path(@user)
+                end
+                if params[:alert_enabled] == '1'
+                        @user.update_attribute(:alert_enabled, "0")
+                        redirect_to user_path(@user)
+                elsif params[:alert_enabled] == '0'
+                        @user.update_attribute(:alert_enabled, "1")
+                        redirect_to user_path(@user)
+                end
+                if params[:active] == 'Y'
+                        @user.update_attribute(:active, "N")
+                        redirect_to user_path(@user)
+                elsif params[:active] == 'N'
+                        @user.update_attribute(:active, "Y")
+                        redirect_to user_path(@user)
+                end
+                if params[:active] == 'Y'
+                        @user.update_attribute(:active, "N")
+                        redirect_to user_path(@user)
+                elsif params[:active] == 'N'
+                        @user.update_attribute(:active, "Y")
+                        redirect_to user_path(@user)
+                end
+                if params[:active] == 'Y'
+                        @user.update_attribute(:active, "N")
+                        redirect_to user_path(@user)
+                elsif params[:active] == 'N'
+                        @user.update_attribute(:active, "Y")
+                        redirect_to user_path(@user)
+                end
+                if params[:active] == 'Y'
+                        @user.update_attribute(:active, "N")
+                        redirect_to user_path(@user)
+                elsif params[:active] == 'N'
+                        @user.update_attribute(:active, "Y")
+                        redirect_to user_path(@user)
+                end
+                if params[:active] == 'Y'
+                        @user.update_attribute(:active, "N")
+                        redirect_to user_path(@user)
+                elsif params[:active] == 'N'
+                        @user.update_attribute(:active, "Y")
+                        redirect_to user_path(@user)
+                end
+                if params[:active] == 'Y'
+                        @user.update_attribute(:active, "N")
+                        redirect_to user_path(@user)
+                elsif params[:active] == 'N'
+                        @user.update_attribute(:active, "Y")
+                        redirect_to user_path(@user)
+                end
+                if params[:active] == 'Y'
+                        @user.update_attribute(:active, "N")
+                        redirect_to user_path(@user)
+                elsif params[:active] == 'N'
+                        @user.update_attribute(:active, "Y")
+                        redirect_to user_path(@user)
+                end
+                if params[:active] == 'Y'
+                        @user.update_attribute(:active, "N")
+                        redirect_to user_path(@user)
+                elsif params[:active] == 'N'
+                        @user.update_attribute(:active, "Y")
+                        redirect_to user_path(@user)
+                end
+                if params[:active] == 'Y'
+                        @user.update_attribute(:active, "N")
+                        redirect_to user_path(@user)
+                elsif params[:active] == 'N'
+                        @user.update_attribute(:active, "Y")
+                        redirect_to user_path(@user)
+                end
 	end
 	def new
 		@user = User.new
@@ -103,4 +187,13 @@ class UsersController < ApplicationController
 			snippet.to_s
 		end
 	end
+
+	def convert_permission(permission)
+		if permission == '1'
+			'Y'
+		elsif permission == '0'
+			'N'
+		end
+	end
+		
 end

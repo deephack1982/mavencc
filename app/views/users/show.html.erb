@@ -12,6 +12,15 @@
 			<%= f.static_control :group_name do %>
 				<%= link_to @user.user_group, user_group_path(@user.user_group_id), class: "label label-default" %>
 			<% end %>
+			<%= f.static_control :delete_users do %>
+				<%= link_to convert_permission(@user.delete_users), user_path(@user, :delete_users => @user.delete_users), class: "label #{item_active(convert_permission(@user.delete_users))}" %>
+			<% end %>
+                        <%= f.static_control :delete_user_groups do %>
+                                <%= link_to convert_permission(@user.delete_user_groups), user_path(@user, :delete_user_groups => @user.delete_user_groups), class: "label #{item_active(convert_permission(@user.delete_user_groups))}" %>
+                        <% end %>
+                        <%= f.static_control :alert_enabled do %>
+                                <%= link_to convert_permission(@user.alert_enabled), user_path(@user, :alert_enabled => @user.alert_enabled), class: "label #{item_active(convert_permission(@user.alert_enabled))}" %>
+                        <% end %>
 		<% end %>
 	</div>
 	</div>	
