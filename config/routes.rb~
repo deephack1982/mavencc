@@ -9,7 +9,11 @@ Mavencc::Application.routes.draw do
 #  match '/leads/new', to: 'leads#new', via: 'get'
   resources :users
   resources :user_groups
-  resources :campaigns
+  resources :campaigns do
+  	collection do
+  		get 'copy'
+  	end
+  end
   resources :lists
   resources :leads do
   	collection do

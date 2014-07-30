@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-	helper_method :sort_column, :sort_direction
+	helper_method :sort_column, :sort_direction, :status_name_lookup
 	
 	before_filter :authorise
 	
@@ -76,5 +76,9 @@ class LeadsController < ApplicationController
 	
 	def sort_direction
 		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+	end
+	
+	def status_name_lookup(status)
+		Status.find_by_status(status).status_name
 	end
 end
