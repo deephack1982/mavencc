@@ -8,6 +8,10 @@
 				<%= link_to @lead.list_id, list_path(@lead.list_id), class: "label label-default" %>
 			<% end %>
 			
+			<%= f.static_control :status do %>
+				<%= "#{@lead.status} - #{status_name_lookup(@lead.status)}" %>
+			<% end %>
+			
 			<%= f.static_control :phone_code %>
 			
 			<%= f.static_control :phone_number %>
