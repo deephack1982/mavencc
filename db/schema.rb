@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728153801) do
+ActiveRecord::Schema.define(version: 20140730103605) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id",                           limit: 8
@@ -280,7 +280,7 @@ ActiveRecord::Schema.define(version: 20140728153801) do
     t.datetime "updated_at"
   end
 
-  add_index "list", ["list_id"], name: "index_list_on_lists_id", using: :btree
+  add_index "list", ["list_id"], name: "index_list_on_list_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "list_id"
@@ -397,7 +397,6 @@ ActiveRecord::Schema.define(version: 20140728153801) do
     t.string   "agent_choose_blended",               limit: 1
     t.string   "realtime_block_user_info",           limit: 1
     t.string   "custom_fields_modify",               limit: 1
-    t.string   "force_change_password",              limit: 1
     t.string   "agent_lead_search_override",         limit: 28
     t.string   "modify_shifts",                      limit: 1
     t.string   "modify_phones",                      limit: 1
@@ -423,6 +422,7 @@ ActiveRecord::Schema.define(version: 20140728153801) do
     t.integer  "max_inbound_calls",                  limit: 2
     t.string   "modify_custom_dialplans",            limit: 1
     t.integer  "wrapup_seconds_override",            limit: 2
+    t.string   "force_change_password",              limit: 1
   end
 
   add_index "users", ["user_group_id"], name: "index_users_on_user_group_id", using: :btree
