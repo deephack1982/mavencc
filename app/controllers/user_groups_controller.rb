@@ -10,6 +10,7 @@ class UserGroupsController < ApplicationController
 	def show
 		@user_tab = 'group-list'
 		@user_group = UserGroup.find(params[:id])
+		@users_in_group = User.where(:user_group_id => params[:id]).paginate(page: params[:page], :per_page => 20)
 	end
 	def edit
 		@user_group = UserGroup.find(params[:id])
