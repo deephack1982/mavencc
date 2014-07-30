@@ -8,10 +8,12 @@ class Campaign < ActiveRecord::Base
 	ADAPTIVE_DROP_LIMIT = Array (1..99)
 	AVAILABLE_ONLY_TALLY_THRESHOLD = ["DISABLED","LOGGED-IN_AGENTS","NON-PAUSED_AGENTS","WAITING_AGENTS"]
 	AVAILABLE_ONLY_TALLY_THRESHOLD_AGENTS = Array (1..50)
+	ADAPTIVE_DL_DIFF_TARGET = Array (-40..40)
 	validates :campaign_id, uniqueness: true, presence: true, length: { in: 2..8 }
 	validates :campaign_name, uniqueness: true, presence: true, length: { in: 6..40 }
 	validates :lead_order, presence: true
 	validates :hopper_level, presence: true
 	has_many :lists
 	accepts_nested_attributes_for :lists
+	belongs_to :script
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728153801) do
+ActiveRecord::Schema.define(version: 20140730143627) do
 
   create_table "campaigns", force: true do |t|
     t.string   "campaign_id",                           limit: 8
@@ -242,7 +242,10 @@ ActiveRecord::Schema.define(version: 20140728153801) do
     t.string   "manual_dial_search_checkbox",           limit: 16
     t.string   "hide_call_log_info",                    limit: 1
     t.integer  "timer_alt_seconds"
+    t.integer  "script_id"
   end
+
+  add_index "campaigns", ["script_id"], name: "index_campaigns_on_script_id", using: :btree
 
   create_table "list", force: true do |t|
     t.integer  "lead_id"

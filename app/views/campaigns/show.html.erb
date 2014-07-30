@@ -36,6 +36,9 @@
 				<%= f.static_control :user_group do %>
 					<%= link_to @campaign_user_group, user_group_path(@campaign.user_group), class: "label label-default" %>
 				<% end %>
+				<%= f.static_control :campaign_script do %>
+					<%= link_to @campaign.script.script_id, script_path(@campaign.script.id), class: "label label-default" %>
+				<% end %>
 				<% end %>
 			</div>
 		</div>
@@ -59,6 +62,10 @@
       <% end %>
       <%= f.static_control :lead_order %>
 			<%= f.static_control :hopper_level %>
+			<%= f.static_control :available_only_ratio_tally %>
+			<%= f.static_control :available_only_tally_threshold %> 
+			<%= f.static_control :available_only_tally_threshold_agents, label: "Agents" %>
+			<%= f.static_control :adaptive_dl_diff_target %>	
 			<% end %>
 		</div>
 		</div>

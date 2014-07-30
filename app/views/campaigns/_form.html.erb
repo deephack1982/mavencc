@@ -19,6 +19,7 @@
 					<%= f.text_field :campaign_description, :placeholder => 'Optional' %>
 					<%= f.select :active, Campaign::ACTIVE %>
 					<%= f.collection_select :user_group, UserGroup.all, :id, :user_group %>
+					<%= f.collection_select :script_id, Script.all, :id, :script_name %>
 				
 			</div>
 		</div>
@@ -40,9 +41,10 @@
       <%= f.select :adaptive_dropped_percentage, Campaign::ADAPTIVE_DROP_LIMIT %>
       <%= f.select :lead_order, Campaign::LEAD_ORDER %>
 			<%= f.select :hopper_level, Campaign::HOPPER_LEVEL %>
-			<%= f.select :available_only_tally_threshold, Campaign::AVAILABLE_ONLY_TALLY_THRESHOLD %>
+			<%= f.select :available_only_ratio_tally, Campaign::ACTIVE %>
+			<%= f.select :available_only_tally_threshold, Campaign::AVAILABLE_ONLY_TALLY_THRESHOLD %> 
 			<%= f.select :available_only_tally_threshold_agents, Campaign::AVAILABLE_ONLY_TALLY_THRESHOLD_AGENTS, label: "Agents" %>
-			
+			<%= f.select :adaptive_dl_diff_target, Campaign::ADAPTIVE_DL_DIFF_TARGET %>			
 			<div class="center">
 			<%= link_to "Advanced Settings", "#advDiallerModal", class: "btn btn-success", :data => { :toggle => "modal" } %>
 			</div>

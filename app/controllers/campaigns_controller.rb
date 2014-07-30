@@ -55,7 +55,7 @@ class CampaignsController < ApplicationController
 	end
 	
 	def create
-		@campaign = Campaign.create(campaign_params.merge(:dial_statuses => ' NEW '))
+		@campaign = Campaign.create(campaign_params.merge(:dial_statuses => ' NEW ', :campaign_script => @campaign.script.script_id))
     	if @campaign.save
     		flash[:success] = "Campaign created"
       		redirect_to campaign_path(@campaign)
@@ -72,7 +72,7 @@ class CampaignsController < ApplicationController
 	
 	def update
 		@campaign = Campaign.find(params[:id])
-		if @campaign.update_attributes(campaign_params)
+		if @campaign.update_attributes(campaign_params.merge(:campaign_script => @campaign.script.script_id))
 			flash[:success] = "Campaign updated"
 			@campaign.campaign_id = @campaign.id
 			redirect_to campaign_path(@campaign)
