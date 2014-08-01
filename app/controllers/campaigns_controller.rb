@@ -55,13 +55,13 @@ class CampaignsController < ApplicationController
 	end
 	
 	def create
-		@campaign = Campaign.create(campaign_params.merge(:dial_statuses => ' NEW ', :campaign_script => @campaign.script.script_id))
+		@campaign = Campaign.create(campaign_params.merge(:dial_statuses => ' NEW ', :campaign_script => Script.find(campaign_params[:script_id]).script_id))
     	if @campaign.save
     		flash[:success] = "Campaign created"
-      		redirect_to campaign_path(@campaign)
+     		redirect_to campaign_path(@campaign)
     	else
     		flash[:danger] = "Campaign could not be created"
-      		render 'new'
+     		render 'new'
     	end
 	end
 	
@@ -72,7 +72,7 @@ class CampaignsController < ApplicationController
 	
 	def update
 		@campaign = Campaign.find(params[:id])
-		if @campaign.update_attributes(campaign_params.merge(:campaign_script => @campaign.script.script_id))
+		if @campaign.update_attributes(campaign_params.merge(:campaign_script => Script.find(campaign_params[:script_id]).script_id))
 			flash[:success] = "Campaign updated"
 			@campaign.campaign_id = @campaign.id
 			redirect_to campaign_path(@campaign)
@@ -115,7 +115,7 @@ class CampaignsController < ApplicationController
 	private
 	
 	def campaign_params
-		params.require(:campaign).permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description,:lead_order,:hopper_level,:dial_method,:auto_dial_level,:adaptive_intensity,:lists_attributes,:dial_status,:adaptive_dropped_percentage,:available_only_tally_threshold,:available_only_tally_threshold_agents)
+		params.require(:campaign).permit(:campaign_id,:campaign_name,:active,:user_group,:campaign_description,:lead_order,:hopper_level,:dial_method,:auto_dial_level,:adaptive_intensity,:lists_attributes,:dial_status,:adaptive_dropped_percentage,:available_only_tally_threshold,:available_only_tally_threshold_agents, :script_id)
 	end
 	
 	def sort_column
