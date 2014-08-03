@@ -10,4 +10,9 @@ class List < ActiveRecord::Base
   def campaign_name
   	self.campaign.campaign_name if self.campaign
   end
+  
+  def dialable
+  	@list_statuses = self.campaign.dial_statuses.split(" ")
+  	Lead.where(list_id: self.id).where(status: @list_statuses).where("called_since_last_reset = 'N'").count
+  end
 end
