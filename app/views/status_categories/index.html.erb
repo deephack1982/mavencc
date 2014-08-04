@@ -6,7 +6,7 @@
 	<table class="table table-striped table-hover">
 	<tr><th <%= sortable "id","Id" %></th><th <%= sortable "vsc_id","Category" %></th><th <%= sortable "vsc_name","Category Name" %></th></tr>
 	<% @status_categories.each do |s| %>
-	<tr><td><span class="label label-info"><%= link_to s.id, status_category_path(s) %></span></td><td><%= s.vsc_id %></td><td><%= s.vsc_name %></td></tr>
+	<tr><td><%= link_to s.id, status_category_path(s), class: "label label-info" %></td><td><%= s.vsc_id %></td><td><%= s.vsc_name %></td></tr>
 	<% end %>
 	</table>
 	</div>
