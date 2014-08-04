@@ -1,0 +1,8 @@
+<%= bootstrap_form_for(@filter) do |f| %>
+		<%= f.text_field :lead_filter_id, :placeholder => 'At least 2 characters and no more than 10' %>
+		<%= f.text_field :lead_filter_name, :placeholder => 'At least 2 characters and no more than 50' %>
+		<%= f.text_field :lead_filter_comments %>
+		<%= f.text_area :lead_filter_sql, :cols => 40, :rows => 15 %>
+		<%= f.collection_select :user_group_id, UserGroup.all, :id, :user_group %>
+		<div class="row"><%= link_to "Back", back_action, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Create", class: "btn btn-large btn-primary" %></div></div>
+		<% end %>

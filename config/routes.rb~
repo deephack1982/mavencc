@@ -26,7 +26,7 @@ Mavencc::Application.routes.draw do
   match '/statuses', to: 'statuses#index', via: 'get', as: 'statuses'
   match '/statuses/new', to: 'statuses#new', via: 'get', as: 'new_status'
   match '/status/edit', to: 'statuses#edit', via: 'get', as: 'edit_status'
-  match '/status/:id(.:format)', to: 'status#show', via: 'get', as: 'status'
+  match '/status/:id(.:format)', to: 'statuses#show', via: 'get', as: 'status'
   resources :status_categories
   match '/admin/index', to: 'admin#index', via: 'get'
 #  match '/admin/statuses_index', to: 'admin#statuses_index', via: 'get'

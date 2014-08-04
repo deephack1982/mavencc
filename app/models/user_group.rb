@@ -3,4 +3,6 @@ class UserGroup < ActiveRecord::Base
 	validates :group_name, presence: true, length: { maximum: 40 }
 	
 	has_many :users
+	has_many :scripts
+	has_many :filters
 end
