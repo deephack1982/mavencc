@@ -16,7 +16,7 @@
     <li <%= current_nav("campaigns") %>><%= link_to "Campaigns", campaigns_path %></li>
     <li <%= current_nav("lists") %><%= current_nav("leads") %>><%= link_to "Lists", lists_path %></li>
     <li <%= current_nav("scripts") %>><%= link_to "Scripts", scripts_path %></li>
-    <li><%= link_to "Filters", '#' %></li>
+    <li <%= current_nav("filters") %>><%= link_to "Filters", filters_path %></li>
     <li><%= link_to "Inbound", '#' %></li>
     <li><%= link_to "Remote Workers", '#' %></li>
     <li <%= current_nav("admin") %>><%= link_to "Admin", admin_index_path %></li>

@@ -19,6 +19,7 @@
 					<%= f.text_field :campaign_description, :placeholder => 'Optional' %>
 					<%= f.select :active, Campaign::ACTIVE %>
 					<%= f.collection_select :user_group, UserGroup.all, :id, :user_group %>
+					<%= f.collection_select :lead_filter_id, Filter.all, :lead_filter_id, :lead_filter_id %>
 					<%= f.collection_select :script_id, Script.all, :id, :script_name %>
 				
 			</div>

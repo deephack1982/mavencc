@@ -23,6 +23,7 @@ Mavencc::Application.routes.draw do
   	end
   end
   resources :scripts
+  resources :filters
   match '/statuses', to: 'statuses#index', via: 'get', as: 'statuses'
   match '/statuses/new', to: 'statuses#new', via: 'get', as: 'new_status'
   match '/status/edit', to: 'statuses#edit', via: 'get', as: 'edit_status'

@@ -36,6 +36,9 @@
 				<%= f.static_control :user_group do %>
 					<%= link_to @campaign_user_group, user_group_path(@campaign.user_group), class: "label label-default" %>
 				<% end %>
+				<%= f.static_control :lead_filter_id do %>
+					<%= link_to Filter.find_by_lead_filter_id(@campaign.lead_filter_id).lead_filter_id, filter_path(Filter.find_by_lead_filter_id(@campaign.lead_filter_id)), class: "label label-default" %>
+				<% end %>
 				<%= f.static_control :campaign_script do %>
 					<%= link_to @campaign.script.script_id, script_path(@campaign.script.id), class: "label label-default" %>
 				<% end %>

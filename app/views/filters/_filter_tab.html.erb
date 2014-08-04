@@ -1,0 +1,8 @@
+<div class="row">
+	<div class="col-lg-2">	
+		<ul class="nav nav-pills nav-stacked" id="tab-menu">
+			<li <%= scripttab_active('add_filter',@filter_tab) %>><%= link_to "Add Filter", new_filter_path %></li>
+			<li <%= scripttab_active('filter',@filter_tab) %>><%= link_to "Show Filters", filters_path %></li>
+		</ul>
+		<%= render 'layouts/support' %>
+	</div>

@@ -15,3 +15,4 @@ CSV.foreach("#{::Rails.root}/lib/data/statuses.csv") do |row|
 end
 StatusCategory.create!(vsc_id: 'UNDEFINED', vsc_name: 'Default Category', tovdad_display: 'N', sale_category: 'N', dead_lead_category: 'N')
 Script.create!(script_id: 'NONE', script_name: 'NONE', script_comments: 'Default empty script', script_text: '', active: 'Y', user_group: 'Admins', user_group_id: 1)
+Filter.create!(lead_filter_id: 'NONE', lead_filter_name: 'NONE', lead_filter_comments: 'Default empty filter', lead_filter_sql: '', user_group: 'Admins', user_group_id: 1)
