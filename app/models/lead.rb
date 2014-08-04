@@ -20,7 +20,15 @@ class Lead < ActiveRecord::Base
   		row["status"] = 'NEW'
   		@currentlead = Lead.create! row.to_hash
   		@currentlead.lead_id = @currentlead.id
-  		@currentlead.save
+		if params[:duplicate_check] == "Y"
+			if Lead.find(@currentlead[:phone_number])
+				@duplicatecount += 1
+			else
+  				@currentlead.save
+			end
+		else
+			@currentlead.save
+		end
   	end
   end
 end

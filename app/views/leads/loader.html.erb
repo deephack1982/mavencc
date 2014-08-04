@@ -5,6 +5,7 @@
 	Choose a CSV file to import
 		<%= bootstrap_form_tag url: import_leads_path, multipart: true do |f| %>
 			<%= f.collection_select :list, List.all, :id, :list_name %>
+			<%= f.select :duplicate_check, options_for_select(["Y","N"]) %>
 			<%= f.file_field :file %>
 			<%= f.submit "Submit" %>
 		<% end %>
