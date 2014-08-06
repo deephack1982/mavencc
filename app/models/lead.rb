@@ -15,22 +15,27 @@ class Lead < ActiveRecord::Base
   end
   
   def self.import(file,list,duplicatecheck)
+	@receipt = { "loaded" => 0, "duplicates" => 0 }
   	CSV.foreach(file.path,headers: true) do |row|
   		row["list_id"] = list
   		row["status"] = 'NEW'
 		@currentlead = row.to_hash
 		if duplicatecheck = "Y"
 			if Lead.find_by_phone_number(@currentlead["phone_number"])
+				@receipt["duplicates"] = @receipt["duplicates"] + 1
 			else
   				@currentlead = Lead.create! @currentlead
 				@currentlead[:lead_id] = @currentlead[:id]
 				@currentlead.save
+				@receipt["loaded"] = @receipt["loaded"] + 1
 			end
 		else
 			Lead.create! @currentlead
 			@currentlead[:lead_id] = @currentlead[:id]
 			@currentlead.save
 		end
+
   	end
+	@receipt
   end
 end

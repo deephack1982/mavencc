@@ -59,8 +59,8 @@ class LeadsController < ApplicationController
 	
 	def import
 		@list_tab = 'loader'
-		Lead.import(params[:file],params[:list],params[:duplicate_check])
-		flash[:success] = "Leads loaded"
+		@receipt = Lead.import(params[:file],params[:list],params[:duplicate_check])
+		flash[:success] = "Leads loaded, Loaded : #{@receipt["loaded"]}, Duplicates : #{@receipt["duplicates"]}"
 		redirect_to lists_path
 	end
 	
