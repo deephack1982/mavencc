@@ -22,10 +22,14 @@ class Lead < ActiveRecord::Base
 		if duplicatecheck = "Y"
 			if Lead.find_by_phone_number(@currentlead["phone_number"])
 			else
-  				Lead.create! @currentlead.to_hash
+  				@currentlead = Lead.create! @currentlead
+				@currentlead[:lead_id] = @currentlead[:id]
+				@currentlead.save
 			end
 		else
-		Lead.create! @currentlead.to_hash
+			Lead.create! @currentlead
+			@currentlead[:lead_id] = @currentlead[:id]
+			@currentlead.save
 		end
   	end
   end
