@@ -21,20 +21,31 @@ class Lead < ActiveRecord::Base
 		@currentlead.save
 		@receipt["loaded"] = @receipt["loaded"] + 1
 	end
-	@receipt = { "loaded" => 0, "duplicates" => 0 , "invalid" => 0 }
+	@receipt = Hash.new{ |hash, key| hash[key] = Hash.new }
+	@receipt[:flash] = {"loaded" => 0, "duplicates" => 0, "invalid" => 0 }
   	CSV.foreach(file.path,headers: true) do |row|
   		row["list_id"] = list
   		row["status"] = 'NEW'
 		@currentlead = row.to_hash
 		if numbervalidation == "Y"
-			if ( @currentlead["phone_number"].length > 11 || @currentlead["phone_number"].length < 9 || @currentlead["phone_number"].first != "0" )
+			if @currentlead["phone_number"].length > 11
 				@receipt["invalid"] = @receipt["invalid"] + 1
+				@receipt[:data] = { "#{@currentlead["phone_number"]}" => 'too long' }
+				next
+			elsif @currentlead["phone_number"].length < 9
+				@receipt["invalid"] = @receipt["invalid"] + 1
+				@receipt[:data] = { "#{@currentlead["phone_number"]}" => 'too short' }
+				next
+			elsif@currentlead["phone_number"].first != "0"
+				@receipt["invalid"] = @receipt["invalid"] + 1
+				@receipt[:data] = { "#{@currentlead["phone_number"]}" => 'no leading 0' }
 				next
 			end
 		end
 		if duplicatecheck == "Y"
 			if Lead.find_by_phone_number(@currentlead["phone_number"])
 				@receipt["duplicates"] = @receipt["duplicates"] + 1
+				@receipt[:data] = { "#{@currentlead["phone_number"]}" => 'duplicate found' }
 				next
 			end
 		end
