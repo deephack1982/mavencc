@@ -19,7 +19,7 @@ Mavencc::Application.routes.draw do
   	collection do
   		get 'search'
   		get 'loader'
-  		post 'import'
+  		post 'receipt'
   	end
   end
   resources :scripts

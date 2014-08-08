@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-	helper_method :sort_column, :sort_direction, :status_name_lookup
+	helper_method :sort_column, :sort_direction, :status_name_lookup, :row_colour
 	
 	before_filter :authorise
 	
@@ -57,11 +57,10 @@ class LeadsController < ApplicationController
 		@list_tab = 'loader'
 	end
 	
-	def import
+	def receipt
 		@list_tab = 'loader'
 		@receipt = Lead.import(params[:file],params[:list],params[:duplicate_check],params[:number_validation])
-		flash[:success] = "Leads loaded, Good : #{@receipt[:flash["loaded"]]}, Duplicates : #{@receipt[:flash["duplicates"]]}, Invalid : #{@receipt[:flash["invalid"]]}"
-		redirect_to receipt_leads_path
+                flash[:success] = "Leads loaded, Good : #{@receipt[:flash]["loaded"]}, Duplicates : #{@receipt[:flash]["duplicates"]}, Invalid : #{@receipt[:flash]["invalid"]}"
 	end
 	
 	private
@@ -80,5 +79,14 @@ class LeadsController < ApplicationController
 	
 	def status_name_lookup(status)
 		Status.find_by_status(status).status_name
+	end
+
+	def row_colour(issue)
+		if issue == "duplicate found"
+			@snippet = ' class="warning"'
+		else
+			@snippet = ' class="danger"'
+		end
+		@snippet.to_s.html_safe
 	end
 end

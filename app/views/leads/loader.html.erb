@@ -3,7 +3,7 @@
 	<div class="panel-heading"><h3>Load New Leads</h3></div>
 	<div class="panel-body">
 	Choose a CSV file to import
-		<%= bootstrap_form_tag url: import_leads_path, multipart: true do |f| %>
+		<%= bootstrap_form_tag url: receipt_leads_path, multipart: true do |f| %>
 			<%= f.collection_select :list, List.all, :id, :list_name %>
 			<%= f.select :duplicate_check, options_for_select(["Y","N"]) %>
 			<%= f.select :number_validation, options_for_select(["Y","N"]) %>
