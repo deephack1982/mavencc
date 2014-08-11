@@ -28,230 +28,18 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@user_tab = 'list'
-		if params[:active] == 'Y'
-			@user.update_attribute(:active, "N")
-			redirect_to user_path(@user)
-		elsif params[:active] == 'N'
-			@user.update_attribute(:active, "Y")
-			redirect_to user_path(@user)
+		@io_attributes = [ "delete_users","delete_user_groups","alert_enabled","download_lists","manager_shift_enforcement_override","shift_override_flag","export_reports","delete_from_dnc","allow_alerts","agent_choose_territories","callcard_admin","agent_choose_blended","realtime_block_user_info","custom_fields_modify","modify_shifts","modify_phones","modify_carriers","modify_labels","modify_statuses","modify_voicemail","modify_audiostore","modify_moh","modify_tts","modify_contacts","modify_same_user_level","admin_hide_lead_data","agentcall_email","modify_email_accounts","alter_admin_interface_options","modify_custom_dialplans" ]
+		@yn_attributes = [ "active","force_change_password" ]
+
+		@yn_attributes.each do |attribute|
+		flip_attribute_yn("#{attribute}")
 		end
-		if params[:force_change_password] == 'Y'
-                        @user.update_attribute(:force_change_password, "N")
-                        redirect_to user_path(@user)
-                elsif params[:force_change_password] == 'N'
-                        @user.update_attribute(:force_change_password, "Y")
-                        redirect_to user_path(@user)
-                end
-                if params[:delete_users] == '1'
-                        @user.update_attribute(:delete_users, "0")
-                        redirect_to user_path(@user)
-                elsif params[:delete_users] == '0'
-                        @user.update_attribute(:delete_users, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:delete_user_groups] == '1'
-                        @user.update_attribute(:delete_user_groups, "0")
-                        redirect_to user_path(@user)
-                elsif params[:delete_user_groups] == '0'
-                        @user.update_attribute(:delete_user_groups, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:alert_enabled] == '1'
-			@user.update_attribute(:alert_enabled, "0")
-			redirect_to user_path(@user)
-		elsif params[:alert_enabled] == '0'
-			@user.update_attribute(:alert_enabled, "1")
-			redirect_to user_path(@user)
+		@io_attributes.each do |attribute|
+			flip_attribute_io("#{attribute}")
 		end
-                if params[:download_lists] == '1'
-                        @user.update_attribute(:download_lists, "0")
-                        redirect_to user_path(@user)
-                elsif params[:download_lists] == '0'
-                        @user.update_attribute(:download_lists, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:manager_shift_enforcement_override] == '1'
-                        @user.update_attribute(:manager_shift_enforcement_override, "0")
-                        redirect_to user_path(@user)
-                elsif params[:manager_shift_enforcement_override] == '0'
-                        @user.update_attribute(:manager_shift_enforcement_override, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:shift_override_flag] == '1'
-                        @user.update_attribute(:shift_override_flag, "0")
-                        redirect_to user_path(@user)
-                elsif params[:shift_override_flag] == '0'
-                        @user.update_attribute(:shift_override_flag, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:export_reports] == '1'
-                        @user.update_attribute(:export_reports, "0")
-                        redirect_to user_path(@user)
-                elsif params[:export_reports] == '0'
-                        @user.update_attribute(:export_reports, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:delete_from_dnc] == '1'
-                        @user.update_attribute(:delete_from_dnc, "0")
-                        redirect_to user_path(@user)
-                elsif params[:delete_from_dnc] == '0'
-                        @user.update_attribute(:delete_from_dnc, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:allow_alerts] == '1'
-                        @user.update_attribute(:allow_alerts, "0")
-                        redirect_to user_path(@user)
-                elsif params[:allow_alerts] == '0'
-                        @user.update_attribute(:allow_alerts, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:agent_choose_territories] == '1'
-                        @user.update_attribute(:agent_choose_territories, "0")
-                        redirect_to user_path(@user)
-                elsif params[:agent_choose_territories] == '0'
-                        @user.update_attribute(:agent_choose_territories, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:callcard_admin] == '1'
-                        @user.update_attribute(:callcard_admin, "0")
-                        redirect_to user_path(@user)
-                elsif params[:callcard_admin] == '0'
-                        @user.update_attribute(:callcard_admin, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:agent_choose_blended] == '1'
-                        @user.update_attribute(:agent_choose_blended, "0")
-                        redirect_to user_path(@user)
-                elsif params[:agent_choose_blended] == '0'
-                        @user.update_attribute(:agent_choose_blended, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:realtime_block_user_info] == '1'
-                        @user.update_attribute(:realtime_block_user_info, "0")
-                        redirect_to user_path(@user)
-                elsif params[:realtime_block_user_info] == '0'
-                        @user.update_attribute(:realtime_block_user_info, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:custom_fields_modify] == '1'
-                        @user.update_attribute(:custom_fields_modify, "0")
-                        redirect_to user_path(@user)
-                elsif params[:custom_fields_modify] == '0'
-                        @user.update_attribute(:custom_fields_modify, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:modify_shifts] == '1'
-                        @user.update_attribute(:modify_shifts, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_shifts] == '0'
-                        @user.update_attribute(:modify_shifts, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:modify_phones] == '1'
-                        @user.update_attribute(:modify_phones, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_phones] == '0'
-                        @user.update_attribute(:modify_phones, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:modify_carriers] == '1'
-                        @user.update_attribute(:modify_carriers, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_carriers] == '0'
-                        @user.update_attribute(:modify_carriers, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:modify_labels] == '1'
-                        @user.update_attribute(:modify_labels, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_labels] == '0'
-                        @user.update_attribute(:modify_labels, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:modify_statuses] == '1'
-                        @user.update_attribute(:modify_statuses, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_statuses] == '0'
-                        @user.update_attribute(:modify_statuses, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:modify_voicemail] == '1'
-                        @user.update_attribute(:modify_voicemail, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_voicemail] == '0'
-                        @user.update_attribute(:modify_voicemail, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:modify_audiostore] == '1'
-                        @user.update_attribute(:modify_audiostore, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_audiostore] == '0'
-                        @user.update_attribute(:modify_audiostore, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:modify_moh] == '1'
-                        @user.update_attribute(:modify_moh, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_moh] == '0'
-                        @user.update_attribute(:modify_moh, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:modify_tts] == '1'
-                        @user.update_attribute(:modify_tts, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_tts] == '0'
-                        @user.update_attribute(:modify_tts, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:modify_contacts] == '1'
-                        @user.update_attribute(:modify_contacts, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_contacts] == '0'
-                        @user.update_attribute(:modify_contacts, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:modify_same_user_level] == '1'
-                        @user.update_attribute(:modify_same_user_level, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_same_user_level] == '0'
-                        @user.update_attribute(:modify_same_user_level, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:admin_hide_lead_data] == '1'
-                        @user.update_attribute(:admin_hide_lead_data, "0")
-                        redirect_to user_path(@user)
-                elsif params[:admin_hide_lead_data] == '0'
-                        @user.update_attribute(:admin_hide_lead_data, "1")
-                        redirect_to user_path(@user)
-                end
-                if params[:agentcall_email] == '1'
-                        @user.update_attribute(:agentcall_email, "0")
-                        redirect_to user_path(@user)
-                elsif params[:agentcall_email] == '0'
-                        @user.update_attribute(:agentcall_email, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:modify_email_accounts] == '1'
-                        @user.update_attribute(:modify_email_accounts, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_email_accounts] == '0'
-                        @user.update_attribute(:modify_email_accounts, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:alter_admin_interface_options] == '1'
-                        @user.update_attribute(:alter_admin_interface_options, "0")
-                        redirect_to user_path(@user)
-                elsif params[:alter_admin_interface_options] == '0'
-                        @user.update_attribute(:alter_admin_interface_options, "1")
-                        redirect_to user_path(@user)
-                end
-		if params[:modify_custom_dialplans] == '1'
-                        @user.update_attribute(:modify_custom_dialplans, "0")
-                        redirect_to user_path(@user)
-                elsif params[:modify_custom_dialplans] == '0'
-                        @user.update_attribute(:modify_custom_dialplans, "1")
-                        redirect_to user_path(@user)
-                end
+		def eval(attribute)
+			puts attribute
+		end
 
 	end
 	def new
@@ -328,5 +116,25 @@ class UsersController < ApplicationController
 		elsif permission == '0'
 			'N'
 		end
+	end
+
+	def flip_attribute_io(attribute)
+                if params[:"#{attribute}"] == '1'
+                        @user.update_attribute(:"#{attribute}", "0")
+                        redirect_to user_path(@user)
+                elsif params[:"#{attribute}"] == '0'
+                        @user.update_attribute(:"#{attribute}", "1")
+                        redirect_to user_path(@user)
+                end
+	end
+
+	def flip_attribute_yn(attribute)
+                if params[:"#{attribute}"] == 'Y'
+                        @user.update_attribute(:"#{attribute}", "N")
+                        redirect_to user_path(@user)
+                elsif params[:"#{attribute}"] == 'N'
+                        @user.update_attribute(:"#{attribute}", "Y")
+                        redirect_to user_path(@user)
+                end
 	end
 end

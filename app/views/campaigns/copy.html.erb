@@ -4,9 +4,9 @@
 	<div class="panel-body">
 		<%= bootstrap_form_tag url: copy_campaigns_path, method: 'get', layout: :horizontal do |f| %>
 			<%= f.collection_select :original_campaign, Campaign.all, :id, :campaign_name %>
-			<%= f.text_field :new_campaign_id  %>
-			<%= f.text_field :new_campaign_name %>
-			<%= f.text_field :new_campaign_description %>
+			<%= f.text_field :new_campaign_id, value: params[:new_campaign_id] %>
+			<%= f.text_field :new_campaign_name, value: params[:new_campaign_name] %>
+			<%= f.text_field :new_campaign_description, value: params[:new_campaign_description] %>
 			<span class="pull-right"><%= f.submit "Copy", class: "btn btn-primary" %></span>
 		<% end %>
 	</div>
