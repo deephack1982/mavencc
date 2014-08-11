@@ -5,106 +5,26 @@
 		<%= bootstrap_form_for(@user, layout: :horizontal) do |f| %>
 			<%= f.static_control :user %>
 			<%= f.static_control :full_name %>
-			<%= f.static_control :active do %>
-				<%= link_to @user.active, user_path(@user, :active => @user.active), class: "label #{item_active(@user.active)}" %>
+			<% @yn_attributes.each do |attribute| %>
+			<%= f.static_control :"#{attribute}" do %>
+				<%= link_to @user["#{attribute}"], user_path(@user, :"#{attribute}" => @user["#{attribute}"]), class: "label #{item_active(@user["#{attribute}"])}" %>
 			<% end %>
-			<%= f.static_control :force_change_password do %>
-				<%= link_to @user.force_change_password, user_path(@user, :force_change_password => @user.force_change_password), class: "label #{item_active(@user.force_change_password)}" %>
 			<% end %>
+			<%#= f.static_control :force_change_password do %>
+				<%#= link_to @user.force_change_password, user_path(@user, :force_change_password => @user.force_change_password), class: "label #{item_active(@user.force_change_password)}" %>
+			<%# end %>
 			<%= f.static_control :user_level %>
 			<%= f.static_control :group_name do %>
 				<%= link_to @user.user_group, user_group_path(@user.user_group_id), class: "label label-default" %>
 			<% end %>
-			<%= f.static_control :delete_users do %>
-				<%= link_to convert_permission(@user.delete_users), user_path(@user, :delete_users => @user.delete_users), class: "label #{item_active(convert_permission(@user.delete_users))}" %>
-			<% end %>
-                        <%= f.static_control :delete_user_groups do %>
-                                <%= link_to convert_permission(@user.delete_user_groups), user_path(@user, :delete_user_groups => @user.delete_user_groups), class: "label #{item_active(convert_permission(@user.delete_user_groups))}" %>
+			<% @io_attributes.each do |attribute| %>
+                        <%= f.static_control :"#{attribute}" do %>
+                                <%= link_to convert_permission(@user["#{attribute}"]), user_path(@user, :"#{attribute}" => @user["#{attribute}"]), class: "label #{item_active(convert_permission(@user["#{attribute}"]))}" %>
                         <% end %>
-                        <%= f.static_control :alert_enabled do %>
-                                <%= link_to convert_permission(@user.alert_enabled), user_path(@user, :alert_enabled => @user.alert_enabled), class: "label #{item_active(convert_permission(@user.alert_enabled))}" %>
                         <% end %>
-			<%= f.static_control :download_lists do%>
-				<%= link_to convert_permission(@user.download_lists), user_path(@user, :download_lists => @user.download_lists), class: "label #{item_active(convert_permission(@user.download_lists))}" %>
-			<% end %>
-			<%= f.static_control :manager_shift_enforcement_override do%>
-                                <%= link_to convert_permission(@user.manager_shift_enforcement_override), user_path(@user, :manager_shift_enforcement_override => @user.manager_shift_enforcement_override), class: "label #{item_active(convert_permission(@user.manager_shift_enforcement_override))}" %>
-                        <% end %>
-			<%= f.static_control :shift_override_flag do%>
-                                <%= link_to convert_permission(@user.shift_override_flag), user_path(@user, :shift_override_flag => @user.shift_override_flag), class: "label #{item_active(convert_permission(@user.shift_override_flag))}" %>
-                        <% end %>
-			<%= f.static_control :export_reports do%>
-                                <%= link_to convert_permission(@user.export_reports), user_path(@user, :export_reports => @user.export_reports), class: "label #{item_active(convert_permission(@user.export_reports))}" %>
-                        <% end %>
-                        <%= f.static_control :delete_from_dnc do%>
-                                <%= link_to convert_permission(@user.delete_from_dnc), user_path(@user, :delete_from_dnc => @user.delete_from_dnc), class: "label #{item_active(convert_permission(@user.delete_from_dnc))}" %>
-                        <% end %>
-                        <%= f.static_control :allow_alerts do%>
-                                <%= link_to convert_permission(@user.allow_alerts), user_path(@user, :allow_alerts => @user.allow_alerts), class: "label #{item_active(convert_permission(@user.allow_alerts))}" %>
-                        <% end %>
-                        <%= f.static_control :agent_choose_territories do%>
-                                <%= link_to convert_permission(@user.agent_choose_territories), user_path(@user, :agent_choose_territories => @user.agent_choose_territories), class: "label #{item_active(convert_permission(@user.agent_choose_territories))}" %>
-                        <% end %>
-                        <%= f.static_control :callcard_admin do%>
-                                <%= link_to convert_permission(@user.callcard_admin), user_path(@user, :callcard_admin => @user.callcard_admin), class: "label #{item_active(convert_permission(@user.callcard_admin))}" %>
-                        <% end %>
-                        <%= f.static_control :agent_choose_blended do%>
-                                <%= link_to convert_permission(@user.agent_choose_blended), user_path(@user, :agent_choose_blended => @user.agent_choose_blended), class: "label #{item_active(convert_permission(@user.agent_choose_blended))}" %>
-                        <% end %>
-                        <%= f.static_control :realtime_block_user_info do%>
-                                <%= link_to convert_permission(@user.realtime_block_user_info), user_path(@user, :realtime_block_user_info => @user.realtime_block_user_info), class: "label #{item_active(convert_permission(@user.realtime_block_user_info))}" %>
-                        <% end %>
-                        <%= f.static_control :custom_fields_modify do%>
-                                <%= link_to convert_permission(@user.custom_fields_modify), user_path(@user, :custom_fields_modify => @user.custom_fields_modify), class: "label #{item_active(convert_permission(@user.custom_fields_modify))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_shifts do%>
-                                <%= link_to convert_permission(@user.modify_shifts), user_path(@user, :modify_shifts => @user.modify_shifts), class: "label #{item_active(convert_permission(@user.modify_shifts))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_phones do%>
-                                <%= link_to convert_permission(@user.modify_phones), user_path(@user, :modify_phones => @user.modify_phones), class: "label #{item_active(convert_permission(@user.modify_phones))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_carriers do%>
-                                <%= link_to convert_permission(@user.modify_carriers), user_path(@user, :modify_carriers => @user.modify_carriers), class: "label #{item_active(convert_permission(@user.modify_carriers))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_labels do%>
-                                <%= link_to convert_permission(@user.modify_labels), user_path(@user, :modify_labels => @user.modify_labels), class: "label #{item_active(convert_permission(@user.modify_labels))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_statuses do%>
-                                <%= link_to convert_permission(@user.modify_statuses), user_path(@user, :modify_statuses => @user.modify_statuses), class: "label #{item_active(convert_permission(@user.modify_statuses))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_voicemail do%>
-                                <%= link_to convert_permission(@user.modify_voicemail), user_path(@user, :modify_voicemail => @user.modify_voicemail), class: "label #{item_active(convert_permission(@user.modify_voicemail))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_audiostore do%>
-                                <%= link_to convert_permission(@user.modify_audiostore), user_path(@user, :modify_audiostore => @user.modify_audiostore), class: "label #{item_active(convert_permission(@user.modify_audiostore))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_moh do%>
-                                <%= link_to convert_permission(@user.modify_moh), user_path(@user, :modify_moh => @user.modify_moh), class: "label #{item_active(convert_permission(@user.modify_moh))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_tts do%>
-                                <%= link_to convert_permission(@user.modify_tts), user_path(@user, :modify_tts => @user.modify_tts), class: "label #{item_active(convert_permission(@user.modify_tts))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_contacts do%>
-                                <%= link_to convert_permission(@user.modify_contacts), user_path(@user, :modify_contacts => @user.modify_contacts), class: "label #{item_active(convert_permission(@user.modify_contacts))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_same_user_level do%>
-                                <%= link_to convert_permission(@user.modify_same_user_level), user_path(@user, :modify_same_user_level => @user.modify_same_user_level), class: "label #{item_active(convert_permission(@user.modify_same_user_level))}" %>
-                        <% end %>
-                        <%= f.static_control :admin_hide_lead_data do%>
-                                <%= link_to convert_permission(@user.admin_hide_lead_data), user_path(@user, :admin_hide_lead_data => @user.admin_hide_lead_data), class: "label #{item_active(convert_permission(@user.admin_hide_lead_data))}" %>
-                        <% end %>
-                        <%= f.static_control :agentcall_email do%>
-                                <%= link_to convert_permission(@user.agentcall_email), user_path(@user, :agentcall_email => @user.agentcall_email), class: "label #{item_active(convert_permission(@user.agentcall_email))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_email_accounts do%>
-                                <%= link_to convert_permission(@user.modify_email_accounts), user_path(@user, :modify_email_accounts => @user.modify_email_accounts), class: "label #{item_active(convert_permission(@user.modify_email_accounts))}" %>
-                        <% end %>
-                        <%= f.static_control :alter_admin_interface_options do%>
-                                <%= link_to convert_permission(@user.alter_admin_interface_options), user_path(@user, :alter_admin_interface_options => @user.alter_admin_interface_options), class: "label #{item_active(convert_permission(@user.alter_admin_interface_options))}" %>
-                        <% end %>
-                        <%= f.static_control :modify_custom_dialplans do%>
-                                <%= link_to convert_permission(@user.modify_custom_dialplans), user_path(@user, :modify_custom_dialplans => @user.modify_custom_dialplans), class: "label #{item_active(convert_permission(@user.modify_custom_dialplans))}" %>
-                        <% end %>
+                        <%#= f.static_control :modify_custom_dialplans do%>
+                                <%#= link_to convert_permission(@user.modify_custom_dialplans), user_path(@user, :modify_custom_dialplans => @user.modify_custom_dialplans), class: "label #{item_active(convert_permission(@user.modify_custom_dialplans))}" %>
+                        <%# end %>
 		<% end %>
 	</div>
 	</div>	
