@@ -106,8 +106,9 @@ class CampaignsController < ApplicationController
 				flash[:success] = "Campaign Copied Sucsessfully"
 				redirect_to campaign_path(@new_campaign)
 			else
-				flash[:danger] = "Campaign could not copy"
-				redirect_to campaigns_path
+				@error = @new_campaign.errors.full_messages.join(", ")
+				flash[:danger] = "Campaign could not copy - #{@error}"
+				#redirect_to copy_campaigns_path
 			end
 		end
 	end
