@@ -13,7 +13,7 @@
 						
 			<%= f.collection_select :campaign_id, Campaign.all, :id, :campaign_name %>
 			
-			<%= f.text_field :reset_time, :placeholder => 'optional' %>
+			<%= f.text_field :reset_time, :placeholder => 'optional', :id => 'reset_time_select2' %>
 				
 			<div class="row"><%= link_to "Back", lists_path, class: "btn btn-default" %><div class="pull-right"><%= f.submit "Create", class: "btn btn-large btn-primary" %></div></div>
 		<% end %>

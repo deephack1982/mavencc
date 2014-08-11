@@ -47,6 +47,7 @@ gem 'nested_form'
 gem 'chartkick'
 #gem 'jquery-turbolinks'
 gem 'groupdate'
+gem 'select2-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
