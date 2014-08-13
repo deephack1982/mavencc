@@ -14,7 +14,7 @@ class StatusesController < ApplicationController
 	end
 
 	def edit
-		@yn_attributes = [ "selectable","human_answered","sale","dnc","customer_contact","not_interested","unworkable","scheduled_callback","completed","selectable" ]
+		@yn_attributes = [ "selectable","human_answered","sale","dnc","customer_contact","not_interested","unworkable","scheduled_callback","completed" ]
 		@statuses = Status.order(sort_column + " " + sort_direction)
 		@yn_attributes.each do |attribute|
 			flip_status_attribute("#{attribute}")
