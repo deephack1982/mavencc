@@ -12,11 +12,11 @@ class ApplicationController < ActionController::Base
 		redirect_to login_url if current_user.nil?
 		if current_user.delete_users == '0' && params[:controller] == 'users' && params[:action] == 'destroy'
 			flash[:danger] = 'Insufficient Permissions'
-			redirect_to campaigns_path
+			redirect_to users_path
 		end
 		if current_user.delete_user_groups == '0' && params[:controller] == 'user_groups' && params[:action] == 'destroy'
 			flash[:danger] = 'Insufficient Permissions'
-			redirect_to campaigns_path
+			redirect_to user_groups_path
 		end
 		if current_user.download_lists == '0' && params[:controller] == 'lists' && params[:action] == 'show.csv'
 			flash[:danger] = 'Insufficient Permissions'
