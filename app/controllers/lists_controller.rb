@@ -44,10 +44,10 @@ class ListsController < ApplicationController
 					csv_file << v.first_name << ','
 					csv_file << v.last_name << ','
 					csv_file << v.address1 << ','
-					csv_file << v.address2 << ','
-					csv_file << v.address3 << ','
-					csv_file << v.city << ','
-					csv_file << v.province << ','
+					csv_file << v.address2.to_s << ','
+					csv_file << v.address3.to_s << ','
+					csv_file << v.city.to_s << ','
+					csv_file << v.province.to_s << ','
 					csv_file << v.postal_code << ','
 					csv_file.chomp(',')
 					csv_file << "\n"
