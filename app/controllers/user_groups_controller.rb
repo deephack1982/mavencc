@@ -18,8 +18,7 @@ class UserGroupsController < ApplicationController
 	def update
 		@user_group = UserGroup.find(params[:id])
 		if @user_group.update_attributes(user_group_params)
-      			flash[:success] = "User group updated"
-			redirect_to user_group_path(@user_group)
+			redirect_to user_group_path(@user_group), :success => "User group updated"
 	    	else
 			flash[:danger] = "User group could not be updated"
 	      		render 'edit'
@@ -32,8 +31,7 @@ class UserGroupsController < ApplicationController
 	def create
 		@user_group = UserGroup.create(user_group_params)
     	if @user_group.save
-    		flash[:success] = "User group created"
-      		redirect_to user_group_path(@user_group)
+      		redirect_to user_group_path(@user_group), :success => "User group created"
     	else
     		flash[:danger] = "User group could not be created"
       		render 'new'
@@ -46,8 +44,7 @@ class UserGroupsController < ApplicationController
 		respond_to do |format|
 			format.js
 			format.html do
-				flash[:success] = "User Group Deleted"
-				redirect_to user_groups_path
+				redirect_to user_groups_path, :success => "User group deleted"
 			end
 			format.json { head :no_content }
 		end

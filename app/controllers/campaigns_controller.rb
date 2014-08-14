@@ -35,16 +35,14 @@ class CampaignsController < ApplicationController
 			@statuses.delete(params[:remove_dial_status])
 			@status_to_remove = " " + @statuses.join(" ") + " "
 			@campaign.update_attribute(:dial_statuses, @status_to_remove)
-			flash[:success] = "Dial status #{params[:remove_dial_status]} removed"
-			redirect_to campaign_path(@campaign)
+			redirect_to campaign_path(@campaign), :success => "Dial status #{params[:remove_dial_status]} removed"
 		end
 		
 		if params.has_key?(:add_dial_status)
 			@statuses << params[:add_dial_status] unless @statuses.include?(params[:add_dial_status])
 			@status_to_add = " " + @statuses.join(" ") + " "
 			@campaign.update_attribute(:dial_statuses, @status_to_add)
-			flash[:success] = "Dial status #{params[:add_dial_status]} added"
-			redirect_to campaign_path(@campaign)
+			redirect_to campaign_path(@campaign), :success => "Dial status #{params[:add_dial_status]} added"
 		end
 		
 	end
@@ -57,8 +55,7 @@ class CampaignsController < ApplicationController
 	def create
 		@campaign = Campaign.create(campaign_params.merge(:dial_statuses => ' NEW ', :campaign_script => Script.find(campaign_params[:script_id]).script_id))
     	if @campaign.save
-    		flash[:success] = "Campaign created"
-     		redirect_to campaign_path(@campaign)
+     		redirect_to campaign_path(@campaign), :success => "Campaign created"
     	else
     		flash[:danger] = "Campaign could not be created"
      		render 'new'
@@ -73,9 +70,8 @@ class CampaignsController < ApplicationController
 	def update
 		@campaign = Campaign.find(params[:id])
 		if @campaign.update_attributes(campaign_params.merge(:campaign_script => Script.find(campaign_params[:script_id]).script_id))
-			flash[:success] = "Campaign updated"
 			@campaign.campaign_id = @campaign.id
-			redirect_to campaign_path(@campaign)
+			redirect_to campaign_path(@campaign), :success => "Campaign updated"
 		else
 			flash[:danger] = "Campaign could not be updated"
 			render 'edit'
@@ -89,8 +85,7 @@ class CampaignsController < ApplicationController
 		respond_to do |format|
 			format.js
 			format.html do
-				flash[:success] = "Campaign Deleted"
-				redirect_to campaigns_path
+				redirect_to campaigns_path, :success => "Campaign deleted"
 			end
 			format.json { head :no_content }
 		end
@@ -103,8 +98,7 @@ class CampaignsController < ApplicationController
 			@original_campaign = Campaign.find(params[:original_campaign])
 			@new_campaign = Campaign.new(@original_campaign.attributes.merge(:campaign_id => params[:new_campaign_id], :campaign_name => params[:new_campaign_name], :campaign_description => params[:new_campaign_description], :id => nil))
 			if @new_campaign.save
-				flash[:success] = "Campaign Copied Sucsessfully"
-				redirect_to campaign_path(@new_campaign)
+				redirect_to campaign_path(@new_campaign), :success => "Campaign copied succesfully"
 			else
 				@error = @new_campaign.errors.full_messages.join(", ")
 				flash[:danger] = "Campaign could not copy - #{@error}"

@@ -49,8 +49,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.create(user_params.merge(:user_group => UserGroup.find(user_params[:user_group_id]).user_group))
     	if @user.save
-    		flash[:success] = "User created"
-      		redirect_to user_path(@user)
+      		redirect_to user_path(@user), :success => "User created"
     	else
     		flash[:danger] = "User could not be created"
       		render 'new'
@@ -63,8 +62,7 @@ class UsersController < ApplicationController
 		respond_to do |format|
 			format.js
 			format.html do
-				flash[:success] = "User Deleted"
-				redirect_to users_path
+				redirect_to users_path, :success => "User deleted"
 			end
 			format.json { head :no_content }
 		end
@@ -75,8 +73,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params.merge(:user_group => UserGroup.find(user_params[:user_group_id]).user_group))
-      			flash[:success] = "User updated"
-			redirect_to user_path(@user)
+			redirect_to user_path(@user), :success => "User updated"
 	    	else
 			flash[:danger] = "User could not be updated"
 	      		render 'edit'

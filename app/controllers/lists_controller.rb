@@ -66,8 +66,7 @@ class ListsController < ApplicationController
 		@list = List.create(list_params.merge(:list_lastcalldate => '2000-01-01'))
 		@list.id = @list.list_id
     	if @list.save
-    		flash[:success] = "List created"
-      		redirect_to list_path(@list)
+      		redirect_to list_path(@list), :success => "List created"
     	else
     		flash[:danger] = "List could not be created"
       		render 'new'
@@ -82,9 +81,8 @@ class ListsController < ApplicationController
 	def update
 		@list = List.find(params[:id])
 		if @list.update_attributes(list_params)
-			flash[:success] = "List updated"
 			@list.list_id = @list.id
-			redirect_to list_path(@list)
+			redirect_to list_path(@list), :success => "List updated"
 		else
 			flash[:danger] = "List could not be updated"
 			render 'edit'
@@ -98,8 +96,7 @@ class ListsController < ApplicationController
 		respond_to do |format|
 			format.js
 			format.html do
-				flash[:success] = "List Deleted"
-				redirect_to lists_path
+				redirect_to lists_path, :success => "List Deleted"
 			end
 			format.json
 		end

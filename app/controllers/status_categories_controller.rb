@@ -21,8 +21,7 @@ class StatusCategoriesController < ApplicationController
 	def create
 		@status_category = StatusCategory.create(status_category_params)
 			if @status_category.save
-				flash[:success] = "Status category created"
-				redirect_to status_category_path(@status_category)
+				redirect_to status_category_path(@status_category), :success => "Status category created"
 			else
 				flash[:danger] = "Status category could not be created"
 				render 'new'

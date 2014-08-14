@@ -17,8 +17,7 @@ class LeadsController < ApplicationController
 		@lead = Lead.create(lead_params)
 		@lead.lead_id = @lead.id
 	if @lead.save
-		flash[:success] = "Lead created"
-		redirect_to lead_path(@lead)
+		redirect_to lead_path(@lead), :success => "Lead created"
 	else
 		flash[:danger] = "Lead could not be created"
 		render 'new'
@@ -45,8 +44,7 @@ class LeadsController < ApplicationController
 	def update
 		@lead = Lead.find(params[:id])
 		if @lead.update_attributes(lead_params)
-			flash[:success] = "Lead updated"
-			redirect_to lead_path(@lead)
+			redirect_to lead_path(@lead), :success => "Lead updated"
 		else
 			flash[:danger] = "Lead could not be updated"
 			render 'edit'
@@ -61,6 +59,10 @@ class LeadsController < ApplicationController
 		@list_tab = 'loader'
 		@receipt = Lead.import(params[:file],params[:list],params[:duplicate_check],params[:number_validation])
                 flash[:success] = "Leads loaded, Good : #{@receipt[:flash]["loaded"]}, Duplicates : #{@receipt[:flash]["duplicates"]}, Invalid : #{@receipt[:flash]["invalid"]}"
+		def download_receipt
+			require 'csv'
+			CSV.open("receipt.csv", "wb") { |csv| @receipt.to_a.each {|elem| csv << elem} }
+		end
 	end
 	
 	private

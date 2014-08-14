@@ -21,8 +21,7 @@ class FiltersController < ApplicationController
 	def create
 		@filter = Filter.create(filter_params.merge(:user_group => UserGroup.find(filter_params[:user_group_id]).user_group))
 			if @filter.save
-				flash[:success] = "Filter created"
-				redirect_to filter_path(@filter)
+				redirect_to filter_path(@filter), :success => "Filter created"
 			else
 				flash[:danger] = "Filter could not be created"
 				render 'new'
@@ -37,8 +36,7 @@ class FiltersController < ApplicationController
 	def update
 		@filter = Filter.find(params[:id])
 		if @filter.update_attributes(filter_params.merge(:user_group => UserGroup.find(filter_params[:user_group_id]).user_group))
-			flash[:success] = "Filter Updated"
-			redirect_to filter_path(@filter)
+			redirect_to filter_path(@filter), :success => "Filter updated"
 		else
 			flash[:danger] = "Filter could not be updated"
 			render 'edit'
@@ -52,8 +50,7 @@ class FiltersController < ApplicationController
 		respond_to do |format|
 			format.js
 			format.html do
-				flash[:success] = "Filter Deleted"
-				redirect_to filters_path
+				redirect_to filters_path, :success => "Filter deleted"
 			end
 			format.json { head :no_content }
 		end

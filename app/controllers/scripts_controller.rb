@@ -21,8 +21,7 @@ class ScriptsController < ApplicationController
 	def create
 		@script = Script.create(script_params.merge(:user_group => UserGroup.find(script_params[:user_group_id]).user_group))
 			if @script.save
-				flash[:success] = "Script created"
-				redirect_to script_path(@script)
+				redirect_to script_path(@script), :success => "Script created"
 			else
 				flash[:danger] = "Script could not be created"
 				render 'new'
@@ -37,8 +36,7 @@ class ScriptsController < ApplicationController
 	def update
 		@script = Script.find(params[:id])
 		if @script.update_attributes(script_params.merge(:user_group => UserGroup.find(script_params[:user_group_id]).user_group))
-			flash[:success] = "Script Updated"
-			redirect_to script_path(@script)
+			redirect_to script_path(@script), :success => "Script updated"
 		else
 			flash[:danger] = "Script could not be updated"
 			render 'edit'
@@ -52,8 +50,7 @@ class ScriptsController < ApplicationController
 		respond_to do |format|
 			format.js
 			format.html do
-				flash[:success] = "Script Deleted"
-				redirect_to scripts_path
+				redirect_to scripts_path, :success => "Script deleted"
 			end
 			format.json { head :no_content }
 		end
