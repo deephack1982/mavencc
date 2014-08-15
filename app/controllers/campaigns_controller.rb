@@ -114,7 +114,7 @@ class CampaignsController < ApplicationController
 	end
 	
 	def sort_column
-		Campaign.column_names.include?(params[:sort]) ? params[:sort] : "campaign_id"
+		Campaign.column_names.include?(params[:sort]) || List.column_names.include?(params[:sort]) ? params[:sort] : "campaign_id"
 	end
 	
 	def sort_direction
