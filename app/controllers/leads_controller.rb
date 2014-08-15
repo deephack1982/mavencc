@@ -59,12 +59,16 @@ class LeadsController < ApplicationController
 		@list_tab = 'loader'
 		@receipt = Lead.import(params[:file],params[:list],params[:duplicate_check],params[:number_validation])
                 flash[:success] = "Leads loaded, Good : #{@receipt[:flash]["loaded"]}, Duplicates : #{@receipt[:flash]["duplicates"]}, Invalid : #{@receipt[:flash]["invalid"]}"
-		def download_receipt
+		def receipt_csv
 			require 'csv'
-			CSV.open("receipt.csv", "wb") { |csv| @receipt.to_a.each {|elem| csv << elem} }
+			CSV.open("receipt.csv", "wb") { |csv| @receipt[:data].to_a.each {|elem| csv << elem} }
 		end
 	end
 	
+	def csv
+		require 'csv'
+		CSV.open("receipt.csv", "wb") { |csv| @receipt[:data].to_a.each {|elem| csv << elem} }
+	end
 	private
 	
 	def lead_params
