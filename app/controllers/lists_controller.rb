@@ -65,12 +65,17 @@ class ListsController < ApplicationController
 	def create
 		@list = List.create(list_params.merge(:list_lastcalldate => '2000-01-01'))
 		@list.id = @list.list_id
-    	if @list.save
-      		redirect_to list_path(@list), :success => "List created"
-    	else
-    		flash[:danger] = "List could not be created"
-      		render 'new'
-    	end
+	if List.find(@list.id)
+		flash[:danger] = "List ID already exist"
+		render 'new'
+	else
+		if @list.save
+			redirect_to list_path(@list), :success => "List created"
+		else
+			flash[:danger] = "List could not be created"
+			render 'new'
+		end
+	end
 	end
 	
 	def edit
