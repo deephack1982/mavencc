@@ -80,8 +80,8 @@
 	<div class="table-responsive">
 		<table class="table table-striped table-hover" id="lists-in-campaign">
 		<tr><th <%= sortable "list_id" %></th><th <%= sortable "list_name" %></th><th <%= sortable "active" %></th><th <%= sortable "dialable" %></th><th <%= sortable "leads" %></th><th <%= sortable "Last called" %></th></tr>
-		<% @campaign.lists.each do |l| %>
-		<tr><td><%= link_to l.list_id, l, class: "label label-info" %></td><td><%= l.list_name %></td><td><%= link_to l.active, campaign_path(@campaign, :list => l.list_id, :activate_list => l.active, :anchor => "lists-in-campaign"), class: "label #{item_active(l.active)}" %></td><td><%= l.dialable %><td><%= l.leads.count %></td><td><%= l.list_lastcalldate.to_date %></td></tr>
+		<% @lists_in_campaign.each do |l| %>
+		<tr><td><%= link_to l.list_id, l, class: "label label-info" %></td><td><%= l.list_name %></td><td><%= link_to l.active, campaign_path(@campaign, :list => l.list_id, :activate_list => l.active, :anchor => "lists-in-campaign"), class: "label #{item_active(l.active)}" %></td><td><%= l.dialable %><td><%= l.leads %></td><td><%= l.list_lastcalldate.to_date %></td></tr>
 		<% end %>
 		</table>
 	</div>

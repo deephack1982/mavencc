@@ -8,9 +8,15 @@ class List < ActiveRecord::Base
   validates :reset_time, format: { with: /([0-9]{4})?(-[0-9]{4})*/, message: "24hr clock times seperated by - only" }
   belongs_to :campaign
   has_many :leads
+  attr_accessor :dialable
+  attr_accessor :leads
   
   def campaign_name
   	self.campaign.campaign_name if self.campaign
+  end
+  
+  def leads
+  	Lead.where(:list_id => self.list_id).count
   end
   
   def dialable

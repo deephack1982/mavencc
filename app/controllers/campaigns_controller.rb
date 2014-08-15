@@ -12,8 +12,8 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.find(params[:id])
 		@statuses_in_campaign = Lead.where(list_id: @campaign.lists.pluck(:list_id)).group(:status).count
 		@statuses = @campaign.dial_statuses.split(" ")
-		@leads_in_campaign = Lead.where(list_id: @campaign.lists.where(active: "Y").pluck(:list_id)).where(status: @statuses).where("called_since_last_reset = 'N'").count
 		@campaign_user_group = UserGroup.find(@campaign.user_group).user_group
+		@lists_in_campaign = @campaign.lists.order(sort_column + " " + sort_direction)
 		@campaign_tab = 'list'
 		if params[:activate_list] == 'N'
 			@list = List.find(params[:list])

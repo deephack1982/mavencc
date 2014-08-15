@@ -10,7 +10,7 @@ class UserGroupsController < ApplicationController
 	def show
 		@user_tab = 'group-list'
 		@user_group = UserGroup.find(params[:id])
-		@users_in_group = User.where(:user_group_id => params[:id]).paginate(page: params[:page], :per_page => 20)
+		@users_in_group = User.where(:user_group_id => params[:id]).order(sort_column + " " + sort_direction).paginate(page: params[:page], :per_page => 20)
 	end
 	def edit
 		@user_group = UserGroup.find(params[:id])
@@ -57,7 +57,7 @@ class UserGroupsController < ApplicationController
 	end
 	
 	def sort_column
-		UserGroup.column_names.include?(params[:sort]) ? params[:sort] : "user_group"
+		UserGroup.column_names.include?(params[:sort]) || User.column_names.include?(params[:sort]) ? params[:sort] : "user_group"
 	end
 	
 	def sort_direction
