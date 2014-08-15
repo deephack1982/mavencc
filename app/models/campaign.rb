@@ -16,4 +16,10 @@ class Campaign < ActiveRecord::Base
 	has_many :lists
 	accepts_nested_attributes_for :lists
 	belongs_to :script
+	
+	def campaign_dialable
+		@list_statuses = self.dial_statuses.split(" ")
+		@campaign_lists = List.where(campaign_id: self.id)
+		Lead.where(list_id: @campaign_lists).where(status: @list_statuses).where("called_since_last_reset = 'N'").count
+	end
 end
